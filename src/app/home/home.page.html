@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Corona Virus: Self Isolation Assistance
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,18 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+    <ion-icon name="information-circle-outline"></ion-icon>
+    <h1>Corona Virus: Self Isolation Help</h1>
+    <strong>What is this tool for?</strong>
+    <p>
+      If you are self isolating due to a suspected Corona Virus infection,
+      and you would like to request some help from a local volunteer group, this tool will help you.</p>
+    <strong>What this tool does not do</strong>
+    <p>This tool cannot help you with emergencies or health problems. If you have an emergency, please dial 999.</p>
+
+    <p>Because this tool requests your personal data, you will need to agree to our <a [routerLink]="['/privacy-policy']">privacy policy</a>.</p>
+
+    <ion-button [routerLink]="['/question-one']">Continue</ion-button>
   </div>
 </ion-content>
