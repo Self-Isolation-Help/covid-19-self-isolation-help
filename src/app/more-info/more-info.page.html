@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar class="max-wrap">
+    <ion-title>Please provide any more info (step 2 of 3)</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="onSubmitForm($event)" #ngForm="ngForm" class="max-wrap">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          More info
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-textarea name="moreInfo" [(ngModel)]="form.moreInfo" placeholder="Type here any more info that you may have..."></ion-textarea>
+        </ion-item>
+      </ion-card-content>
+
+    </ion-card>
+
+    <ion-button type="submit">Submit</ion-button>
+  </form>
+
+
+</ion-content>

@@ -1,5 +1,7 @@
 {
   "name": "self-isolate-assistance-2",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

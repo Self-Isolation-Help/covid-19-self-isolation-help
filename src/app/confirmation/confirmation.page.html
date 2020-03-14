@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Confirm your details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="max-wrap">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>What you would like help with</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p *ngIf="user?.info?.needsMedicine">
+          <ion-icon name="checkmark-circle-outline"></ion-icon> I need medicine
+        </p>
+        <p *ngIf="user?.info?.needsFood">
+          <ion-icon name="checkmark-circle-outline"></ion-icon> I need food
+        </p>
+        <p *ngIf="user?.info?.needsSomeoneToTalkTo">
+          <ion-icon name="checkmark-circle-outline"></ion-icon> I need someone
+          to talk to
+        </p>
+
+        <ng-container *ngIf="user?.info.needsSomethingElseDescription">
+          <h2>You said you needed help with something else:</h2>
+          <p>{{user?.info.needsSomethingElseDescription}}</p>
+        </ng-container>
+        <a [routerLink]="['/info']">Make changes</a>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Any other info</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{user?.moreInfo}}</p>
+        <a [routerLink]="['/more-info']">Make changes</a>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Your address</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p *ngIf="user?.details?.forename">
+          <strong>Forename: </strong> {{user?.details?.forename}}
+        </p>
+        <p *ngIf="user?.details?.surname">
+          <strong>Surname: </strong> {{user?.details?.surname}}
+        </p>
+        <p *ngIf="user?.details?.telephone">
+          <strong>Telephone Number: </strong> {{user?.details?.telephone}}
+        </p>
+        <p *ngIf="user?.details?.email">
+          <strong>Email Address: </strong> {{user?.details?.email}}
+        </p>
+        <p *ngIf="user?.details?.address1">
+          <strong>Address Line 1: </strong> {{user?.details?.address1}}
+        </p>
+        <p *ngIf="user?.details?.address2">
+          <strong>Address Line 2: </strong> {{user?.details?.address2}}
+        </p>
+        <p *ngIf="user?.details?.town">
+          <strong>Town: </strong> {{user?.details?.town}}
+        </p>
+        <p *ngIf="user?.details?.county">
+          <strong>County: </strong> {{user?.details?.county}}
+        </p>
+        <p *ngIf="user?.details?.postCode">
+          <strong>Post Code: </strong> {{user?.details?.postCode}}
+        </p>
+
+
+
+        <a [routerLink]="['/address']">Make changes</a>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Complete Application</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>
+          By clicking this button you agree to share the above details and your
+          location with the Self Isolation Assistance Tool
+        </p>
+        <ion-button>Complete application</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

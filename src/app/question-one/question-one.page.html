@@ -1,16 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>question-one</ion-title>
+    <div class="max-wrap">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div id="container">
-    <ion-icon name="information-circle-outline"></ion-icon>
-    <p>
-      <strong>Are you self isolating with a suspected Corona Virus and would like to request help from a local volunteer group?</strong>
-    </p>
-
-    <ion-button [routerLink]="['/share-location']">Yes</ion-button>
+  <div class="max-wrap">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Are you self isolating?</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>
+          Are you self isolating with a suspected Corona Virus and would like to
+          request help from a local volunteer group?
+        </p>
+        <ion-button [routerLink]="['/share-location']">Yes</ion-button>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

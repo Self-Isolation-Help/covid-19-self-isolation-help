@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar class="max-wrap">
+    <ion-title>What help do you need? (Step 1 of 3)</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+
+  <div class="max-wrap">
+    <form (ngSubmit)="onSubmitForm($event)" #ngForm="ngForm">
+      <ion-card>
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              I need help getting access to medicine
+            </ion-label>
+            <ion-checkbox
+                  required="true"
+              [(ngModel)]="form.needsMedicine"
+              name="needsMedecine"
+              slot="start"
+            ></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox
+              [(ngModel)]="form.needsFood"
+              name="needsFood"
+              slot="start"
+            ></ion-checkbox>
+            <ion-label>
+              I need help with food
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox
+              [(ngModel)]="form.needsSomeoneToTalkTo"
+              name="needsSomeoneToTalkTo"
+              slot="start"
+            ></ion-checkbox>
+            <ion-label>
+              I would like someone to talk to
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox
+              [(ngModel)]="form.needsSomethingElse"
+              name="needsSomethingElse"
+              slot="start"
+            ></ion-checkbox>
+            <ion-label>
+              Something else (please specify)
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="ion-padding" *ngIf="form.needsSomethingElse">
+          <strong>Type below what you need help with:</strong>
+          <ion-item>
+            <ion-textarea
+              [(ngModel)]="form.needsSomethingElseDescription"
+              name="moreInfo"
+            ></ion-textarea>
+          </ion-item>
+        </div>
+      </ion-card>
+
+      <ion-button type="submit">Next</ion-button>
+    </form>
+  </div>
+</ion-content>
