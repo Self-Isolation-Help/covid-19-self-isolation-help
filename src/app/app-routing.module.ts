@@ -18,6 +18,22 @@ const routes: Routes = [
   {
     path: 'question-one',
     loadChildren: () => import('./question-one/question-one.module').then( m => m.QuestionOnePageModule)
+  },
+  {
+    path: 'info',
+    loadChildren: () => import('./info/info.module').then( m => m.InfoPageModule)
+  },
+  {
+    path: 'address',
+    loadChildren: () => import('./address/address.module').then( m => m.AddressPageModule)
+  },
+  {
+    path: 'more-info',
+    loadChildren: () => import('./more-info/more-info.module').then( m => m.MoreInfoPageModule)
+  },
+  {
+    path: 'confirmation',
+    loadChildren: () => import('./confirmation/confirmation.module').then( m => m.ConfirmationPageModule)
   }
 ];
 

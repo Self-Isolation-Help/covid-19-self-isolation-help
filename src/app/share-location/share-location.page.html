@@ -1,18 +1,29 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>share-location</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+<ion-content *ngIf="loading">
+  <div class="container">
+    <ion-spinner></ion-spinner>
+    <p>Sharing location...</p>
+  </div>
 
-  <div id="container">
+</ion-content>
 
-    <ion-icon name="information-circle-outline"></ion-icon>
+<ion-content *ngIf="!loading">
+
+  <div class="container">
+
+
     <h1>Please share your location</h1>
     <p>This tool will now ask your to share your location.</p>
 
-    <ion-button [routerLink]="['/share-location']">Continue</ion-button>
+    <p>
+      <ion-button (click)="getLocation()">Share location and continue</ion-button>
+    </p>
+
+    <p>
+      <a [routerLink]="['/info']">I would prefer not to share my location</a>
+    </p>
+
+
   </div>
 
 </ion-content>

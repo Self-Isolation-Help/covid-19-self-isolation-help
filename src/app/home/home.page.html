@@ -1,31 +1,45 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+    <ion-title class="max-wrap">
       Corona Virus: Self Isolation Assistance
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <div id="container">
+  <div class="max-wrap">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          What is this tool for?
+        </ion-card-title>
+      </ion-card-header>
 
-    <ion-icon name="information-circle-outline"></ion-icon>
-    <h1>Corona Virus: Self Isolation Help</h1>
-    <strong>What is this tool for?</strong>
-    <p>
-      If you are self isolating due to a suspected Corona Virus infection,
-      and you would like to request some help from a local volunteer group, this tool will help you.</p>
-    <strong>What this tool does not do</strong>
-    <p>This tool cannot help you with emergencies or health problems. If you have an emergency, please dial 999.</p>
+      <ion-card-content>
+        <p>
+          If you are self isolating due to a suspected Corona Virus infection, and
+          you would like to request some help from a local volunteer group, this
+          tool will help you.
+        </p>
+        <strong>What this tool does not do</strong>
+        <p>
+          This tool cannot help you with emergencies or health problems. If you
+          have an emergency, please dial 999.
+        </p>
 
-    <p>Because this tool requests your personal data, you will need to agree to our <a [routerLink]="['/privacy-policy']">privacy policy</a>.</p>
+        <strong>About your privacy</strong>
 
-    <ion-button [routerLink]="['/question-one']">Continue</ion-button>
+        <p>
+          We collect personal info in this tool so that we can assist you. By
+          using this tool, you agree to our
+          <a [routerLink]="['/privacy-policy']">privacy policy</a>.
+        </p>
+
+        <ion-button [routerLink]="['/question-one']">Continue</ion-button>
+      </ion-card-content>
+    </ion-card>
   </div>
+
+
 </ion-content>
