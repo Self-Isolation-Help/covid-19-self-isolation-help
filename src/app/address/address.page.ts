@@ -8,7 +8,11 @@ import { Router } from "@angular/router";
   styleUrls: ["./address.page.scss"]
 })
 export class AddressPage implements OnInit {
-  form: any = {};
+
+submitted = false;
+  form: any = {
+      dontShareAddress: true
+  };
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -20,6 +24,7 @@ export class AddressPage implements OnInit {
 
   onSubmitForm($event, form) {
     console.log($event, form);
+    this.submitted = true;
 
     if(form.form.status !== 'INVALID') {
         this.userService.updateUser({ details: this.form });

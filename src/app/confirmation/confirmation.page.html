@@ -86,7 +86,7 @@
           By clicking this button you agree to share the above details and your
           location with the Self Isolation Assistance Tool
         </p>
-        <ion-button>Complete application</ion-button>
+        <ion-button (click)="onComplete()" [disabled]="disabled">Complete application</ion-button>
       </ion-card-content>
     </ion-card>
   </div>
