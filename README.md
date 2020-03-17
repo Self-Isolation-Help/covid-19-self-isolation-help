@@ -1,5 +1,11 @@
-# COVID-19 Self Isolation Assistance Tool
+# COVID-19 Self Isolation Help Tool
 
 This tool connects people who believe they are infected with COVID-19 with local volunteer groups.
 
-Will write more later...
+It is available to the public at http://selfisolationh
+
+## This project is accepting Pull Requests
+
+Please help contribute.
+
+Thank you
