@@ -7,14 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { ConfirmationPageRoutingModule } from './confirmation-routing.module';
 
 import { ConfirmationPage } from './confirmation.page';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../../environments/environment.prod';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConfirmationPageRoutingModule
+    ConfirmationPageRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
-  declarations: [ConfirmationPage]
+  declarations: [ConfirmationPage],
+  providers: [AngularFirestore]
 })
 export class ConfirmationPageModule {}

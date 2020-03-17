@@ -7,14 +7,14 @@
 <ion-content class="ion-padding">
 
 
-
   <div class="max-wrap">
+    <p>I need help with...</p>
     <form (ngSubmit)="onSubmitForm($event)" #ngForm="ngForm">
       <ion-card>
         <ion-list>
           <ion-item>
             <ion-label>
-              I need help getting access to medicine
+              Medicine
             </ion-label>
             <ion-checkbox
                   required="true"
@@ -30,7 +30,7 @@
               slot="start"
             ></ion-checkbox>
             <ion-label>
-              I need help with food
+              Food
             </ion-label>
           </ion-item>
           <ion-item>
@@ -40,7 +40,7 @@
               slot="start"
             ></ion-checkbox>
             <ion-label>
-              I would like someone to talk to
+              Someone to talk to
             </ion-label>
           </ion-item>
           <ion-item>
@@ -50,7 +50,7 @@
               slot="start"
             ></ion-checkbox>
             <ion-label>
-              Something else (please specify)
+              Other (please specify)
             </ion-label>
           </ion-item>
         </ion-list>
