@@ -39,6 +39,10 @@ const routes: Routes = [
   {
     path: 'complete',
     loadChildren: () => import('./complete/complete.module').then( m => m.CompletePageModule)
+  },
+  {
+    path: 'people-isolating',
+    loadChildren: () => import('./people-isolating/people-isolating.module').then( m => m.PeopleIsolatingPageModule)
   }
 ];
 
