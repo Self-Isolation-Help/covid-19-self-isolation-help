@@ -9,3 +9,9 @@ The tool will be made available to the public.
 Please help contribute.
 
 Thank you
+
+# Getting set up
+
+* Run `npm install`
+* To start the dev version, which will serve the application locally, run `npm run start`. It will serve it on localhost:4200, and hot reload as you change the code
+
