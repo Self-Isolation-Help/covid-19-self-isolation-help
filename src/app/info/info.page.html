@@ -8,7 +8,7 @@
 
 
   <div class="max-wrap">
-    <p>I need help with...</p>
+
     <form (ngSubmit)="onSubmitForm($event)" #ngForm="ngForm">
       <ion-card>
         <ion-list>
@@ -66,7 +66,16 @@
         </div>
       </ion-card>
 
-      <ion-button type="submit">Next</ion-button>
+      <ion-card>
+        <ion-card-content>
+          <ion-button type="submit">Next</ion-button>
+        </ion-card-content>
+
+      </ion-card>
+
+
+
+
     </form>
   </div>
 </ion-content>

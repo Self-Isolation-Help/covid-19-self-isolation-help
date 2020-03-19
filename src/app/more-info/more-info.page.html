@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar class="max-wrap">
-    <ion-title>Please provide any more info (step 2 of 3)</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Anything else we need to know? (step 2 of 3)</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,13 +17,18 @@
       </ion-card-header>
       <ion-card-content>
         <ion-item>
-          <ion-textarea name="moreInfo" [(ngModel)]="form.moreInfo" placeholder="Type here any more info that you may have..."></ion-textarea>
+          <ion-textarea name="moreInfo" [(ngModel)]="form.moreInfo" placeholder="Enter any additional comments or information..."></ion-textarea>
         </ion-item>
       </ion-card-content>
 
     </ion-card>
 
-    <ion-button type="submit">Submit</ion-button>
+    <ion-card>
+      <ion-card-content>
+        <ion-button type="submit">Next</ion-button>
+      </ion-card-content>
+    </ion-card>
+
   </form>
 
 
