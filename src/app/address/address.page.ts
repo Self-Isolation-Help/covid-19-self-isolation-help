@@ -11,7 +11,7 @@ export class AddressPage implements OnInit {
 
 submitted = false;
   form: any = {
-      dontShareAddress: true
+
   };
 
   constructor(private userService: UserService, private router: Router) {}
@@ -23,7 +23,7 @@ submitted = false;
     }
 
   onSubmitForm($event, form) {
-    console.log($event, form);
+
     this.submitted = true;
 
     if(form.form.status !== 'INVALID') {
