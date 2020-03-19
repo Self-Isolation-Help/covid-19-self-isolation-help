@@ -1,9 +1,61 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="background"><div class="background-inner"></div></div>
+  <div class="header">
+    <h1 class="max-wrap ion-padding">
+      Volunteer Login
+    </h1>
+  </div>
 
+  <div class="max-wrap">
+    <ion-card>
+      <ion-card-content>
+        <form #form="ngForm" (ngSubmit)="signin(form)">
+          <ion-list>
+            <ion-item>
+              <ion-label position="stacked"
+                >Email<span class="required">*</span></ion-label
+              >
+              <ion-input
+                [(ngModel)]="form.email"
+                name="email"
+                required="true"
+                placeholder="Your email address"
+              ></ion-input>
+              <!--  <ion-text
+                [hidden]="ngForm.controls.email && (ngForm.controls.email.valid || (ngForm.controls.email.pristine))"
+                color="danger"
+                >Email is required</ion-text
+              > -->
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked"
+                >Password<span class="required">*</span></ion-label
+              >
+              <ion-input
+                [(ngModel)]="form.password"
+                name="password"
+                required="true"
+                placeholder="Your password"
+              ></ion-input>
+              <!-- <ion-text
+                [hidden]="ngForm.controls.password && (ngForm.controls.password.valid || (ngForm.controls.password.pristine))"
+                color="danger"
+                >Password is required</ion-text
+              > -->
+            </ion-item>
+          </ion-list>
+        </form>
+        <ion-button [routerLink]="">Login</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar class="max-wrap">
+    <small
+      >Tool created by Perius Ltd and volunteers<br />Company Number 06799576
+    </small>
+    <a slot="end" [routerLink]="['/privacy-policy']">Privacy Policy</a>
+  </ion-toolbar>
+</ion-footer>
