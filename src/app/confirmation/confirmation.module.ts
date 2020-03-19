@@ -16,8 +16,7 @@ import { environment } from '../../environments/environment.prod';
     CommonModule,
     FormsModule,
     IonicModule,
-    ConfirmationPageRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    ConfirmationPageRoutingModule
   ],
   declarations: [ConfirmationPage],
   providers: [AngularFirestore]

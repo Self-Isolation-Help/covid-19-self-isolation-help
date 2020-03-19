@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar class="max-wrap">
+    <ion-title>People Isolating by County</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="max-wrap">
+    <pre>{{(isolators$ | async) | json}}</pre>
+  </ion-card>
+</ion-content>
