@@ -29,11 +29,20 @@ export class ConfirmationPage implements OnInit {
   onComplete() {
     this.disabled = true;
     this.userService.updateUser({dateSubmitted: firebase.firestore.FieldValue.serverTimestamp()});
-    this.afs
+/*    this.afs
       .collection("isolating")
       .add(this.userService.getUser())
       .then(() => {
         this.router.navigateByUrl("/complete");
-      });
+      });*/
+
+    /*temp*/
+
+      this.afs
+          .collection("isolating-test")
+          .add(this.userService.getUser())
+          .then(() => {
+              this.router.navigateByUrl("/complete");
+          });
   }
 }
