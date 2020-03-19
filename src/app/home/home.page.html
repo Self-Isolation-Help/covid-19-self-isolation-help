@@ -1,12 +1,10 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title class="max-wrap">
-      Corona Virus: Self Isolation Assistance
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="background"><div class="background-inner"></div></div>
+  <div class="header">
+    <h1 class="max-wrap ion-padding">
+      COVID-19: Self Isolation Help
+    </h1>
+  </div>
 
   <div class="max-wrap">
     <ion-card>
@@ -17,39 +15,52 @@
       </ion-card-header>
 
       <ion-card-content>
-
-        <ion-img src="/assets/image.jpg"></ion-img>
         <p>
-          If you are self isolating due to a suspected Corona Virus infection, and
-          you would like to request some help from a local volunteer group, this
-          tool will help you.
+          If you or someone you know is self isolating due to the outbreak of
+          Coronavirus and need access to food, medicine or support, you can use
+          this tool to request help from a local volunteer group in the United
+          Kingdom.
         </p>
-        <strong>What this tool does not do</strong>
         <p>
-          This tool cannot help you with emergencies or health problems. If you
-          have an emergency, please dial 999.
-        </p>
-
-        <strong>About your privacy</strong>
-
-        <p>
-          We collect personal info in this tool so that we can assist you. By
-          using this tool, you agree to our
-          <a [routerLink]="['/privacy-policy']">privacy policy</a>.
+          <strong>
+            If you have breathing difficulties or severe symptoms
+          </strong>
+          do not use this tool. Instead, <strong>dial 999</strong> immediately to seek emergency
+          help.
         </p>
 
-
-        <strong>Who we are</strong>
-
         <p>
-          This tool is a collaboration between Volunteer Task Force UK and <a href="http://perius.co.uk" target="_blank">Perius Ltd</a>
+          To request assistance for you, or someone else please click 'Continue'
+          below
         </p>
-
 
         <ion-button [routerLink]="['/question-one']">Continue</ion-button>
       </ion-card-content>
     </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <h2>About your privacy</h2>
+
+        <p>
+          We collect personal info so we can assist you. By clicking 'Continue'
+          you agree to our
+          <a [routerLink]="['/privacy-policy']">privacy policy</a>.
+        </p>
+
+        <h2>Who we are</h2>
+
+        <p>
+          This tool is a collaboration between Volunteer Task Force UK and
+          <a href="http://perius.co.uk" target="_blank">Perius Ltd</a>
+        </p>
+      </ion-card-content>
+    </ion-card>
   </div>
-
-
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar class="max-wrap">
+    <small>Tool created by Perius Ltd and volunteers<br />Company Number 06799576 </small>
+    <a slot="end" [routerLink]="['/privacy-policy']">Privacy Policy</a>
+  </ion-toolbar>
+</ion-footer>
