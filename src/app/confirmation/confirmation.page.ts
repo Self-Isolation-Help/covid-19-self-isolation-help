@@ -3,7 +3,6 @@ import { UserService } from "../user.service";
 
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
-import "firebase/firestore";
 import * as firebase from "firebase";
 
 @Component({

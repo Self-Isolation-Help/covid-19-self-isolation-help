@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Isolator } from "../isolator.model";
 import { Observable } from "rxjs/internal/Observable";
-import 'firebase/firestore';
 
 
 @Component({
