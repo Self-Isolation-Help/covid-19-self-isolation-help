@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../user.service";
 import { Router } from "@angular/router";
+import { COUNTIES } from "./counties";
 
 @Component({
   selector: "app-address",
@@ -13,6 +14,8 @@ submitted = false;
   form: any = {
 
   };
+  counties: string[] = COUNTIES.sort();
+  
 
   constructor(private userService: UserService, private router: Router) {}
 
