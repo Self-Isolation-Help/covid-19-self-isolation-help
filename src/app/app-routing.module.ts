@@ -39,6 +39,10 @@ const routes: Routes = [
   {
     path: 'complete',
     loadChildren: () => import('./complete/complete.module').then( m => m.CompletePageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   }
 ];
 
