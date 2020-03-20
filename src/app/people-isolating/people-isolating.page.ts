@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Isolator } from "../isolator.model";
 import { Observable } from "rxjs/internal/Observable";
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -14,6 +15,10 @@ export class PeopleIsolatingPage implements OnInit {
   constructor(private afs: AngularFirestore) {}
 
   ngOnInit() {
-    this.isolators$ = this.afs.collection<Isolator>("isolating-test").valueChanges();
+    this.isolators$ = this.afs.collection<Isolator>("isolating-test").valueChanges().pipe(
+        map((isolators: any) => {
+            return isolators.filter(isolator => !isolator.resolved);
+        })
+    );
   }
 }

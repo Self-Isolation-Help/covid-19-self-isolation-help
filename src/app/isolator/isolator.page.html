@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar class="max-wrap">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{isolator?.details.forename}} {{isolator?.details.surname}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onClickResolve()" color="danger">Mark as Resolved</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="!isolator">
+  <div class="container">
+    <ion-spinner></ion-spinner>
+    <p>Loading...</p>
+  </div>
+
+</ion-content>
+<ion-content *ngIf="isolator">
+  <div class="max-wrap">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Needs help with</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p *ngIf="isolator?.info?.needsMedicine">
+          <ion-icon name="checkmark-circle-outline"></ion-icon> I need medicine
+        </p>
+        <p *ngIf="isolator?.info?.needsFood">
+          <ion-icon name="checkmark-circle-outline"></ion-icon> I need food
+        </p>
+        <p *ngIf="isolator?.info?.needsSomeoneToTalkTo">
+          <ion-icon name="checkmark-circle-outline"></ion-icon> I need someone
+          to talk to
+        </p>
+
+        <ng-container *ngIf="isolator?.info.needsSomethingElseDescription">
+          <h2>Something else:</h2>
+          <p>{{isolator?.info.needsSomethingElseDescription}}</p>
+        </ng-container>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Other info</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{isolator?.moreInfo}}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Address</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p *ngIf="isolator?.details?.forename">
+          <strong>Forename: </strong> {{isolator?.details?.forename}}
+        </p>
+        <p *ngIf="isolator?.details?.surname">
+          <strong>Surname: </strong> {{isolator?.details?.surname}}
+        </p>
+        <p *ngIf="isolator?.details?.telephone">
+          <strong>Telephone Number: </strong> {{isolator?.details?.telephone}}
+        </p>
+        <p *ngIf="isolator?.details?.email">
+          <strong>Email Address: </strong> {{isolator?.details?.email}}
+        </p>
+        <p *ngIf="isolator?.details?.address1">
+          <strong>Address Line 1: </strong> {{isolator?.details?.address1}}
+        </p>
+        <p *ngIf="isolator?.details?.address2">
+          <strong>Address Line 2: </strong> {{isolator?.details?.address2}}
+        </p>
+        <p *ngIf="isolator?.details?.town">
+          <strong>Town: </strong> {{isolator?.details?.town}}
+        </p>
+        <p *ngIf="isolator?.details?.county">
+          <strong>County: </strong> {{isolator?.details?.county}}
+        </p>
+        <p *ngIf="isolator?.details?.postCode">
+          <strong>Post Code: </strong> {{isolator?.details?.postCode}}
+        </p>
+
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>
