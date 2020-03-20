@@ -101,6 +101,14 @@ const routes: Routes = [
     path: "volunteers",
     loadChildren: () =>
       import("./volunteers/volunteers.module").then(m => m.VolunteersPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
   }
 ];
 
