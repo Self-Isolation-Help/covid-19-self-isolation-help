@@ -47,10 +47,15 @@
   <ion-footer class="footer">
     <ion-grid class="max-wrap">
       <ion-row>
-        <ion-col size-lg="8" size-sm="6" size-xs="12">
+        <ion-col size-lg="6" size-sm="6" size-xs="12">
           <small class="text">
             Created by <a href="http://perius.co.uk" target="_blank">Perius Ltd</a> and volunteers<br />Company Number 06799576
           </small>
+        </ion-col>
+        <ion-col size-lg="2" size-sm="3" size-xs="12" class="ion-text-center">
+          <a class="link button" [routerLink]="['/contact']"
+          >Contact</a
+          >
         </ion-col>
         <ion-col size-lg="2" size-sm="3" size-xs="12" class="ion-text-center">
           <a class="link button" [routerLink]="['/people-isolating']"
