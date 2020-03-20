@@ -3,7 +3,6 @@
     <ion-spinner></ion-spinner>
     <p>Logging in...</p>
   </div>
-
 </ion-content>
 
 <ion-content *ngIf="!loading">
@@ -15,7 +14,6 @@
   </div>
 
   <div class="max-wrap">
-
     <ion-card>
       <ion-card-content>
         <form #ngForm="ngForm" (ngSubmit)="signin()">
@@ -55,22 +53,14 @@
             </ion-item>
           </ion-list>
           <p *ngIf="error">
-            <ion-text color="danger">Your username/password is incorrect, or there was another problem. Please try again.</ion-text>
+            <ion-text color="danger"
+              >Your username/password is incorrect, or there was another
+              problem. Please try again.</ion-text
+            >
           </p>
           <ion-button type="submit">Login</ion-button>
-
         </form>
-
       </ion-card-content>
     </ion-card>
   </div>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar class="max-wrap">
-    <small
-      >Tool created by Perius Ltd and volunteers<br />Company Number 06799576
-    </small>
-    <a slot="end" [routerLink]="['/privacy-policy']">Privacy Policy</a>
-  </ion-toolbar>
-</ion-footer>
