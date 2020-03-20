@@ -3,8 +3,7 @@ import { UserService } from "../user.service";
 
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
-import 'firebase/firestore';
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
 
 @Component({
   selector: "app-confirmation",
@@ -28,7 +27,9 @@ export class ConfirmationPage implements OnInit {
 
   onComplete() {
     this.disabled = true;
-    this.userService.updateUser({dateSubmitted: firebase.firestore.FieldValue.serverTimestamp()});
+    this.userService.updateUser({
+      dateSubmitted: firebase.firestore.FieldValue.serverTimestamp()
+    });
     this.afs
       .collection("isolating")
       .add(this.userService.getUser())
