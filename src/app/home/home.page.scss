@@ -24,4 +24,25 @@
     }
   }
 
+  .footer{
+    .link{
+      display: block;
+      padding: .5rem;
+    }
+  }
+  @media all and (max-width: 575px){
+    .footer{
+      .text{
+        text-align: center;
+        display: block;
+      }
+      .button{
+        margin: .2rem auto 0 auto;
+        width: 70%;
+      }
+    }
+  }
+
 }
+
+
