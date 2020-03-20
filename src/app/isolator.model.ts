@@ -1,4 +1,4 @@
-export interface User {
+export interface Isolator {
   location?: {
     lat?: string;
     lng?: string;
@@ -24,4 +24,6 @@ export interface User {
     postCode?: string;
   };
   hasCompletedForm: boolean;
+  resolved?: boolean;
+  id?: string;
 }
