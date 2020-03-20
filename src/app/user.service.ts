@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class UserService {
-  user:any = {};
+  user: any = {};
 
   constructor() {
     console.log("user service");
@@ -16,5 +16,9 @@ export class UserService {
 
   getUser() {
     return this.user;
+  }
+
+  resetUser() {
+    this.user = {};
   }
 }

@@ -8,13 +8,15 @@ import { PeopleIsolatingPageRoutingModule } from "./people-isolating-routing.mod
 
 import { PeopleIsolatingPage } from "./people-isolating.page";
 import { AngularFirestore } from "@angular/fire/firestore";
+import { NgPipesModule } from 'ngx-pipes';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PeopleIsolatingPageRoutingModule
+    PeopleIsolatingPageRoutingModule,
+      NgPipesModule
   ],
   declarations: [PeopleIsolatingPage],
   providers: [AngularFirestore]

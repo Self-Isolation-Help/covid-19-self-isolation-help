@@ -31,7 +31,7 @@ export class ConfirmationPage implements OnInit {
       dateSubmitted: firebase.firestore.FieldValue.serverTimestamp()
     });
     this.afs
-      .collection("isolating")
+      .collection("isolating-test") //changeback
       .add(this.userService.getUser())
       .then(() => {
         this.router.navigateByUrl("/complete");
