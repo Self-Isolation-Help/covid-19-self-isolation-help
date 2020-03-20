@@ -25,16 +25,9 @@
   }
 
   .footer{
-    .text{
-      color:  #eeeeee;
-    }
     .link{
       display: block;
       padding: .5rem;
-    }
-    .button{
-      border: #3880ff solid 1px ;
-      text-decoration: none;
     }
   }
   @media all and (max-width: 575px){
@@ -44,7 +37,7 @@
         display: block;
       }
       .button{
-        margin: .2rem auto;
+        margin: .2rem auto 0 auto;
         width: 70%;
       }
     }
