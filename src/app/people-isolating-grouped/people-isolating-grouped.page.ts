@@ -27,7 +27,7 @@ export class PeopleIsolatingGroupedPage implements OnInit {
 
   getByCounty(county) {
     this.isolators$ = this.afs
-      .collection<Isolator>("isolating-test", ref =>
+      .collection<Isolator>("isolating", ref =>
         ref.where("details.county", "==", county)
       )
       .valueChanges({ idField: "id" })
