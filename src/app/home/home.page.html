@@ -51,13 +51,23 @@
       </ion-card-content>
     </ion-card>
   </div>
+
+  <ion-footer class="max-wrap footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-lg="7" size-sm="6" size-xs="12">
+          <small class="text"> Created by Perius Ltd and volunteers<br />Company Number 06799576 </small>
+        </ion-col>
+        <ion-col size-lg="3"  size-sm="3" size-xs="12" class="ion-text-center">
+          <a class="link button" [routerLink]="['/people-isolating']">Volunteer login</a>
+        </ion-col>
+        <ion-col size-lg="2" size-sm="3" size-xs="12" class="ion-text-center">
+          <a class="link" [routerLink]="['/privacy-policy']">Privacy Policy</a>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
+
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar class="max-wrap">
-    <small>Tool created by Perius Ltd and volunteers<br />Company Number 06799576 </small>
-    <a slot="end" [routerLink]="['/people-isolating']">Volunteer login</a>
-    <span slot="end">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-    <a slot="end" [routerLink]="['/privacy-policy']">Privacy Policy</a>
-  </ion-toolbar>
-</ion-footer>
+
