@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-complete',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompletePage implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.resetUser();
   }
 
 }

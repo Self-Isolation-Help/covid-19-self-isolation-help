@@ -11,9 +11,9 @@
   <form
     #ngForm="ngForm"
     (ngSubmit)="onSubmitForm($event, ngForm)"
+    autocomplete="off"
     class="max-wrap"
   >
-
     <ion-card>
       <ion-card-header>
         <ion-card-title>
@@ -21,7 +21,9 @@
         </ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p style="margin: 0;"><span class="required">*</span> is a required field.</p>
+        <p style="margin: 0;">
+          <span class="required">*</span> is a required field.
+        </p>
         <ion-list>
           <ion-item>
             <ion-label position="stacked"
@@ -96,7 +98,9 @@
           </ion-item>
           <ng-container>
             <ion-item *ngIf="!form.dontShareAddress">
-              <ion-label position="stacked">Address line 1<span class="required">*</span></ion-label>
+              <ion-label position="stacked"
+                >Address line 1<span class="required">*</span></ion-label
+              >
               <ion-input
                 [(ngModel)]="form.address1"
                 required
@@ -118,7 +122,9 @@
               ></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="stacked">Town/City<span class="required">*</span></ion-label>
+              <ion-label position="stacked"
+                >Town/City<span class="required">*</span></ion-label
+              >
               <ion-input
                 [(ngModel)]="form.town"
                 required
@@ -141,9 +147,13 @@
                 name="county"
                 placeholder="Your county"
               >
-                <ion-select-option *ngFor="let county of counties" value="{{county}}">{{county}}</ion-select-option>
+                <ion-select-option
+                  *ngFor="let county of counties"
+                  value="{{county}}"
+                  >{{county}}</ion-select-option
+                >
               </ion-select>
-                
+
               <ion-text
                 [hidden]="ngForm.controls.county && (ngForm.controls.county.valid || (ngForm.controls.county.pristine))"
                 color="danger"
@@ -152,7 +162,9 @@
             </ion-item>
 
             <ion-item *ngIf="!form.dontShareAddress">
-              <ion-label position="stacked">Post code<span class="required">*</span></ion-label>
+              <ion-label position="stacked"
+                >Post code<span class="required">*</span></ion-label
+              >
               <ion-input
                 [(ngModel)]="form.postCode"
                 name="postCode"
@@ -167,7 +179,10 @@
             </ion-item>
           </ng-container>
 
-          <ion-text color="danger" *ngIf="ngForm.form.status === 'INVALID' && submitted">
+          <ion-text
+            color="danger"
+            *ngIf="ngForm.form.status === 'INVALID' && submitted"
+          >
             Please fill in all required fields
           </ion-text>
         </ion-list>
@@ -179,7 +194,5 @@
         <ion-button type="submit">Next</ion-button>
       </ion-card-content>
     </ion-card>
-
-
   </form>
 </ion-content>
