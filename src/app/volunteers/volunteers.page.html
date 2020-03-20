@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar class="max-wrap">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>Volunteers</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -29,13 +32,16 @@
     <ion-card>
       <ion-card-header>
         <ion-card-title>
-          Register as a Volunteer (Currently Disabled)
+          Register as a Volunteer
         </ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
+        <p>
+          If you would like to register as a Volunteer, please click "Register Now" below.
+        </p>
 
-        <ion-button [routerLink]="['/login']" [disabled]="true">Register Now</ion-button>
+        <ion-button [routerLink]="['/register']">Register Now</ion-button>
       </ion-card-content>
     </ion-card>
   </div>
