@@ -3,10 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{isolator?.details.forename}} {{isolator?.details.surname}}</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="onClickResolve()" color="danger">Mark as Resolved</ion-button>
-    </ion-buttons>
+    <ion-title
+      >{{isolator?.details.forename}} {{isolator?.details.surname}}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 <ion-content *ngIf="!isolator">
@@ -14,7 +13,6 @@
     <ion-spinner></ion-spinner>
     <p>Loading...</p>
   </div>
-
 </ion-content>
 <ion-content *ngIf="isolator">
   <div class="max-wrap">
@@ -80,10 +78,25 @@
         <p *ngIf="isolator?.details?.postCode">
           <strong>Post Code: </strong> {{isolator?.details?.postCode}}
         </p>
-
       </ion-card-content>
     </ion-card>
 
-  </div>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Actions
+        </ion-card-title>
+      </ion-card-header>
 
+      <ion-card-content>
+        <p>
+          By clicking "Mark as Resolved" this means that this person has been
+          helped already. They will be removed from the tool.
+        </p>
+        <ion-button (click)="onClickResolve()" color="danger"
+          >Mark as Resolved</ion-button
+        >
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

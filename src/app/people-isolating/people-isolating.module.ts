@@ -9,6 +9,7 @@ import { PeopleIsolatingPageRoutingModule } from "./people-isolating-routing.mod
 import { PeopleIsolatingPage } from "./people-isolating.page";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { NgPipesModule } from 'ngx-pipes';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { NgPipesModule } from 'ngx-pipes';
       NgPipesModule
   ],
   declarations: [PeopleIsolatingPage],
-  providers: [AngularFirestore]
+  providers: [AngularFirestore, AngularFireAuth]
 })
 export class PeopleIsolatingPageModule {}

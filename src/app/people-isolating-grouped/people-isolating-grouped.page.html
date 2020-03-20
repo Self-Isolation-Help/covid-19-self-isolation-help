@@ -4,45 +4,52 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>People Self Isolating in {{county}}</ion-title>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="max-wrap">
-    <ng-container *ngFor="let isolator of (isolators$ | async) | orderBy: 'dateSubmitted'">
-    <ion-card [routerLink]="['/isolator']" [queryParams]="{id: isolator.id}"
-
+    <ng-container
+      *ngFor="let isolator of (isolators$ | async) | orderBy: 'dateSubmitted'"
     >
-      <ion-card-header>
-        <ion-card-title>
-          {{isolator.resolved}} {{isolator.details.forename}} {{isolator.details.surname}}
-        </ion-card-title>
-        <ion-card-subtitle>
-          {{isolator.dateSubmitted.toDate() | date:'medium'}}
-        </ion-card-subtitle>
-      </ion-card-header>
+      <ion-card [routerLink]="['/isolator']" [queryParams]="{id: isolator.id}">
+        <ion-card-header>
+          <ion-card-title>
+            {{isolator.resolved}} {{isolator.details.forename}}
+            {{isolator.details.surname}}
+          </ion-card-title>
+          <ion-card-subtitle>
+            {{isolator.dateSubmitted.toDate() | date:'medium'}}
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <span *ngIf="isolator.info?.needsMedicine">
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Needs
+            medicine<br />
+          </span>
+          <span *ngIf="isolator.info?.needsFood">
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Needs food<br />
+          </span>
+          <span *ngIf="isolator.info?.needsSomeoneToTalkTo">
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Needs
+            someone<br />
+            to talk to
+          </span>
+
+          <ng-container *ngIf="isolator.info.needsSomethingElseDescription">
+            <h2>Other need:</h2>
+            <p>{{isolator.info.needsSomethingElseDescription}}</p>
+          </ng-container>
+
+          <a class="ion-padding-top">Click for more details</a>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+    <ion-card *ngIf="(isolators$ | async) && !(isolators$ | async)?.length">
       <ion-card-content>
-        <span *ngIf="isolator.info?.needsMedicine">
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Needs
-          medicine<br />
-        </span>
-        <span *ngIf="isolator.info?.needsFood">
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Needs food<br />
-        </span>
-        <span *ngIf="isolator.info?.needsSomeoneToTalkTo">
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Needs someone<br />
-          to talk to
-        </span>
-
-        <ng-container *ngIf="isolator.info.needsSomethingElseDescription">
-          <h2>Other need:</h2>
-          <p>{{isolator.info.needsSomethingElseDescription}}</p>
-        </ng-container>
-
-        <a class="ion-padding-top">Click for more details</a>
+        <p>Nobody here is requesting assistance</p>
+        <p><a [routerLink]="['/people-isolating']">Back to county view</a></p>
       </ion-card-content>
     </ion-card>
-    </ng-container>
   </div>
 </ion-content>
