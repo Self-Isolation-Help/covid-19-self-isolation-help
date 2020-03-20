@@ -98,6 +98,12 @@ export const COUNTIES: string[] = [
   "Armagh",
   "Down",
   "Fermanagh",
+  "London",
   "Londonderry",
-  "Tyrone"
+  "Tyrone",
+  "Yorkshire",
+  "Cumberland",
+  "Middlesex",
+  "Huntingdonshire",
+  "Westmorland"
 ];
