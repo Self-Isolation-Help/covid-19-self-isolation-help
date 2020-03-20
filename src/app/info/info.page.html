@@ -1,23 +1,23 @@
 <ion-header>
   <ion-toolbar class="max-wrap">
-    <ion-title>What help do you need? (Step 1 of 3)</ion-title>
+    <ion-title
+      >What help do you need?<br />
+      <small>(Step 1 of 3)</small>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-
-
   <div class="max-wrap">
-
     <form (ngSubmit)="onSubmitForm($event)" #ngForm="ngForm">
       <ion-card>
-        <ion-list>
+        <ion-list lines="full">
           <ion-item>
             <ion-label>
               Medicine
             </ion-label>
             <ion-checkbox
-                  required="true"
+              required="true"
               [(ngModel)]="form.needsMedicine"
               name="needsMedecine"
               slot="start"
@@ -70,12 +70,7 @@
         <ion-card-content>
           <ion-button type="submit">Next</ion-button>
         </ion-card-content>
-
       </ion-card>
-
-
-
-
     </form>
   </div>
 </ion-content>
