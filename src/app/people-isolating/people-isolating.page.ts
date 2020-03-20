@@ -2,8 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Isolator } from "../isolator.model";
 import { Observable } from "rxjs/internal/Observable";
-import { map } from 'rxjs/operators';
-
+import { map } from "rxjs/operators";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-people-isolating",
@@ -12,13 +13,25 @@ import { map } from 'rxjs/operators';
 })
 export class PeopleIsolatingPage implements OnInit {
   isolators$: Observable<Array<Isolator>>;
-  constructor(private afs: AngularFirestore) {}
+  constructor(
+    private afs: AngularFirestore,
+    public auth: AngularFireAuth,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.isolators$ = this.afs.collection<Isolator>("isolating-test").valueChanges().pipe(
+    this.isolators$ = this.afs
+      .collection<Isolator>("isolating-test")
+      .valueChanges()
+      .pipe(
         map((isolators: any) => {
-            return isolators.filter(isolator => !isolator.resolved);
+          return isolators.filter(isolator => !isolator.resolved);
         })
-    );
+      );
+  }
+
+  onSignout() {
+    this.router.navigate(["/"]);
+    this.auth.signOut();
   }
 }

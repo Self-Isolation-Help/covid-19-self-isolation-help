@@ -3,19 +3,32 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Counties with People Isolating</ion-title>
+    <ion-title>Volunteers</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onSignout()">Sign out</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="max-wrap">
     <ion-card class="ion-margin-vertical">
+      <ion-card-header>
+        <ion-card-title>
+          Counties with People Isolating
+        </ion-card-title>
+        <ion-card-subtitle>
+          In need of assistance
+        </ion-card-subtitle>
+      </ion-card-header>
       <ion-card-content>
         <p class="ion-margin-none ion-padding-none">
           This page shows people who are in need of help, grouped by county. The
           number in red represents the number of people in that area.
         </p>
-        <p *ngIf="(isolators$ | async) && !(isolators$ | async)?.length">There are currently no isolators reported.</p>
+        <p *ngIf="(isolators$ | async) && !(isolators$ | async)?.length">
+          There are currently no isolators reported.
+        </p>
       </ion-card-content>
     </ion-card>
 
