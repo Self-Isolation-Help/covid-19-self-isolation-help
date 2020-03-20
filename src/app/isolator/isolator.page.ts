@@ -29,7 +29,7 @@ export class IsolatorPage implements OnInit {
 
   getIsolator(id) {
     this.afs
-      .collection<Isolator>("isolating-test")
+      .collection<Isolator>("isolating")
       .doc(id)
       .valueChanges()
       .subscribe(resp => {
@@ -63,7 +63,7 @@ export class IsolatorPage implements OnInit {
 
   onResolve() {
     this.afs
-      .collection<Isolator>("isolating-test")
+      .collection<Isolator>("isolating")
       .doc(this.id)
       .update({
         resolved: true
