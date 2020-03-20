@@ -24,4 +24,6 @@ export interface Isolator {
     postCode?: string;
   };
   hasCompletedForm: boolean;
+  resolved?: boolean;
+  id?: string;
 }
