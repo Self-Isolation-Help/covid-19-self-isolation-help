@@ -43,6 +43,14 @@ const routes: Routes = [
   {
     path: 'people-isolating',
     loadChildren: () => import('./people-isolating/people-isolating.module').then( m => m.PeopleIsolatingPageModule)
+  },
+  {
+    path: 'isolator',
+    loadChildren: () => import('./isolator/isolator.module').then( m => m.IsolatorPageModule)
+  },
+  {
+    path: 'people-isolating-grouped',
+    loadChildren: () => import('./people-isolating-grouped/people-isolating-grouped.module').then( m => m.PeopleIsolatingGroupedPageModule)
   }
 ];
 
