@@ -9,48 +9,75 @@ const routes: Routes = [
     loadChildren: () => import("./home/home.module").then(m => m.HomePageModule)
   },
   {
-    path: 'privacy-policy',
-    loadChildren: () => import('./privacy-policy/privacy-policy.module').then( m => m.PrivacyPolicyPageModule)
+    path: "privacy-policy",
+    loadChildren: () =>
+      import("./privacy-policy/privacy-policy.module").then(
+        m => m.PrivacyPolicyPageModule
+      )
   },
   {
-    path: 'share-location',
-    loadChildren: () => import('./share-location/share-location.module').then( m => m.ShareLocationPageModule)
+    path: "share-location",
+    loadChildren: () =>
+      import("./share-location/share-location.module").then(
+        m => m.ShareLocationPageModule
+      )
   },
   {
-    path: 'question-one',
-    loadChildren: () => import('./question-one/question-one.module').then( m => m.QuestionOnePageModule)
+    path: "question-one",
+    loadChildren: () =>
+      import("./question-one/question-one.module").then(
+        m => m.QuestionOnePageModule
+      )
   },
   {
-    path: 'info',
-    loadChildren: () => import('./info/info.module').then( m => m.InfoPageModule)
+    path: "info",
+    loadChildren: () => import("./info/info.module").then(m => m.InfoPageModule)
   },
   {
-    path: 'address',
-    loadChildren: () => import('./address/address.module').then( m => m.AddressPageModule)
+    path: "address",
+    loadChildren: () =>
+      import("./address/address.module").then(m => m.AddressPageModule)
   },
   {
-    path: 'more-info',
-    loadChildren: () => import('./more-info/more-info.module').then( m => m.MoreInfoPageModule)
+    path: "more-info",
+    loadChildren: () =>
+      import("./more-info/more-info.module").then(m => m.MoreInfoPageModule)
   },
   {
-    path: 'confirmation',
-    loadChildren: () => import('./confirmation/confirmation.module').then( m => m.ConfirmationPageModule)
+    path: "confirmation",
+    loadChildren: () =>
+      import("./confirmation/confirmation.module").then(
+        m => m.ConfirmationPageModule
+      )
   },
   {
-    path: 'complete',
-    loadChildren: () => import('./complete/complete.module').then( m => m.CompletePageModule)
+    path: "complete",
+    loadChildren: () =>
+      import("./complete/complete.module").then(m => m.CompletePageModule)
   },
   {
-    path: 'people-isolating',
-    loadChildren: () => import('./people-isolating/people-isolating.module').then( m => m.PeopleIsolatingPageModule)
+    path: "login",
+    loadChildren: () =>
+      import("./login/login.module").then(m => m.LoginPageModule)
   },
   {
-    path: 'isolator',
-    loadChildren: () => import('./isolator/isolator.module').then( m => m.IsolatorPageModule)
+    path: "people-isolating",
+    loadChildren: () =>
+      import("./people-isolating/people-isolating.module").then(
+        m => m.PeopleIsolatingPageModule
+      )
   },
   {
-    path: 'people-isolating-grouped',
-    loadChildren: () => import('./people-isolating-grouped/people-isolating-grouped.module').then( m => m.PeopleIsolatingGroupedPageModule)
+    path: "isolator",
+    loadChildren: () =>
+      import("./isolator/isolator.module").then(m => m.IsolatorPageModule)
+  },
+  {
+    path: "people-isolating-grouped",
+    loadChildren: () =>
+      import("./people-isolating-grouped/people-isolating-grouped.module").then(
+        m => m.PeopleIsolatingGroupedPageModule
+      )
   }
 ];
 
