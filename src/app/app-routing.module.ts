@@ -5,7 +5,7 @@ import {
   redirectUnauthorizedTo
 } from "@angular/fire/auth-guard";
 import "firebase/firestore";
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["login"]);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["volunteers"]);
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },

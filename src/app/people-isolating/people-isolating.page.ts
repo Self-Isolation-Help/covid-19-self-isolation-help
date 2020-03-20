@@ -21,7 +21,7 @@ export class PeopleIsolatingPage implements OnInit {
 
   ngOnInit() {
     this.isolators$ = this.afs
-      .collection<Isolator>("isolating-test")
+      .collection<Isolator>("isolating")
       .valueChanges()
       .pipe(
         map((isolators: any) => {

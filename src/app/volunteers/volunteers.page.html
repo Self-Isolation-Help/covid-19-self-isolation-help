@@ -9,26 +9,6 @@
     <ion-card>
       <ion-card-header>
         <ion-card-title>
-          Register as a Volunteer
-        </ion-card-title>
-        <ion-card-subtitle>
-          Assist people who are Self Isolating
-        </ion-card-subtitle>
-      </ion-card-header>
-
-      <ion-card-content>
-        <p>
-          Sign in to view and help people who are Self Isolating. Only
-          volunteers who are vetted and security checked have access to the
-          system.
-        </p>
-
-        <ion-button [routerLink]="['/login']">Register Now</ion-button>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
           Sign In
         </ion-card-title>
         <ion-card-subtitle>
@@ -44,6 +24,18 @@
         </p>
 
         <ion-button [routerLink]="['/login']">Sign In</ion-button>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Register as a Volunteer (Currently Disabled)
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <ion-button [routerLink]="['/login']" [disabled]="true">Register Now</ion-button>
       </ion-card-content>
     </ion-card>
   </div>
