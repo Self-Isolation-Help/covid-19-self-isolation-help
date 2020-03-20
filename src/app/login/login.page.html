@@ -1,4 +1,12 @@
-<ion-content>
+<ion-content *ngIf="loading">
+  <div class="container">
+    <ion-spinner></ion-spinner>
+    <p>Logging in...</p>
+  </div>
+
+</ion-content>
+
+<ion-content *ngIf="!loading">
   <div class="background"><div class="background-inner"></div></div>
   <div class="header">
     <h1 class="max-wrap ion-padding">
@@ -7,9 +15,10 @@
   </div>
 
   <div class="max-wrap">
+
     <ion-card>
       <ion-card-content>
-        <form #form="ngForm" (ngSubmit)="signin(form)">
+        <form #ngForm="ngForm" (ngSubmit)="signin()">
           <ion-list>
             <ion-item>
               <ion-label position="stacked"
@@ -36,6 +45,7 @@
                 name="password"
                 required="true"
                 placeholder="Your password"
+                type="password"
               ></ion-input>
               <!-- <ion-text
                 [hidden]="ngForm.controls.password && (ngForm.controls.password.valid || (ngForm.controls.password.pristine))"
@@ -44,8 +54,13 @@
               > -->
             </ion-item>
           </ion-list>
+          <p *ngIf="error">
+            <ion-text color="danger">Your username/password is incorrect, or there was another problem. Please try again.</ion-text>
+          </p>
+          <ion-button type="submit">Login</ion-button>
+
         </form>
-        <ion-button [routerLink]="">Login</ion-button>
+
       </ion-card-content>
     </ion-card>
   </div>

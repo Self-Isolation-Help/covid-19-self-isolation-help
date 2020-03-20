@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-      apiKey: "AIzaSyBYlpxF7Ri97mJctW6qN34gK512FFk8KUQ",
-      authDomain: "self-isolation-help-5a66d.firebaseapp.com",
-      databaseURL: "https://self-isolation-help-5a66d.firebaseio.com",
-      projectId: "self-isolation-help-5a66d",
-      storageBucket: "self-isolation-help-5a66d.appspot.com",
-      messagingSenderId: "1041832086969",
-      appId: "1:1041832086969:web:b44628e191cf20f2ec7a68",
-      measurementId: "G-SRX3XR0WEY"
+      apiKey: "AIzaSyBL_gwzzhasGY7mLkn9pqZs9-d69huqe_A",
+      authDomain: "self-isolation-help-dev.firebaseapp.com",
+      databaseURL: "https://self-isolation-help-dev.firebaseio.com",
+      projectId: "self-isolation-help-dev",
+      storageBucket: "self-isolation-help-dev.appspot.com",
+      messagingSenderId: "1066821517284",
+      appId: "1:1066821517284:web:8d2e73a3c092a9877a91f1",
+      measurementId: "G-K3ZBBM27HL"
   }
 };
 
