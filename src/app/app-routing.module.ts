@@ -5,7 +5,8 @@ import {
   redirectUnauthorizedTo
 } from "@angular/fire/auth-guard";
 import "firebase/firestore";
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["volunteers"]);
+const redirectUnauthorizedToLogin = () =>
+  redirectUnauthorizedTo(["volunteers"]);
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -103,12 +104,23 @@ const routes: Routes = [
       import("./volunteers/volunteers.module").then(m => m.VolunteersPageModule)
   },
   {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    path: "register",
+    loadChildren: () =>
+      import("./register/register.module").then(m => m.RegisterPageModule)
   },
   {
-    path: 'contact',
-    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
+    path: "contact",
+    loadChildren: () =>
+      import("./contact/contact.module").then(m => m.ContactPageModule)
+  },
+  {
+    path: "dashboard",
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin
+    },
+    loadChildren: () =>
+      import("./dashboard/dashboard.module").then(m => m.DashboardPageModule)
   }
 ];
 

@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Please share your details<br>
+      Please share your details<br />
       <small>(Step 3 of 3)</small>
     </ion-title>
   </ion-toolbar>
@@ -128,6 +128,7 @@
                 >Town/City<span class="required">*</span></ion-label
               >
               <ion-input
+                (ionChange)="onChangeTown()"
                 [(ngModel)]="form.town"
                 required
                 name="town"
@@ -139,11 +140,13 @@
                 >Town is required</ion-text
               >
             </ion-item>
+
             <ion-item>
               <ion-label position="stacked"
                 >County<span class="required">*</span></ion-label
               >
               <ion-select
+                (ionChange)="onChangeCounty()"
                 [(ngModel)]="form.county"
                 required
                 name="county"
@@ -160,6 +163,34 @@
                 [hidden]="ngForm.controls.county && (ngForm.controls.county.valid || (ngForm.controls.county.pristine))"
                 color="danger"
                 >County is required</ion-text
+              >
+            </ion-item>
+
+            <ion-item *ngIf="locationsAssociatedWithCounty">
+              <ion-label position="stacked"
+                >{{locationsAssociatedWithCounty.locations}}<span
+                  class="required"
+                  >*</span
+                ></ion-label
+              >
+              <ion-select
+                [(ngModel)]="form.location"
+                required
+                name="location"
+                placeholder="Your county"
+              >
+                <ion-select-option
+                  *ngFor="let location of locationsList"
+                  value="{{location}}"
+                  >{{location}}</ion-select-option
+                >
+              </ion-select>
+
+              <ion-text
+                [hidden]="ngForm.controls.location && (ngForm.controls.location.valid || (ngForm.controls.location.pristine))"
+                color="danger"
+                >{{locationsAssociatedWithCounty.locations}} is
+                required</ion-text
               >
             </ion-item>
 
