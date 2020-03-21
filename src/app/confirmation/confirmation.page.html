@@ -70,6 +70,9 @@
         <p *ngIf="user?.details?.county">
           <strong>County: </strong> {{user?.details?.county}}
         </p>
+        <p *ngIf="user?.details?.location">
+          <strong>Location in {{user?.details?.county}}: </strong> {{user?.details?.location}}
+        </p>
         <p *ngIf="user?.details?.postCode">
           <strong>Post Code: </strong> {{user?.details?.postCode}}
         </p>
@@ -85,6 +88,9 @@
         <ion-card-title>Complete Application</ion-card-title>
       </ion-card-header>
       <ion-card-content>
+        <p *ngIf="isDevMode">
+          <ion-text color="danger">ATTENTION: This is a preview version of the website and not for public use!</ion-text>
+        </p>
         <p>
           By clicking this button you agree to share the above details and your location to request self isolation support.
         </p>
