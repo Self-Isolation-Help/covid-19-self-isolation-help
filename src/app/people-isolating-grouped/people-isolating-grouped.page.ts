@@ -31,6 +31,7 @@ export class PeopleIsolatingGroupedPage implements OnInit {
     this.isolators$ = this.afs
       .collection<Isolator>("isolating", ref =>
         ref.where(`details.${this.type}`, "==", location)
+        .orderBy("dateSubmitted", "asc")
       )
       .valueChanges({ idField: "id" })
       .pipe(
