@@ -48,13 +48,15 @@
       <ion-card-content>
         <p>{{isolator?.moreInfo}}</p>
 
-        <ion-chip class="ion-margin-none" color="warning">
-          <ion-label>In progress</ion-label>
-        </ion-chip>
-        <p color="">
-          This person has been flagged as "In Progress" meaning they are already
-          being processed.
-        </p>
+        <ng-container *ngIf="isolator?.inProgress">
+          <ion-chip class="ion-margin-none" color="warning">
+            <ion-label>In progress</ion-label>
+          </ion-chip>
+          <p color="">
+            This person has been flagged as "In Progress" meaning they are
+            already being processed.
+          </p>
+        </ng-container>
       </ion-card-content>
     </ion-card>
     <ion-card>
