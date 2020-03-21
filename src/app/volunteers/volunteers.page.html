@@ -20,7 +20,12 @@
       </ion-card-header>
 
       <ion-card-content>
-        <p>
+        <p *ngIf="isDevMode">
+          <strong>Thank you for accessing the <em>preview</em> version of the Self
+          Isolation tool. This preview version is open so that you can assess if the
+            tool can be used with your volunteer team.</strong>
+        </p>
+        <p *ngIf="!isDevMode">
           Sign in to view and help people who are Self Isolating. Only
           volunteers who are vetted and security checked have access to the
           system.
@@ -38,7 +43,8 @@
 
       <ion-card-content>
         <p>
-          If you would like to register as a Volunteer, please click "Register Now" below.
+          If you would like to register as a Volunteer, please click "Register
+          Now" below.
         </p>
 
         <ion-button [routerLink]="['/register']">Register Now</ion-button>
