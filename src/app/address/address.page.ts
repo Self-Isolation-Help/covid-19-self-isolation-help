@@ -52,6 +52,7 @@ export class AddressPage implements OnInit {
         location =>
           location.label === this.locationsAssociatedWithCounty.locations
       ).items;
+      this.form.locationType = this.locationsAssociatedWithCounty.locations;
     } else {
       delete this.form.location;
     }
