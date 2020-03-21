@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar class="max-wrap">
+    <ion-title>Volunteer Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onSignout()">Sign out</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="max-wrap">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>View Self-Isolators</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>
+                See a list of self-isolators, broken down by county or location
+              </p>
+              <ion-button
+                shape="round"
+                size="small"
+                expand="full"
+                [routerLink]="['/people-isolating']"
+                >View Self-isolators</ion-button
+              >
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Moderate Volunteers (disabled)</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>
+                Coming soon
+              </p>
+              <ion-button
+                shape="round"
+                size="small"
+                expand="full"
+                disabled="true"
+                >Moderate Volunteers</ion-button
+              >
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card> </ion-card>
+  </div>
+</ion-content>
