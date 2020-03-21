@@ -4,7 +4,10 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title
-      >{{isolator?.details.forename}} {{isolator?.details.surname}}</ion-title
+      >{{isolator?.details.forename}} {{isolator?.details.surname}}
+      <ion-text color="warning" *ngIf="isolator?.inProgress"
+        >In progress</ion-text
+      ></ion-title
     >
   </ion-toolbar>
 </ion-header>
@@ -44,6 +47,14 @@
       </ion-card-header>
       <ion-card-content>
         <p>{{isolator?.moreInfo}}</p>
+
+        <ion-chip class="ion-margin-none" color="warning">
+          <ion-label>In progress</ion-label>
+        </ion-chip>
+        <p color="">
+          This person has been flagged as "In Progress" meaning they are already
+          being processed.
+        </p>
       </ion-card-content>
     </ion-card>
     <ion-card>
@@ -75,6 +86,9 @@
         <p *ngIf="isolator?.details?.county">
           <strong>County: </strong> {{isolator?.details?.county}}
         </p>
+        <p *ngIf="isolator?.details?.location">
+          <strong>Location: </strong> {{isolator?.details?.location}}
+        </p>
         <p *ngIf="isolator?.details?.postCode">
           <strong>Post Code: </strong> {{isolator?.details?.postCode}}
         </p>
@@ -90,12 +104,41 @@
 
       <ion-card-content>
         <p>
-          By clicking "Mark as Resolved" this means that this person has been
-          helped already. They will be removed from the tool.
+          You can mark this self-isolator as "in progress" or "resolved".
         </p>
-        <ion-button (click)="onClickResolve()" color="danger"
-          >Mark as Resolved</ion-button
-        >
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button
+                *ngIf="!isolator?.inProgress"
+                expand="full"
+                shape="round"
+                (click)="onClickInProgress()"
+                color="warning"
+                >In Progress</ion-button
+              >
+              <ion-button
+                *ngIf="isolator?.inProgress"
+                shape="round"
+                expand="full"
+                (click)="onClickRemoveInProgress()"
+                fill="outline"
+                color="warning"
+                >Remove "In Progress" label</ion-button
+              >
+            </ion-col>
+            <ion-col>
+              <ion-button
+                expand="full"
+                shape="round"
+                (click)="onClickResolve()"
+                color="danger"
+                >Resolve</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-card-content>
     </ion-card>
   </div>

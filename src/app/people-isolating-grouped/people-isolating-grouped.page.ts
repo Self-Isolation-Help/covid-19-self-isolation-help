@@ -12,7 +12,8 @@ import { filter, map } from "rxjs/operators";
 })
 export class PeopleIsolatingGroupedPage implements OnInit {
   isolators$: Observable<Array<Isolator>>;
-  county: string;
+  type: string;
+  location: string;
   constructor(
     private afs: AngularFirestore,
     private activatedRoute: ActivatedRoute
@@ -20,15 +21,16 @@ export class PeopleIsolatingGroupedPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.county = params.county;
-      this.getByCounty(params.county);
+      this.type = Object.keys(params)[0];
+      this.location = params[this.type] ;
+      this.getLocation(this.location);
     });
   }
 
-  getByCounty(county) {
+  getLocation(location) {
     this.isolators$ = this.afs
       .collection<Isolator>("isolating", ref =>
-        ref.where("details.county", "==", county)
+        ref.where(`details.${this.type}`, "==", location)
       )
       .valueChanges({ idField: "id" })
       .pipe(
@@ -37,4 +39,6 @@ export class PeopleIsolatingGroupedPage implements OnInit {
         })
       );
   }
+
+
 }
