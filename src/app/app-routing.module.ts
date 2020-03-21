@@ -121,17 +121,6 @@ const routes: Routes = [
     },
     loadChildren: () =>
       import("./dashboard/dashboard.module").then(m => m.DashboardPageModule)
-  },
-  {
-    path: "extend-operations",
-    canActivate: [AngularFireAuthGuard],
-    data: {
-      authGuardPipe: redirectUnauthorizedToLogin
-    },
-    loadChildren: () =>
-      import("./extend-operations/extend-operations.module").then(
-        m => m.ExtendOperationsPageModule
-      )
   }
 ];
 
