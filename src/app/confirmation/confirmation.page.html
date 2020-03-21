@@ -70,6 +70,9 @@
         <p *ngIf="user?.details?.county">
           <strong>County: </strong> {{user?.details?.county}}
         </p>
+        <p *ngIf="user?.details?.location">
+          <strong>Location in {{user?.details?.county}}: </strong> {{user?.details?.location}}
+        </p>
         <p *ngIf="user?.details?.postCode">
           <strong>Post Code: </strong> {{user?.details?.postCode}}
         </p>

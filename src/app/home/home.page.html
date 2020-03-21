@@ -10,6 +10,19 @@
     <ion-card>
       <ion-card-content>
         <h1>What is this tool for?</h1>
+        <p *ngIf="isDevMode">
+          <ion-text color="danger"
+            >ATTENTION: This is a preview version of the website and not for the
+            general public. It is instead used for giving potential Volunteer
+            groups a preview to understand the tool.</ion-text
+          >
+        </p>
+        <p>
+          <strong
+            >Note: Currently for Kingston and Richmond. We are in the process of
+            expanding this tool to other locations.</strong
+          >
+        </p>
         <p class="leading">
           If you or someone you know is self isolating due to the outbreak of
           Coronavirus and need access to food, medicine or support, you can use
@@ -28,7 +41,6 @@
           To request assistance for you, or someone else please click 'Continue'
           below
         </p>
-
         <ion-button [routerLink]="['/question-one']">Continue</ion-button>
       </ion-card-content>
     </ion-card>
@@ -49,13 +61,13 @@
       <ion-row>
         <ion-col size-lg="6" size-sm="6" size-xs="12">
           <small class="text">
-            Created by <a href="http://perius.co.uk" target="_blank">Perius Ltd</a> and volunteers<br />Company Number 06799576
+            Created by
+            <a href="http://perius.co.uk" target="_blank">Perius Ltd</a> and
+            volunteers<br />Company Number 06799576
           </small>
         </ion-col>
         <ion-col size-lg="2" size-sm="3" size-xs="12" class="ion-text-center">
-          <a class="link button" [routerLink]="['/contact']"
-          >Contact</a
-          >
+          <a class="link button" [routerLink]="['/contact']">Contact</a>
         </ion-col>
         <ion-col size-lg="2" size-sm="3" size-xs="12" class="ion-text-center">
           <a class="link button" [routerLink]="['/people-isolating']"

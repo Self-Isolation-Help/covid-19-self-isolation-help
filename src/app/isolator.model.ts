@@ -26,4 +26,5 @@ export interface Isolator {
   hasCompletedForm: boolean;
   resolved?: boolean;
   id?: string;
+  inProgress?: boolean;
 }

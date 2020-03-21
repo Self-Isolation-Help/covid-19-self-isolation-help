@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { auth } from "firebase/app";
 import { Router } from "@angular/router";
+import { isDevMode } from "@angular/core";
 
 @Component({
   selector: "app-login",
@@ -13,9 +14,13 @@ export class LoginPage implements OnInit {
   error;
   loading = false;
 
+  isDevMode: boolean;
+
   constructor(public auth: AngularFireAuth, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isDevMode = isDevMode();
+  }
 
   signin() {
     this.loading = true;
