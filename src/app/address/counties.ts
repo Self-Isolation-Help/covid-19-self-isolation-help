@@ -98,7 +98,6 @@ export const COUNTIES: string[] = [
   "Armagh",
   "Down",
   "Fermanagh",
-  "London",
   "Londonderry",
   "Tyrone",
   "Yorkshire",
