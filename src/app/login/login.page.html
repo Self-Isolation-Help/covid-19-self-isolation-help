@@ -3,7 +3,6 @@
     <ion-spinner></ion-spinner>
     <p>Logging in...</p>
   </div>
-
 </ion-content>
 
 <ion-content *ngIf="!loading">
@@ -15,9 +14,15 @@
   </div>
 
   <div class="max-wrap">
-
     <ion-card>
       <ion-card-content>
+        <p *ngIf="isDevMode">
+          <ion-text color="danger">Demo version</ion-text>
+        </p>
+        <ul *ngIf="isDevMode">
+          <li>Username: demo@selfisolationhelp.co.uk</li>
+          <li>Password: selfisolationhelp</li>
+        </ul>
         <form #ngForm="ngForm" (ngSubmit)="signin()">
           <ion-list>
             <ion-item>
@@ -55,12 +60,13 @@
             </ion-item>
           </ion-list>
           <p *ngIf="error">
-            <ion-text color="danger">Your username/password is incorrect, or there was another problem. Please try again.</ion-text>
+            <ion-text color="danger"
+              >Your username/password is incorrect, or there was another
+              problem. Please try again.</ion-text
+            >
           </p>
           <ion-button type="submit">Login</ion-button>
-
         </form>
-
       </ion-card-content>
     </ion-card>
   </div>

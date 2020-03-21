@@ -12,38 +12,52 @@
 
 <ion-content>
   <div class="max-wrap">
-    <ion-card class="ion-margin-vertical">
-      <ion-card-header>
-        <ion-card-title>
-          Counties with People Isolating
-        </ion-card-title>
-        <ion-card-subtitle>
-          In need of assistance
-        </ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <p class="ion-margin-none ion-padding-none">
-          This page shows people who are in need of help, grouped by county. The
-          number in red represents the number of people in that area.
-        </p>
-        <p *ngIf="(isolators$ | async) && !(isolators$ | async)?.length">
-          There are currently no isolators reported.
-        </p>
-      </ion-card-content>
-    </ion-card>
+
+
 
     <ion-card *ngIf="(isolators$ | async)?.length">
+      <ion-card-header>
+        <ion-card-title>By county</ion-card-title>
+        <ion-card-subtitle>Self-isolation requests grouped by county</ion-card-subtitle>
+      </ion-card-header>
       <ion-list>
         <ng-container
           *ngFor="let isolator of (isolators$ | async) | groupBy: 'details.county' | orderBy: 'dateSubmitted' | keyvalue"
         >
           <ion-item
+            detail="true"
             lines="full"
             [routerLink]="['/people-isolating-grouped']"
             [queryParams]="{county: isolator.value[0].details.county}"
           >
             <ion-label>
               {{isolator.value[0].details.county}}
+            </ion-label>
+
+            <ion-badge color="danger">{{isolator.value.length}}</ion-badge>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ion-card>
+
+
+    <ion-card *ngIf="(isolators$ | async)?.length">
+      <ion-card-header>
+        <ion-card-title>By location</ion-card-title>
+        <ion-card-subtitle>Self-isolation requests grouped by volunteer-led specific regions</ion-card-subtitle>
+      </ion-card-header>
+      <ion-list>
+        <ng-container
+                *ngFor="let isolator of (isolators$ | async) | groupBy: 'details.location' | orderBy: 'dateSubmitted' | keyvalue"
+        >
+          <ion-item
+                  detail="true"
+                  lines="full"
+                  [routerLink]="['/people-isolating-grouped']"
+                  [queryParams]="{location: isolator.value[0].details.location}"
+          >
+            <ion-label>
+              {{isolator.value[0].details.location}}
             </ion-label>
 
             <ion-badge color="danger">{{isolator.value.length}}</ion-badge>
