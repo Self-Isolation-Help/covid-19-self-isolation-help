@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { COUNTIES } from "../counties";
 import { LOCATIONS } from "../locations";
 import { COUNTIES_LOCATION_MAP } from "../counties-location-map";
+import { SubdomainService } from '../subdomain.service';
 
 @Component({
   selector: "app-address",
@@ -18,12 +19,18 @@ export class AddressPage implements OnInit {
   locationsAssociatedWithCounty;
   countiesLocationMap = COUNTIES_LOCATION_MAP;
   locationsList = [];
+  subdomain;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private subdomainService: SubdomainService) {}
 
   ngOnInit() {
+    this.subdomain = this.subdomainService.getLabelForSubdomain();
     if (this.userService.user.details) {
       this.form = this.userService.user.details;
+    } else {
+        this.form.location = this.subdomainService.getLocationBySubdomain();
+        this.form.county = this.subdomainService.getCountyBySubdomain();
+        this.onChangeCounty();
     }
   }
 

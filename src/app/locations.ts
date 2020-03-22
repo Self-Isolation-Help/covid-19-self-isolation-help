@@ -1,6 +1,7 @@
 export const LOCATIONS = [
   {
     label: "London Borough",
+    county: "Greater London",
     items: [
       // "City of London",
       // "Barking and Dagenham",
@@ -28,7 +29,7 @@ export const LOCATIONS = [
       // "Merton",
       // "Newham",
       // "Redbridge",
-      "Richmond upon Thames",
+      "Richmond upon Thames"
       // "Southwark",
       // "Sutton",
       // "Tower Hamlets",

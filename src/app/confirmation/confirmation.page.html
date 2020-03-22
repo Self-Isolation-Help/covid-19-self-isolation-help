@@ -58,6 +58,9 @@
         <p *ngIf="user?.details?.email">
           <strong>Email Address: </strong> {{user?.details?.email}}
         </p>
+        <p *ngIf="user?.details?.streetName">
+          <strong>Street name: </strong> {{user?.details?.streetName}}
+        </p>
         <p *ngIf="user?.details?.address1">
           <strong>Address Line 1: </strong> {{user?.details?.address1}}
         </p>
@@ -71,13 +74,12 @@
           <strong>County: </strong> {{user?.details?.county}}
         </p>
         <p *ngIf="user?.details?.location">
-          <strong>Location in {{user?.details?.county}}: </strong> {{user?.details?.location}}
+          <strong>{{user?.details?.locationType}}: </strong>
+          {{user?.details?.location}}
         </p>
         <p *ngIf="user?.details?.postCode">
           <strong>Post Code: </strong> {{user?.details?.postCode}}
         </p>
-
-
 
         <a [routerLink]="['/address']">Make changes</a>
       </ion-card-content>
@@ -89,9 +91,12 @@
       </ion-card-header>
       <ion-card-content>
         <p>
-          By clicking this button you agree to share the above details and your location to request self isolation support.
+          By clicking this button you agree to share the above details and your
+          location to request self isolation support.
         </p>
-        <ion-button (click)="onComplete()" [disabled]="disabled">Complete application</ion-button>
+        <ion-button (click)="onComplete()" [disabled]="disabled"
+          >Complete application</ion-button
+        >
       </ion-card-content>
     </ion-card>
   </div>

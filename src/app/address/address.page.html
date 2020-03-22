@@ -29,7 +29,7 @@
         <ion-list>
           <ion-item>
             <ion-label position="stacked"
-              >Forename<span class="required">*</span></ion-label
+              >First name<span class="required">*</span></ion-label
             >
             <ion-input
               [(ngModel)]="form.forename"
@@ -87,43 +87,25 @@
       </ion-card-header>
       <ion-card-content>
         <ion-list>
-          <ion-item>
-            <ion-checkbox
-              [(ngModel)]="form.dontShareAddress"
-              (ionChange)="onChangeDontShare($event, ngForm)"
-              name="dontShareAddress"
-              slot="start"
-            ></ion-checkbox>
-            <ion-label>
-              I’d prefer not to share my address
-            </ion-label>
-          </ion-item>
           <ng-container>
-            <ion-item *ngIf="!form.dontShareAddress">
+            <ion-item>
               <ion-label position="stacked"
-                >Address line 1<span class="required">*</span></ion-label
+                >Street Name<span class="required">*</span></ion-label
               >
               <ion-input
-                [(ngModel)]="form.address1"
+                [(ngModel)]="form.streetName"
                 required
-                name="address1"
-                placeholder="The first line of your address"
+                name="streetName"
+                placeholder="Your street name"
               ></ion-input>
               <ion-text
-                [hidden]="ngForm.controls.address1 && (ngForm.controls.address1.valid || (ngForm.controls.address1.pristine))"
+                [hidden]="ngForm.controls.streetName && (ngForm.controls.streetName.valid || (ngForm.controls.streetName.pristine))"
                 color="danger"
-                >Address Line 1 is required</ion-text
+                >Street Name is required</ion-text
               >
             </ion-item>
-            <ion-item *ngIf="!form.dontShareAddress">
-              <ion-label position="stacked">Address line 2</ion-label>
-              <ion-input
-                [(ngModel)]="form.address2"
-                name="address2"
-                placeholder="The second line of your address"
-              ></ion-input>
-            </ion-item>
-            <ion-item>
+
+            <ion-item *ngIf="!subdomain">
               <ion-label position="stacked"
                 >Town/City<span class="required">*</span></ion-label
               >
@@ -194,7 +176,7 @@
               >
             </ion-item>
 
-            <ion-item *ngIf="!form.dontShareAddress">
+    <!--        <ion-item *ngIf="!form.dontShareAddress">
               <ion-label position="stacked"
                 >Post code<span class="required">*</span></ion-label
               >
@@ -209,7 +191,7 @@
                 color="danger"
                 >Postcode is required</ion-text
               >
-            </ion-item>
+            </ion-item>-->
           </ng-container>
 
           <ion-text

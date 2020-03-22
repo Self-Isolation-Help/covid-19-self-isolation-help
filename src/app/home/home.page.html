@@ -1,15 +1,10 @@
 <ion-content>
   <div class="background"><div class="background-inner"></div></div>
-  <div class="header">
-    <h1 class="max-wrap ion-padding">
-      COVID-19: Self Isolation Help
-    </h1>
-  </div>
 
   <div class="max-wrap">
     <ion-card>
       <ion-card-content>
-        <h1>What is this tool for?</h1>
+        <h1>COVID-19 Self Isolation Help {{locationLabel ? 'for ' + locationLabel : 'for the UK'}}</h1>
         <p *ngIf="isDevMode">
           <ion-text color="danger"
             >ATTENTION: This is a preview version of the website and not for the
@@ -17,17 +12,10 @@
             groups a preview to understand the tool.</ion-text
           >
         </p>
-        <p>
-          <strong
-            >Note: Currently for Kingston and Richmond. We are in the process of
-            expanding this tool to other locations.</strong
-          >
-        </p>
         <p class="leading">
           If you or someone you know is self isolating due to the outbreak of
           Coronavirus and need access to food, medicine or support, you can use
-          this tool to request help from a local volunteer group in the United
-          Kingdom.
+          this tool to request help from a local volunteer group in {{locationLabel ? locationLabel : 'the United Kingdom'}}.
         </p>
         <p>
           <strong>
@@ -42,16 +30,7 @@
           below
         </p>
         <ion-button [routerLink]="['/question-one']">Continue</ion-button>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-card-content>
-        <h2>About your privacy</h2>
 
-        <p>
-          We collect personal info so we can assist you. By clicking 'Continue'
-          you agree to our privacy policy below.
-        </p>
       </ion-card-content>
     </ion-card>
   </div>
