@@ -17,11 +17,13 @@ export interface Isolator {
     telephone?: string;
     email?: string;
     dontShareAddress?: boolean;
+    streetName?: string;
     address1?: string;
     address2?: string;
     town?: string;
     county?: string;
     postCode?: string;
+    locationType?: string;
   };
   hasCompletedForm: boolean;
   resolved?: boolean;
