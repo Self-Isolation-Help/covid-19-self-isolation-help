@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { COUNTIES } from "../counties";
 import { LOCATIONS } from "../locations";
 import { COUNTIES_LOCATION_MAP } from "../counties-location-map";
-import { SubdomainService } from '../subdomain.service';
+import { SubdomainService } from "../subdomain.service";
 
 @Component({
   selector: "app-address",
@@ -22,18 +22,21 @@ export class AddressPage implements OnInit {
   subdomain;
   selectedLocation;
 
-
-  constructor(private userService: UserService, private router: Router, private subdomainService: SubdomainService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private subdomainService: SubdomainService
+  ) {}
 
   ngOnInit() {
     this.subdomain = this.subdomainService.getLabelForSubdomain();
     if (this.userService.user.details) {
       this.form = this.userService.user.details;
     } else {
-        this.form.location = this.subdomainService.getLocationBySubdomain();
-        this.form.county = this.subdomainService.getCountyBySubdomain();
-        this.onChangeCounty();
-        this.onChangeLocation();
+      this.form.location = this.subdomainService.getLocationBySubdomain();
+      this.form.county = this.subdomainService.getCountyBySubdomain();
+      this.onChangeCounty();
+      this.onChangeLocation();
     }
   }
 
@@ -69,7 +72,13 @@ export class AddressPage implements OnInit {
   }
 
   onChangeLocation() {
-    this.form.selectedLocation = this.locationsList.find(location => location.name === this.form.location);
+    let selectedLocation = this.locationsList.find(
+      location => location.name === this.form.location
+    );
+
+    if (selectedLocation) {
+      this.form.selectedLocation = selectedLocation;
+    }
   }
 
   onChangeTown() {
