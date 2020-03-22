@@ -8,6 +8,10 @@ Preview URL https://preview.selfisolationhelp.co.uk/
 
 ## Are you a volunteer group who needs this tool to help organise your efforts?
 
+Please watch this video to understand how
+
+[![Watch the video](https://i.imgur.com/tCZyKLhGGhg.png)](https://youtu.be/tCZyKLhGGhg)
+
 ***It is technically possible NOW to support the entirety of the UK with this tool, but we must scale the platform carefully for security concerns. The database associated with this tool contains vulnerable people's data, and not just everyone can access it.***
 
 If you want to use this tool with your Volunteer group, please visit http://selfisolationhelp.co.uk/volunteers , thank you. 
