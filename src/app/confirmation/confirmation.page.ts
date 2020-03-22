@@ -3,6 +3,7 @@ import { UserService } from "../user.service";
 
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
+import { isDevMode } from '@angular/core';
 import * as firebase from "firebase";
 
 @Component({
@@ -13,7 +14,7 @@ import * as firebase from "firebase";
 export class ConfirmationPage implements OnInit {
   user;
   disabled = false;
-
+  isDevMode: boolean;
   constructor(
     public userService: UserService,
     private afs: AngularFirestore,
@@ -23,6 +24,7 @@ export class ConfirmationPage implements OnInit {
   ngOnInit() {
     this.userService.updateUser({ hasCompletedForm: true });
     this.user = this.userService.getUser();
+      this.isDevMode = isDevMode();
   }
 
   onComplete() {
@@ -37,4 +39,6 @@ export class ConfirmationPage implements OnInit {
         this.router.navigateByUrl("/complete");
       });
   }
+
+
 }

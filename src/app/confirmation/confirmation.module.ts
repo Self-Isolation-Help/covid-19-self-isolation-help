@@ -8,8 +8,7 @@ import { ConfirmationPageRoutingModule } from './confirmation-routing.module';
 
 import { ConfirmationPage } from './confirmation.page';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../../environments/environment.prod';
+
 
 @NgModule({
   imports: [
@@ -22,3 +21,5 @@ import { environment } from '../../environments/environment.prod';
   providers: [AngularFirestore]
 })
 export class ConfirmationPageModule {}
+
+
