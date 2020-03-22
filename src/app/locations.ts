@@ -23,13 +23,21 @@ export const LOCATIONS = [
       // "Hounslow",
       // "Islington",
       // "Kensington and Chelsea",
-      "Kingston upon Thames",
+        {
+            name: "Kingston upon Thames",
+            volunteerGroup: "Task Force Kingston",
+            volunteerImage: "/assets/image.jpg"
+        },
       // "Lambeth",
       // "Lewisham",
       // "Merton",
       // "Newham",
       // "Redbridge",
-      "Richmond upon Thames"
+        {
+            name: "Richmond upon Thames",
+            volunteerGroup: "Task Force Richmond",
+            volunteerImage: "/assets/image.jpg"
+        }
       // "Southwark",
       // "Sutton",
       // "Tower Hamlets",
