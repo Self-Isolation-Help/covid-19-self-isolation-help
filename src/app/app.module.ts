@@ -10,6 +10,10 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
+import {
+    AngularFireAnalyticsModule,
+    ScreenTrackingService, UserTrackingService
+} from "@angular/fire/analytics";
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,12 +22,15 @@ import { environment } from "../environments/environment";
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ScreenTrackingService,
+      UserTrackingService
   ],
   bootstrap: [AppComponent]
 })
