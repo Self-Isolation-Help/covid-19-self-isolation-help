@@ -1,3 +1,11 @@
+<ion-header>
+  <ion-toolbar class="max-wrap">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content *ngIf="loading">
   <div class="container">
     <ion-spinner></ion-spinner>
@@ -34,12 +42,14 @@
                 name="email"
                 required="true"
                 placeholder="Your email address"
-              ></ion-input>
-              <!--  <ion-text
+              >
+              </ion-input>
+              <ion-text
+                name="emailMessage"
                 [hidden]="ngForm.controls.email && (ngForm.controls.email.valid || (ngForm.controls.email.pristine))"
                 color="danger"
                 >Email is required</ion-text
-              > -->
+              >
             </ion-item>
             <ion-item>
               <ion-label position="stacked"
@@ -52,11 +62,12 @@
                 placeholder="Your password"
                 type="password"
               ></ion-input>
-              <!-- <ion-text
+              <ion-text
+                name="passwordMessage"
                 [hidden]="ngForm.controls.password && (ngForm.controls.password.valid || (ngForm.controls.password.pristine))"
                 color="danger"
                 >Password is required</ion-text
-              > -->
+              >
             </ion-item>
           </ion-list>
           <p *ngIf="error">
@@ -65,10 +76,14 @@
               problem. Please try again.</ion-text
             >
           </p>
+          <p *ngIf="requiredFieldsEmpty">
+            <ion-text color="danger"
+              >Please fill in all required fields.</ion-text
+            >
+          </p>
           <ion-button type="submit">Login</ion-button>
         </form>
       </ion-card-content>
     </ion-card>
   </div>
 </ion-content>
-

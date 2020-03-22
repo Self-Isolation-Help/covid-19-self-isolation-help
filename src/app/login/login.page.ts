@@ -12,6 +12,7 @@ import { isDevMode } from "@angular/core";
 export class LoginPage implements OnInit {
   form: any = {};
   error;
+  requiredFieldsEmpty;
   loading = false;
 
   isDevMode: boolean;
@@ -23,18 +24,24 @@ export class LoginPage implements OnInit {
   }
 
   signin() {
-    this.loading = true;
-    this.auth
-      .signInWithEmailAndPassword(this.form.email, this.form.password)
-      .then(resp => {
-        this.error = false;
-        this.router.navigate(["/people-isolating"]);
-      })
-      .catch(() => {
-        this.error = true;
-      })
-      .finally(() => {
-        this.loading = false;
-      });
+    if (this.form.email && this.form.password) {
+      this.requiredFieldsEmpty = false;
+      this.loading = true;
+      this.auth
+        .signInWithEmailAndPassword(this.form.email, this.form.password)
+        .then(resp => {
+          this.error = false;
+          this.router.navigate(["/people-isolating"]);
+        })
+        .catch(() => {
+          this.error = true;
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    } else {
+      this.requiredFieldsEmpty = true;
+      this.error = false;
+    }
   }
 }
