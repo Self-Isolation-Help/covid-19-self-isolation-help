@@ -40,5 +40,4 @@ export class ConfirmationPage implements OnInit {
       });
   }
 
-
 }
