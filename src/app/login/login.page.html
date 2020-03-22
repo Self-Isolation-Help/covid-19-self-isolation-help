@@ -27,12 +27,14 @@
                 name="email"
                 required="true"
                 placeholder="Your email address"
-              ></ion-input>
-              <!--  <ion-text
+              >
+              </ion-input>
+              <ion-text
+                name="emailMessage"
                 [hidden]="ngForm.controls.email && (ngForm.controls.email.valid || (ngForm.controls.email.pristine))"
                 color="danger"
                 >Email is required</ion-text
-              > -->
+              >
             </ion-item>
             <ion-item>
               <ion-label position="stacked"
@@ -45,17 +47,23 @@
                 placeholder="Your password"
                 type="password"
               ></ion-input>
-              <!-- <ion-text
+              <ion-text
+                name="passwordMessage"
                 [hidden]="ngForm.controls.password && (ngForm.controls.password.valid || (ngForm.controls.password.pristine))"
                 color="danger"
                 >Password is required</ion-text
-              > -->
+              >
             </ion-item>
           </ion-list>
           <p *ngIf="error">
             <ion-text color="danger"
               >Your username/password is incorrect, or there was another
               problem. Please try again.</ion-text
+            >
+          </p>
+          <p *ngIf="requiredFieldsEmpty">
+            <ion-text color="danger"
+              >Please fill in all required fields.</ion-text
             >
           </p>
           <ion-button type="submit">Login</ion-button>
