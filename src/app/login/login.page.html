@@ -24,6 +24,13 @@
   <div class="max-wrap">
     <ion-card>
       <ion-card-content>
+        <p *ngIf="isDevMode">
+          <ion-text color="danger">Demo version</ion-text>
+        </p>
+        <ul *ngIf="isDevMode">
+          <li>Username: demo@selfisolationhelp.co.uk</li>
+          <li>Password: selfisolationhelp</li>
+        </ul>
         <form #ngForm="ngForm" (ngSubmit)="signin()">
           <ion-list>
             <ion-item>

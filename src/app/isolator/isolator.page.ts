@@ -41,7 +41,7 @@ export class IsolatorPage implements OnInit {
     const alert = await this.alertController.create({
       header: "Confirm Resolve",
       message:
-        "Are you sure you want to mark this isolator as resolved? This will remove them from the list.",
+        "Are you sure you want to mark this self-isolator as resolved? This will remove them from the list.",
       buttons: [
         {
           text: "Cancel",
@@ -71,5 +71,47 @@ export class IsolatorPage implements OnInit {
     this.router.navigate(["/people-isolating-grouped"], {
       queryParams: { county: this.isolator.details.county }
     });
+  }
+
+  onInProgress() {
+    this.afs
+      .collection<Isolator>("isolating")
+      .doc(this.id)
+      .update({
+        inProgress: true
+      });
+  }
+
+  onClickRemoveInProgress() {
+    this.afs
+      .collection<Isolator>("isolating")
+      .doc(this.id)
+      .update({
+        inProgress: false
+      });
+  }
+
+  async onClickInProgress() {
+    const alert = await this.alertController.create({
+      header: "Confirm Resolve",
+      message:
+        "Are you sure you want to mark this isolator as IN PROGRESS? This will update their cards so that other volunteers can see they are already in the process of being assisted",
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel",
+          cssClass: "secondary"
+        },
+        {
+          text: "Confirm",
+          cssClass: "danger",
+          handler: () => {
+            this.onInProgress();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }
