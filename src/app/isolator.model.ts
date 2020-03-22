@@ -24,6 +24,7 @@ export interface Isolator {
     county?: string;
     postCode?: string;
     locationType?: string;
+    selectedLocation: any;
   };
   hasCompletedForm: boolean;
   resolved?: boolean;

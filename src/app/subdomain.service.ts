@@ -35,8 +35,8 @@ export class SubdomainService {
         }
 
         location.items.forEach(item => {
-          if (item.toLowerCase().includes(this.subdomain)) {
-            label = item;
+          if (item.name.toLowerCase().includes(this.subdomain)) {
+            label = item.name;
             this.location = label;
             this.county = location.county;
             return;
