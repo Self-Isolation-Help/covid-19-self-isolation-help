@@ -20,6 +20,8 @@ export class AddressPage implements OnInit {
   countiesLocationMap = COUNTIES_LOCATION_MAP;
   locationsList = [];
   subdomain;
+  selectedLocation;
+
 
   constructor(private userService: UserService, private router: Router, private subdomainService: SubdomainService) {}
 
@@ -31,6 +33,7 @@ export class AddressPage implements OnInit {
         this.form.location = this.subdomainService.getLocationBySubdomain();
         this.form.county = this.subdomainService.getCountyBySubdomain();
         this.onChangeCounty();
+        this.onChangeLocation();
     }
   }
 
@@ -63,6 +66,10 @@ export class AddressPage implements OnInit {
     } else {
       delete this.form.location;
     }
+  }
+
+  onChangeLocation() {
+    this.form.selectedLocation = this.locationsList.find(location => location.name === this.form.location);
   }
 
   onChangeTown() {
