@@ -68,6 +68,15 @@
             },
             "ci": {
               "progress": false
+            },
+            "ph": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.ph.ts"
+                }
+              ],
+              "progress": false
             }
           }
         },
@@ -79,6 +88,9 @@
           "configurations": {
             "production": {
               "browserTarget": "app:build:production"
+            },
+            "ph": {
+              "browserTarget": "app:build:ph"
             },
             "ci": {
               "progress": false
