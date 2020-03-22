@@ -85,6 +85,25 @@
       </ion-card-content>
     </ion-card>
 
+    <ion-card *ngIf="user?.details?.selectedLocation?.volunteerGroup">
+      <ion-card-content>
+        <p class="ion-no-margin">
+          <small>Connected volunteer group</small>
+        </p>
+
+        <ion-chip class="ion-margin-vertical" slot="start">
+          <ion-avatar *ngIf="user?.details?.selectedLocation.volunteerImage">
+            <ion-img
+              [src]="user?.details?.selectedLocation.volunteerImage"
+            ></ion-img>
+          </ion-avatar>
+          <ion-label
+            >{{user?.details?.selectedLocation?.volunteerGroup}}</ion-label
+          >
+        </ion-chip>
+      </ion-card-content>
+    </ion-card>
+
     <ion-card>
       <ion-card-header>
         <ion-card-title>Complete Application</ion-card-title>
