@@ -2,9 +2,9 @@
 
 This tool connects people who believe they are infected with COVID-19 with local volunteer groups.
 
-Preview URL https://preview.selfisolationhelp.co.uk/
+Preview URL https://selfisolationhelp.co.uk/
 
-***Going live date: 23rd March 2020***
+***We are now LIVE***
 
 ## Are you a volunteer group who needs this tool to help organise your efforts?
 
