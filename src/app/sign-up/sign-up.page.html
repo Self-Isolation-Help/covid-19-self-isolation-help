@@ -1,9 +1,230 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>sign-up</ion-title>
+  <ion-toolbar class="max-wrap">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="background"><div class="background-inner"></div></div>
+  <div class="header">
+    <h1 class="max-wrap ion-padding">
+      Volunteer Sign Up
+    </h1>
+  </div>
 
+  <div class="max-wrap">
+    <ion-card>
+      <ion-card-content>
+        <form #ngForm>
+          <ion-list>
+            <ion-item>
+              <ion-label position="stacked">
+                First Name
+              </ion-label>
+              <ion-input
+                name="forename"
+                required="true"
+                placeholder="Your first name"
+              ></ion-input>
+              <!-- <ion-text
+                name="forenameMessage"
+                [hidden]="ngForm.controls.forename && (ngForm.controls.forename.valid || (ngForm.controls.forename.pristine))"
+                color="danger"
+                >Forename is required</ion-text
+              > -->
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Middle Name
+              </ion-label>
+              <ion-input
+                name="middlename"
+                placeholder="Your middle name"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Telephone Number
+              </ion-label>
+              <ion-input
+                name="telephoneNumber"
+                required="true"
+                placeholder="Your telephone number"
+              ></ion-input>
+              <!-- <ion-text
+                name="surnameMessage"
+                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+                color="danger"
+                >Forename is required</ion-text
+              > -->
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Email Address
+              </ion-label>
+              <ion-input
+                name="email"
+                required="true"
+                placeholder="Your email address"
+              ></ion-input>
+              <!-- <ion-text
+                name="surnameMessage"
+                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+                color="danger"
+                >Forename is required</ion-text
+              > -->
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Organisation Name (if applicable)
+              </ion-label>
+              <ion-input
+                name="organisationName"
+                placeholder="The name of your organisation"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Country of operation
+              </ion-label>
+              <ion-input
+                name="countyOfOperation"
+                placeholder="Please choose a county where you will volunteer)"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Country of operation
+              </ion-label>
+              <ion-input
+                name="countyOfOperation"
+                placeholder="Please choose a county where you will volunteer)"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Address Line 1
+              </ion-label>
+              <ion-input
+                name="addressFirst"
+                required="true"
+                placeholder="The 1st line of your address"
+              ></ion-input>
+              <!-- <ion-text
+                name="surnameMessage"
+                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+                color="danger"
+                >Forename is required</ion-text
+              > -->
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Address Line 2
+              </ion-label>
+              <ion-input
+                name="addressSecond"
+                placeholder="The 2nd line of your address"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Town
+              </ion-label>
+              <ion-input
+                name="addressTown"
+                required="true"
+                placeholder="The town where you live"
+              ></ion-input>
+              <!-- <ion-text
+                name="addressTownMessage"
+                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+                color="danger"
+                >Forename is required</ion-text
+              > -->
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                County
+              </ion-label>
+              <ion-input
+                name="addressCounty"
+                required="true"
+                placeholder="The county which you live in"
+              ></ion-input>
+              <!-- <ion-text
+                name="addressTownMessage"
+                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+                color="danger"
+                >Forename is required</ion-text
+              > -->
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Postcode
+              </ion-label>
+              <ion-input
+                name="addressPostcode"
+                required="true"
+                placeholder="The postcode of your property"
+              ></ion-input>
+              <!-- <ion-text
+                name="addressTownMessage"
+                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+                color="danger"
+                >Forename is required</ion-text
+              > -->
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Password
+              </ion-label>
+              <ion-input
+                name="password"
+                required="true"
+                placeholder="Please chose a password"
+              ></ion-input>
+              <!-- <ion-text
+                name="addressTownMessage"
+                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+                color="danger"
+                >Forename is required</ion-text
+              > -->
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Confirm Password
+              </ion-label>
+              <ion-input
+                name="passwordConfirmation"
+                required="true"
+                placeholder="Please confirm your password"
+              ></ion-input>
+              <!-- <ion-text
+                name="addressTownMessage"
+                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+                color="danger"
+                >Forename is required</ion-text
+              > -->
+            </ion-item>
+          </ion-list>
+          <ion-button type="submit">Sign up</ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
