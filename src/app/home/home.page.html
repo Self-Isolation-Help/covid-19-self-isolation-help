@@ -60,3 +60,7 @@
     </ion-grid>
   </ion-footer>
 </ion-content>
+
+<ion-footer *ngIf="!hasCookie" class="cookies-wrap">
+  <p>This website use cookies in order to offer you the most relevant information. Please accept cookies for optimal performance.  <ion-button (click)="setCookie()">Accpet</ion-button></p>
+</ion-footer>
