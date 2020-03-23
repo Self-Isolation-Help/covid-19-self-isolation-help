@@ -12,36 +12,41 @@
             groups a preview to understand the tool.</ion-text
           >
         </p>
-        <h2>How can we help?</h2>
-        <p>
+        <p class="leading">
           The UK government has instructed everyone to self-isolate where possible to avoid the spread of the Coronavirus. If you are self-isolating and are unable to access food, medicines or support for any reason, you can use this tool to request help from a local volunteer group.
         </p>
         <h2>If you require urgent medical help:</h2>
         <p>
           Do not use this tool. Instead, dial 999 immediately to seek emergency help.
         </p>
-        <h2>About social distancing:</h2>
-        <p>
-          In addition to self-isolation, the UK government has also encouraged the practice of ‘social distancing’. This means you should remain at least 2 metres away from other people if you leave your home.
-        </p>
-        <h2>About your privacy</h2>
-        <p>
-          We collect personal info so we can assist you. By clicking ‘Continue’ you agree to our <a class="link" [routerLink]="['/privacy-policy']">privacy policy</a>.
-        </p>
 
-        <h2>About us</h2>
-        <p>
-        We are a collaboration between Volunteer Task Force and Perius Ltd. We are a group of volunteers who have come together to help vulnerable people gain access to essential supplies and support if they are self-isolating due to the outbreak of Covid-19. We are a non-profit organisation and do not accept any money for our services.
-        </p>
-        <p>Please note:</p>
-        <ul>
-          <li>We are a volunteer organisation and are not associated with any government departments or medical institutions</li>
-          <li>WWe cannot provide any medical advice or assistance related to Covid-19. For medical advice, please dial NHS 111 or 999 for emergencies</li>
-          <li>We will do our best to accommodate all requests but cannot guarantee that we will be able to respond to every request and are not liable for any risk associated with providing help or support as per your request</li>
-        </ul>
         <ion-button [routerLink]="['/question-one']">Continue</ion-button>
       </ion-card-content>
     </ion-card>
+
+    <div class="more-info ion-padding-horizontal">
+
+      <h2>About social distancing:</h2>
+      <p>
+        In addition to self-isolation, the UK government has also encouraged the practice of ‘social distancing’. This means you should remain at least 2 metres away from other people if you leave your home.
+      </p>
+      <h2>About your privacy</h2>
+      <p>
+        We collect personal info so we can assist you. By clicking ‘Continue’ you agree to our <a class="link" [routerLink]="['/privacy-policy']">privacy policy</a>.
+      </p>
+
+      <h2>About us</h2>
+      <p>
+        We are a collaboration between Volunteer Task Force and Perius Ltd. We are a group of volunteers who have come together to help vulnerable people gain access to essential supplies and support if they are self-isolating due to the outbreak of Covid-19. We are a non-profit organisation and do not accept any money for our services.
+      </p>
+      <h2>Please note:</h2>
+      <ul>
+        <li>We are a volunteer organisation and are not associated with any government departments or medical institutions</li>
+        <li>We cannot provide any medical advice or assistance related to Covid-19. For medical advice, please dial NHS 111 or 999 for emergencies</li>
+        <li>We will do our best to accommodate all requests but cannot guarantee that we will be able to respond to every request and are not liable for any risk associated with providing help or support as per your request</li>
+      </ul>
+    </div>
+
   </div>
 
   <ion-footer class="footer">
@@ -71,5 +76,5 @@
 </ion-content>
 
 <ion-footer *ngIf="!hasCookie" class="cookies-wrap">
-  <p>This website use cookies in order to offer you the most relevant information. Please accept cookies for optimal performance.  <ion-button (click)="setCookie()">Accpet</ion-button></p>
+  <p>This website use cookies in order to offer you the most relevant information. Please accept cookies for optimal performance.  <ion-button (click)="setCookie()">Accept</ion-button></p>
 </ion-footer>

@@ -21,7 +21,9 @@
 
       <ion-card-content>
         <p *ngIf="isDevMode">
-          Thank you for accessing the <em>preview</em> version of the self-isolation tool. This preview is available for you to review and decide if the tool is right for you and your team.
+          Thank you for accessing the <em>preview</em> version of the
+          self-isolation tool. This preview is available for you to review and
+          decide if the tool is right for you and your team.
         </p>
         <p *ngIf="!isDevMode">
           Sign in to view and help people who are Self Isolating. Only
@@ -48,10 +50,24 @@
         <ion-button [routerLink]="['/register']">Register Now</ion-button>
       </ion-card-content>
     </ion-card>
-  </div>
-  <div class="max-wrap youtube-wrap">
-    <div class="video-responsive">
-      <iframe [src]="safeSrc" width="420" height="315" frameborder="0"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="ion-card">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Volunteers: How to use the tool</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="video-responsive">
+            <iframe
+              [src]="safeSrc"
+              width="420"
+              height="315"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </ion-card-content>
+      </ion-card>
     </div>
   </div>
 </ion-content>
