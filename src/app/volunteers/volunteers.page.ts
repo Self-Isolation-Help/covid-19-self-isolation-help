@@ -1,4 +1,5 @@
 import { Component, isDevMode, OnInit } from "@angular/core";
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: "app-volunteers",
@@ -8,7 +9,11 @@ import { Component, isDevMode, OnInit } from "@angular/core";
 export class VolunteersPage implements OnInit {
   isDevMode: boolean;
 
-  constructor() {}
+  // constructor() {}
+  safeSrc: SafeResourceUrl;
+  constructor(private sanitizer: DomSanitizer) {
+    this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/tCZyKLhGGhg");
+  }
 
   ngOnInit() {
     this.isDevMode = isDevMode();
