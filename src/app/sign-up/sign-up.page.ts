@@ -48,7 +48,7 @@ export class SignUpPage implements OnInit {
   }
 
   onSubmitForm($event, ngForm: NgForm) {
-    if (ngForm.form.valid) {
+    if (ngForm.form.valid && (ngForm.value as Volunteer).checks.disclaimerSigned) {
     } else {
     }
   }
