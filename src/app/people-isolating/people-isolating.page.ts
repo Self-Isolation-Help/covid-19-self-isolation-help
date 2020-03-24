@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { Isolator } from "../isolator.model";
 import { Observable } from "rxjs/internal/Observable";
 import { map, switchMap } from "rxjs/operators";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
-import { Volunteer } from '../volunteer';
+import { Isolator } from '../models/isolator.model';
+import { Volunteer } from '../models/volunteer';
 
 @Component({
   selector: "app-people-isolating",
@@ -31,7 +31,7 @@ export class PeopleIsolatingPage implements OnInit {
 
   ngOnInit() {
     this.isolators$ = this.user$.pipe(
-      map(user => user.counties),
+      map(user => user.workingCounties),
       switchMap((counties) => {
         return this.afs
           .collection<Isolator>("isolating")

@@ -4,6 +4,10 @@ import { COUNTIES } from "../counties";
 import { LOCATIONS } from "../locations";
 import { COUNTIES_LOCATION_MAP } from "../counties-location-map";
 import { SubdomainService } from "../subdomain.service";
+import { Volunteer } from '../models/volunteer';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: "app-sign-up",
@@ -11,45 +15,41 @@ import { SubdomainService } from "../subdomain.service";
   styleUrls: ["./sign-up.page.scss"]
 })
 export class SignUpPage implements OnInit {
-  form: any = {};
+  form: Volunteer;
   counties: string[] = COUNTIES.sort();
   locations = LOCATIONS.sort();
-  locationsAssociatedWithCounty;
   countiesLocationMap = COUNTIES_LOCATION_MAP;
   locationsList = [];
   subdomain;
 
   constructor(
     private router: Router,
-    private subdomainService: SubdomainService
-  ) {}
+    private subdomainService: SubdomainService,
+    private auth: AngularFireAuth,
+    private afs: AngularFirestore
+  ) {
+    this.form = {
+      details: {},
+      volunteerGroup: {}
+    } as Volunteer;
+   }
 
   ngOnInit() {
     this.subdomain = this.subdomainService.getLabelForSubdomain();
-
-    this.form.location = this.subdomainService.getLocationBySubdomain();
-    this.form.county = this.subdomainService.getCountyBySubdomain();
-    this.onChangeCounty();
+    this.form.details.county = this.subdomainService.getCountyBySubdomain();
   }
-  onChangeCounty() {
-    this.locationsAssociatedWithCounty = this.countiesLocationMap.find(
-      map => map.county === this.form.county
-    );
-    if (this.locationsAssociatedWithCounty) {
-      this.locationsList = this.locations.find(
-        location =>
-          location.label === this.locationsAssociatedWithCounty.locations
-      ).items;
-      this.form.locationType = this.locationsAssociatedWithCounty.locations;
+
+  onChangeTown() {
+    if (this.form.details.town.toLowerCase() === "london") {
+      this.form.details.county = "Greater London";
     } else {
-      delete this.form.location;
+      delete this.form.details.county;
     }
   }
-  onChangeTown() {
-    if (this.form.town.toLowerCase() === "london") {
-      this.form.county = "Greater London";
+
+  onSubmitForm($event, ngForm: NgForm) {
+    if (ngForm.form.valid) {
     } else {
-      delete this.form.county;
     }
   }
 }
