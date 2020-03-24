@@ -7,7 +7,7 @@ import { SubdomainService } from "../subdomain.service";
 import { Volunteer } from '../models/volunteer';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { FormGroup, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: "app-sign-up",
@@ -16,6 +16,8 @@ import { FormGroup, NgForm } from '@angular/forms';
 })
 export class SignUpPage implements OnInit {
   form: Volunteer;
+  password: string;
+  confirmedPassword: string;
   counties: string[] = COUNTIES.sort();
   locations = LOCATIONS.sort();
   countiesLocationMap = COUNTIES_LOCATION_MAP;
@@ -30,7 +32,8 @@ export class SignUpPage implements OnInit {
   ) {
     this.form = {
       details: {},
-      volunteerGroup: {}
+      volunteerGroup: {},
+      checks: {}
     } as Volunteer;
    }
 
@@ -48,7 +51,11 @@ export class SignUpPage implements OnInit {
   }
 
   onSubmitForm($event, ngForm: NgForm) {
-    if (ngForm.form.valid && (ngForm.value as Volunteer).checks.disclaimerSigned) {
+    if (ngForm.form.valid && this.form.checks.disclaimerSigned && this.password === this.confirmedPassword) {
+      this.auth.createUserWithEmailAndPassword(this.form.details.email, this.password)
+      .then((newFireStoreUser) => {
+        this.afs.doc(`volunteers/${newFireStoreUser.user.uid}`).set(this.form).then(_ => console.log("Submited"));
+      });
     } else {
     }
   }

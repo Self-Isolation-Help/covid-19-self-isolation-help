@@ -28,7 +28,7 @@
           <ion-list>
             <ion-item>
               <ion-label position="stacked">
-                First Name<span class="requirewd">*</span>
+                First Name<span class="required">*</span>
               </ion-label>
               <ion-input [(ngModel)]="form.details.forename" name="forename" required="true"
                 placeholder="Your first name"></ion-input>
@@ -50,7 +50,7 @@
 
             <ion-item>
               <ion-label position="stacked">
-                Last Name<span class="requirewd">*</span>
+                Last Name<span class="required">*</span>
               </ion-label>
               <ion-input [(ngModel)]="form.details.surname" name="surname" required="true" placeholder="Your surname">
               </ion-input>
@@ -58,7 +58,7 @@
 
             <ion-item>
               <ion-label position="stacked">
-                Telephone Number<span class="requirewd">*</span>
+                Telephone Number<span class="required">*</span>
               </ion-label>
               <ion-input [(ngModel)]="form.details.telephone" name="telephoneNumber" required="true"
                 placeholder="Your telephone number"></ion-input>
@@ -72,7 +72,7 @@
 
             <ion-item>
               <ion-label position="stacked">
-                Email Address<span class="requirewd">*</span>
+                Email Address<span class="required">*</span>
               </ion-label>
               <ion-input [(ngModel)]="form.details.email" name="email" required="true" placeholder="Your email address">
               </ion-input>
@@ -97,7 +97,7 @@
           <ion-list>
             <ion-item>
               <ion-label position="stacked">
-                Address Line 1<span class="requirewd">*</span>
+                Address Line 1<span class="required">*</span>
               </ion-label>
               <ion-input [(ngModel)]="form.details.address1" name="addressFirst" required="true"
                 placeholder="Your house number & street"></ion-input>
@@ -119,7 +119,7 @@
 
             <ion-item>
               <ion-label position="stacked">
-                Town / City<span class="requirewd">*</span>
+                Town / City<span class="required">*</span>
               </ion-label>
               <ion-input (ionChange)="onChangeTown()" [(ngModel)]="form.details.town" name="town" required="true"
                 placeholder="Your town"></ion-input>
@@ -136,7 +136,7 @@
                 County<span class="required">*</span>
               </ion-label>
 
-              <ion-select (ionChange)="onChangeCounty()" [(ngModel)]="form.details.county" required name="county"
+              <ion-select [(ngModel)]="form.details.county" required name="county"
                 placeholder="Your county">
                 <ion-select-option *ngFor="let county of counties" value="{{county}}">{{county}}</ion-select-option>
               </ion-select>
@@ -202,7 +202,7 @@
                 County of operation
               </ion-label>
 
-              <ion-select [(ngModel)]="form.organisationCounty"
+              <ion-select multiple [(ngModel)]="form.workingCounties"
                 name="organisationCounty" placeholder="Please choose a county where you will volunteer">
                 <ion-select-option *ngFor="let county of counties" value="{{county}}">{{county}}</ion-select-option>
               </ion-select>
@@ -221,9 +221,9 @@
           <ion-list>
             <ion-item>
               <ion-label position="stacked">
-                Password<span class="requirewd">*</span>
+                Password<span class="required">*</span>
               </ion-label>
-              <ion-input [(ngModel)]="form.password" name="password" required="true"
+              <ion-input [(ngModel)]="password" name="password" required="true"
                 placeholder="Min 6 chars & contain at least; 1 capital & 1 number"></ion-input>
               <!-- <ion-text
                 name="addressTownMessage"
@@ -235,9 +235,9 @@
 
             <ion-item>
               <ion-label position="stacked">
-                Confirm Password<span class="requirewd">*</span>
+                Confirm Password<span class="required">*</span>
               </ion-label>
-              <ion-input [(ngModel)]="form.passwordConfirmation" name="passwordConfirmation" required="true" placeholder="Please confirm your password">
+              <ion-input [(ngModel)]="confirmedPassword" name="confirmedPassword" required="true" placeholder="Please confirm your password">
               </ion-input>
               <!-- <ion-text
                 name="addressTownMessage"
@@ -278,7 +278,7 @@
           <ion-card>
             <ion-card-content>
               <p>I agree to the terms of use</p>
-              <ion-checkbox checked="false" name="acceptTerms"></ion-checkbox>
+              <ion-checkbox [(ngModel)]="form.checks.disclaimerSigned" checked="false" name="acceptTerms"></ion-checkbox>
             </ion-card-content>
           </ion-card>
           <!-- <ion-checkbox checked="false"></ion-checkbox> -->

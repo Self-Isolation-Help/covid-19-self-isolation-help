@@ -24,7 +24,7 @@ export class PeopleIsolatingPage implements OnInit {
     this.user$ = this.auth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.afs.doc<Volunteer>(`user/${user.uid}`).valueChanges();
+          return this.afs.doc<Volunteer>(`volunteers/${user.uid}`).valueChanges();
         }
       }));
   }
@@ -39,7 +39,7 @@ export class PeopleIsolatingPage implements OnInit {
           .pipe(
             map((isolators: Isolator[]) => {
               return isolators.filter(isolator => !isolator.resolved
-              && (counties.includes('*') || counties.includes(isolator.details.county)));
+              && (!counties || counties.length < 1 || counties.includes('*') || counties.includes(isolator.details.county)));
             }));
       }));
   }
