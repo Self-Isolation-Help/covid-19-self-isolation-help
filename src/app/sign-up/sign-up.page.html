@@ -92,22 +92,22 @@
 
             <ion-item>
               <ion-label position="stacked">
-                Country of operation
+                County of operation (if applicable)
               </ion-label>
-              <ion-input
-                name="countyOfOperation"
-                placeholder="Please choose a county where you will volunteer)"
-              ></ion-input>
-            </ion-item>
 
-            <ion-item>
-              <ion-label position="stacked">
-                Country of operation
-              </ion-label>
-              <ion-input
-                name="countyOfOperation"
-                placeholder="Please choose a county where you will volunteer)"
-              ></ion-input>
+              <ion-select
+                (ionChange)="onChangeCounty()"
+                [(ngModel)]="form.organisationCounty"
+                required
+                name="organisationCounty"
+                placeholder="Please choose a county where you will volunteer"
+              >
+                <ion-select-option
+                  *ngFor="let county of counties"
+                  value="{{county}}"
+                  >{{county}}</ion-select-option
+                >
+              </ion-select>
             </ion-item>
 
             <ion-item>
@@ -139,12 +139,14 @@
 
             <ion-item>
               <ion-label position="stacked">
-                Town
+                Town / City<span class="requirewd">*</span>
               </ion-label>
               <ion-input
-                name="addressTown"
+                (ionChange)="onChangeTown()"
+                [(ngModel)]="form.town"
+                name="town"
                 required="true"
-                placeholder="The town where you live"
+                placeholder="The town or city where you live"
               ></ion-input>
               <!-- <ion-text
                 name="addressTownMessage"
@@ -156,13 +158,22 @@
 
             <ion-item>
               <ion-label position="stacked">
-                County
+                County<span class="required">*</span>
               </ion-label>
-              <ion-input
-                name="addressCounty"
-                required="true"
-                placeholder="The county which you live in"
-              ></ion-input>
+
+              <ion-select
+                (ionChange)="onChangeCounty()"
+                [(ngModel)]="form.county"
+                required
+                name="county"
+                placeholder="The county where you live"
+              >
+                <ion-select-option
+                  *ngFor="let county of counties"
+                  value="{{county}}"
+                  >{{county}}</ion-select-option
+                >
+              </ion-select>
               <!-- <ion-text
                 name="addressTownMessage"
                 [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
@@ -176,7 +187,7 @@
                 Postcode
               </ion-label>
               <ion-input
-                name="addressPostcode"
+                name="postcode"
                 required="true"
                 placeholder="The postcode of your property"
               ></ion-input>
