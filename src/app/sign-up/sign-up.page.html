@@ -19,7 +19,7 @@
       <ion-card>
         <ion-card-header>
           <ion-card-title>
-            Your information
+            Your Information
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -107,7 +107,7 @@
       <ion-card>
         <ion-card-header>
           <ion-card-title>
-            Your address
+            Your Address
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -120,7 +120,7 @@
                 [(ngModel)]="form.details.address1"
                 name="addressFirst"
                 required="true"
-                placeholder="The 1st line of your address"
+                placeholder="Your house number & street"
               ></ion-input>
               <!-- <ion-text
               name="surnameMessage"
@@ -150,7 +150,7 @@
                 [(ngModel)]="form.details.town"
                 name="town"
                 required="true"
-                placeholder="The town or city where you live"
+                placeholder="Your town"
               ></ion-input>
               <!-- <ion-text
               name="addressTownMessage"
@@ -170,7 +170,7 @@
                 [(ngModel)]="form.details.county"
                 required
                 name="county"
-                placeholder="The county where you live"
+                placeholder="Your county"
               >
                 <ion-select-option
                   *ngFor="let county of counties"
@@ -194,7 +194,7 @@
                 [(ngModel)]="form.details.postCode"
                 name="postcode"
                 required="true"
-                placeholder="The postcode of your property"
+                placeholder="Your postcode"
               ></ion-input>
               <!-- <ion-text
               name="addressTownMessage"
@@ -222,7 +222,7 @@
               <ion-input
                 [(ngModel)]="form.volunteerGroup.name"
                 name="organisationName"
-                placeholder="The name of your organisation"
+                placeholder="The organisation name"
               ></ion-input>
             </ion-item>
 
@@ -300,7 +300,7 @@
               <ion-input
                 name="password"
                 required="true"
-                placeholder="Must have at least 6 characters and contain at least; 1 capital letter & 1 number"
+                placeholder="Min 6 chars & contain at least; 1 capital & 1 number"
               ></ion-input>
               <!-- <ion-text
                 name="addressTownMessage"
@@ -332,7 +332,7 @@
       <ion-card>
         <ion-card-header>
           <ion-card-title>
-            Terms & Conditions
+            Volunteering Agreement
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -346,8 +346,10 @@
           <p>
             I {{form.firstname}} {{form.surname}} have put myself forward as a
             Volunteer to support those people whom are self-isolating and need
-            medicine and food to be bought to their door step. I am aware that
-            the team whom have developed the
+            medicine and food to be bought to their door step.
+          </p>
+          <p>
+            I am aware that the team whom have developed the
             <a href="https://selfisolationhelp.co.uk"
               >https://selfisolationhelp.co.uk</a
             >
@@ -355,6 +357,13 @@
             responsibility in the actions I will be performing further to
             collaborate with Self Isolation Help Team.
           </p>
+          <ion-card>
+            <ion-card-content>
+              <p>I agree to the terms of use</p>
+              <ion-checkbox checked="false" name="acceptTerms"></ion-checkbox>
+            </ion-card-content>
+          </ion-card>
+          <!-- <ion-checkbox checked="false"></ion-checkbox> -->
         </ion-card-content>
       </ion-card>
       <ion-card>
@@ -370,7 +379,11 @@
           </p>
         </ion-card-content>
       </ion-card>
-      <ion-button type="submit">Sign up</ion-button>
+      <ion-card>
+        <ion-card-content>
+          <ion-button type="submit">Complete Volunteer Sign up</ion-button>
+        </ion-card-content>
+      </ion-card>
     </div>
   </form>
 </ion-content>
