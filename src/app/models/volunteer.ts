@@ -7,7 +7,6 @@ export interface Volunteer {
         surname: string;
         telephone: string;
         email: string;
-        streetName: string;
         address1: string;
         address2?: string;
         town: string;
@@ -15,9 +14,9 @@ export interface Volunteer {
         postCode: string;
     };
     volunteerGroup: {
-        volunteerGroupName: string;
-        volunteerGroupLink: string;
-        volunteerRole: string;
+        name: string;
+        link: string;
+        role: string;
     };
     checks: {
         hasCriminalRecord: boolean;
