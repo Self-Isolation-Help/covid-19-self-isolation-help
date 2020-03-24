@@ -34,7 +34,6 @@ export class SignUpPage implements OnInit {
   onChangeCounty() {
 
     this.locationsAssociatedWithCounty = this.countiesLocationMap.find((map) => {
-      console.log(map.county, this.form.organisationCounty)
       return map.county === this.form.organisationCounty;
     });
     if (this.locationsAssociatedWithCounty) {
