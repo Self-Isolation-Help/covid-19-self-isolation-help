@@ -121,6 +121,10 @@ const routes: Routes = [
     },
     loadChildren: () =>
       import("./dashboard/dashboard.module").then(m => m.DashboardPageModule)
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
   }
 ];
 
