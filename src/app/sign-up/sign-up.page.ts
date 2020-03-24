@@ -27,14 +27,16 @@ export class SignUpPage implements OnInit {
   ngOnInit() {
     this.subdomain = this.subdomainService.getLabelForSubdomain();
 
-    this.form.location = this.subdomainService.getLocationBySubdomain();
-    this.form.county = this.subdomainService.getCountyBySubdomain();
+    this.form.organisationLocation = this.subdomainService.getLocationBySubdomain();
+    this.form.organisationCounty = this.subdomainService.getCountyBySubdomain();
     this.onChangeCounty();
   }
   onChangeCounty() {
-    this.locationsAssociatedWithCounty = this.countiesLocationMap.find(
-      map => map.county === this.form.county
-    );
+
+    this.locationsAssociatedWithCounty = this.countiesLocationMap.find((map) => {
+      console.log(map.county, this.form.organisationCounty)
+      return map.county === this.form.organisationCounty;
+    });
     if (this.locationsAssociatedWithCounty) {
       this.locationsList = this.locations.find(
         location =>
@@ -42,8 +44,9 @@ export class SignUpPage implements OnInit {
       ).items;
       this.form.locationType = this.locationsAssociatedWithCounty.locations;
     } else {
-      delete this.form.location;
+      delete this.form.organisationLocation;
     }
+
   }
   onChangeTown() {
     if (this.form.town.toLowerCase() === "london") {

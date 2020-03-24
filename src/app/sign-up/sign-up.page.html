@@ -225,6 +225,34 @@
                 >
               </ion-select>
             </ion-item>
+
+            <ion-item *ngIf="locationsAssociatedWithCounty">
+              <ion-label position="stacked"
+              >{{locationsAssociatedWithCounty.locations}}<span class="required"
+              >*</span
+              ></ion-label
+              >
+              <ion-select
+                      (ionChange)="onChangeLocation()"
+                      [(ngModel)]="form.organisationLocation"
+                      required
+                      name="organisationLocation"
+                      placeholder="Your county"
+              >
+                <ion-select-option
+                        *ngFor="let location of locationsList"
+                        value="{{location.name}}"
+                >{{location.name}}</ion-select-option
+                >
+              </ion-select>
+
+              <!--<ion-text-->
+                      <!--[hidden]="ngForm.controls.organisationLocation && (ngForm.controls.organisationLocation.valid || (ngForm.controls.organisationLocation.pristine))"-->
+                      <!--color="danger"-->
+              <!--&gt;{{locationsAssociatedWithCounty.locations}} is required</ion-text-->
+              <!--&gt;-->
+            </ion-item>
+
           </ion-list>
         </ion-card-content>
       </ion-card>
