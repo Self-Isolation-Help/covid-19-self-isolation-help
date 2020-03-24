@@ -7,17 +7,23 @@
 </ion-header>
 
 <ion-content>
-  <div class="background"><div class="background-inner"></div></div>
-  <div class="header">
-    <h1 class="max-wrap ion-padding">
-      Volunteer Sign Up
-    </h1>
-  </div>
+  <form>
+    <div class="background"><div class="background-inner"></div></div>
+    <div class="header">
+      <h1 class="max-wrap ion-padding">
+        Volunteer Sign Up
+      </h1>
+    </div>
 
-  <div class="max-wrap">
-    <ion-card>
-      <ion-card-content>
-        <form #ngForm>
+    <div class="max-wrap">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            Your information
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- <form #ngForm> -->
           <ion-list>
             <ion-item>
               <ion-label position="stacked">
@@ -79,37 +85,20 @@
                 >Forename is required</ion-text
               > -->
             </ion-item>
+          </ion-list>
 
-            <ion-item>
-              <ion-label position="stacked">
-                Organisation Name (if applicable)
-              </ion-label>
-              <ion-input
-                name="organisationName"
-                placeholder="The name of your organisation"
-              ></ion-input>
-            </ion-item>
+          <!-- </form> -->
+        </ion-card-content>
+      </ion-card>
 
-            <ion-item>
-              <ion-label position="stacked">
-                County of operation (if applicable)
-              </ion-label>
-
-              <ion-select
-                (ionChange)="onChangeCounty()"
-                [(ngModel)]="form.organisationCounty"
-                required
-                name="organisationCounty"
-                placeholder="Please choose a county where you will volunteer"
-              >
-                <ion-select-option
-                  *ngFor="let county of counties"
-                  value="{{county}}"
-                  >{{county}}</ion-select-option
-                >
-              </ion-select>
-            </ion-item>
-
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            Your address
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
             <ion-item>
               <ion-label position="stacked">
                 Address Line 1
@@ -120,11 +109,11 @@
                 placeholder="The 1st line of your address"
               ></ion-input>
               <!-- <ion-text
-                name="surnameMessage"
-                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
-                color="danger"
-                >Forename is required</ion-text
-              > -->
+              name="surnameMessage"
+              [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+              color="danger"
+              >Forename is required</ion-text
+            > -->
             </ion-item>
 
             <ion-item>
@@ -149,11 +138,11 @@
                 placeholder="The town or city where you live"
               ></ion-input>
               <!-- <ion-text
-                name="addressTownMessage"
-                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
-                color="danger"
-                >Forename is required</ion-text
-              > -->
+              name="addressTownMessage"
+              [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+              color="danger"
+              >Forename is required</ion-text
+            > -->
             </ion-item>
 
             <ion-item>
@@ -175,11 +164,11 @@
                 >
               </ion-select>
               <!-- <ion-text
-                name="addressTownMessage"
-                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
-                color="danger"
-                >Forename is required</ion-text
-              > -->
+              name="addressTownMessage"
+              [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+              color="danger"
+              >Forename is required</ion-text
+            > -->
             </ion-item>
 
             <ion-item>
@@ -192,13 +181,65 @@
                 placeholder="The postcode of your property"
               ></ion-input>
               <!-- <ion-text
-                name="addressTownMessage"
-                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
-                color="danger"
-                >Forename is required</ion-text
-              > -->
+              name="addressTownMessage"
+              [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+              color="danger"
+              >Forename is required</ion-text
+            > -->
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            Your Organisation (if applicable)
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label position="stacked">
+                Organisation Name
+              </ion-label>
+              <ion-input
+                name="organisationName"
+                placeholder="The name of your organisation"
+              ></ion-input>
             </ion-item>
 
+            <ion-item>
+              <ion-label position="stacked">
+                County of operation
+              </ion-label>
+
+              <ion-select
+                (ionChange)="onChangeCounty()"
+                [(ngModel)]="form.organisationCounty"
+                required
+                name="organisationCounty"
+                placeholder="Please choose a county where you will volunteer"
+              >
+                <ion-select-option
+                  *ngFor="let county of counties"
+                  value="{{county}}"
+                  >{{county}}</ion-select-option
+                >
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            Your password
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
             <ion-item>
               <ion-label position="stacked">
                 Password
@@ -206,7 +247,7 @@
               <ion-input
                 name="password"
                 required="true"
-                placeholder="Please chose a password"
+                placeholder="Must have at least 6 characters and contain at least; 1 capital letter & 1 number"
               ></ion-input>
               <!-- <ion-text
                 name="addressTownMessage"
@@ -233,9 +274,50 @@
               > -->
             </ion-item>
           </ion-list>
-          <ion-button type="submit">Sign up</ion-button>
-        </form>
-      </ion-card-content>
-    </ion-card>
-  </div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            Terms & Conditions
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>
+            Please be aware we are a <b>NEW volunteering group</b> and as such
+            we are taking full responsibility of our actions and our volunteers,
+            for that process to happen successfully for everyone involved, we
+            would need you to help us further with 4 more easy steps to follow
+            before getting you up to speed.
+          </p>
+          <p>
+            I {{form.firstname}} {{form.surname}} have put myself forward as a
+            Volunteer to support those people whom are self-isolating and need
+            medicine and food to be bought to their door step. I am aware that
+            the team whom have developed the
+            <a href="https://selfisolationhelp.co.uk"
+              >https://selfisolationhelp.co.uk</a
+            >
+            tool, are proceeding to help people out of good will and I take full
+            responsibility in the actions I will be performing further to
+            collaborate with Self Isolation Help Team.
+          </p>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <p>
+            COVID-19 Protocols. At the Self Isolation Help Team we deeply care
+            about the health & safety of our friends and family. Our Volunteers
+            will follow all current COVID-19 protocols. You will be asked to use
+            hand sanitizer to keep distance and leave shopping and all the
+            valuables bought at the door step of your self-isolator. We enforce
+            Social Distancing a rule which MUST be respected. Let’s do our part
+            and allow experts to do theirs
+          </p>
+        </ion-card-content>
+      </ion-card>
+      <ion-button type="submit">Sign up</ion-button>
+    </div>
+  </form>
 </ion-content>
