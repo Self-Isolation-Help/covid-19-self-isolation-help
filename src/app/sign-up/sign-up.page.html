@@ -23,13 +23,13 @@
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <!-- <form #ngForm> -->
           <ion-list>
             <ion-item>
               <ion-label position="stacked">
-                First Name
+                First Name<span class="requirewd">*</span>
               </ion-label>
               <ion-input
+                [(ngModel)]="form.details.forename"
                 name="forename"
                 required="true"
                 placeholder="Your first name"
@@ -47,6 +47,7 @@
                 Middle Name
               </ion-label>
               <ion-input
+                [(ngModel)]="form.details.middleNames"
                 name="middlename"
                 placeholder="Your middle name"
               ></ion-input>
@@ -54,9 +55,22 @@
 
             <ion-item>
               <ion-label position="stacked">
-                Telephone Number
+                Last Name<span class="requirewd">*</span>
               </ion-label>
               <ion-input
+                [(ngModel)]="form.details.surname"
+                name="surname"
+                required="true"
+                placeholder="Your surname"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Telephone Number<span class="requirewd">*</span>
+              </ion-label>
+              <ion-input
+                [(ngModel)]="form.details.telephone"
                 name="telephoneNumber"
                 required="true"
                 placeholder="Your telephone number"
@@ -71,9 +85,10 @@
 
             <ion-item>
               <ion-label position="stacked">
-                Email Address
+                Email Address<span class="requirewd">*</span>
               </ion-label>
               <ion-input
+                [(ngModel)]="form.details.email"
                 name="email"
                 required="true"
                 placeholder="Your email address"
@@ -86,8 +101,6 @@
               > -->
             </ion-item>
           </ion-list>
-
-          <!-- </form> -->
         </ion-card-content>
       </ion-card>
 
@@ -101,9 +114,10 @@
           <ion-list>
             <ion-item>
               <ion-label position="stacked">
-                Address Line 1
+                Address Line 1<span class="requirewd">*</span>
               </ion-label>
               <ion-input
+                [(ngModel)]="form.details.address1"
                 name="addressFirst"
                 required="true"
                 placeholder="The 1st line of your address"
@@ -121,6 +135,7 @@
                 Address Line 2
               </ion-label>
               <ion-input
+                [(ngModel)]="form.details.address2"
                 name="addressSecond"
                 placeholder="The 2nd line of your address"
               ></ion-input>
@@ -132,7 +147,7 @@
               </ion-label>
               <ion-input
                 (ionChange)="onChangeTown()"
-                [(ngModel)]="form.town"
+                [(ngModel)]="form.details.town"
                 name="town"
                 required="true"
                 placeholder="The town or city where you live"
@@ -152,7 +167,7 @@
 
               <ion-select
                 (ionChange)="onChangeCounty()"
-                [(ngModel)]="form.county"
+                [(ngModel)]="form.details.county"
                 required
                 name="county"
                 placeholder="The county where you live"
@@ -173,9 +188,10 @@
 
             <ion-item>
               <ion-label position="stacked">
-                Postcode
+                Postcode<span class="required">*</span>
               </ion-label>
               <ion-input
+                [(ngModel)]="form.details.postCode"
                 name="postcode"
                 required="true"
                 placeholder="The postcode of your property"
@@ -204,9 +220,46 @@
                 Organisation Name
               </ion-label>
               <ion-input
+                [(ngModel)]="form.volunteerGroup.name"
                 name="organisationName"
                 placeholder="The name of your organisation"
               ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Organisation link, such as a Facebook group link (if applicable)
+              </ion-label>
+              <ion-select
+                [(ngModel)]="form.volunteerGroup.link"
+                required
+                name="organisationCounty"
+                placeholder="Organisation link, such as a Facebook group link (if applicable)"
+              >
+                <ion-select-option
+                  *ngFor="let county of counties"
+                  value="{{county}}"
+                  >{{county}}</ion-select-option
+                >
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                Your role in the volunteer group (if applicable)
+              </ion-label>
+              <ion-select
+                [(ngModel)]="form.volunteerGroup.role"
+                required
+                name="organisationCounty"
+                placeholder="Please choose a county where you will volunteer"
+              >
+                <ion-select-option
+                  *ngFor="let county of counties"
+                  value="{{county}}"
+                  >{{county}}</ion-select-option
+                >
+              </ion-select>
             </ion-item>
 
             <ion-item>
