@@ -6,9 +6,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form>
-    <div class="background"><div class="background-inner"></div></div>
+<ion-content class="ion-padding">
+  <form #ngForm="ngForm" (ngSubmit)="onSubmitForm($event, ngForm)" class="max-wrap">
+    <div class="background">
+      <div class="background-inner"></div>
+    </div>
     <div class="header">
       <h1 class="max-wrap ion-padding">
         Volunteer Sign Up
@@ -28,12 +30,8 @@
               <ion-label position="stacked">
                 First Name<span class="requirewd">*</span>
               </ion-label>
-              <ion-input
-                [(ngModel)]="form.details.forename"
-                name="forename"
-                required="true"
-                placeholder="Your first name"
-              ></ion-input>
+              <ion-input [(ngModel)]="form.details.forename" name="forename" required="true"
+                placeholder="Your first name"></ion-input>
               <!-- <ion-text
                 name="forenameMessage"
                 [hidden]="ngForm.controls.forename && (ngForm.controls.forename.valid || (ngForm.controls.forename.pristine))"
@@ -46,35 +44,24 @@
               <ion-label position="stacked">
                 Middle Name
               </ion-label>
-              <ion-input
-                [(ngModel)]="form.details.middleNames"
-                name="middlename"
-                placeholder="Your middle name"
-              ></ion-input>
+              <ion-input [(ngModel)]="form.details.middleNames" name="middlename" placeholder="Your middle name">
+              </ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Last Name<span class="requirewd">*</span>
               </ion-label>
-              <ion-input
-                [(ngModel)]="form.details.surname"
-                name="surname"
-                required="true"
-                placeholder="Your surname"
-              ></ion-input>
+              <ion-input [(ngModel)]="form.details.surname" name="surname" required="true" placeholder="Your surname">
+              </ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Telephone Number<span class="requirewd">*</span>
               </ion-label>
-              <ion-input
-                [(ngModel)]="form.details.telephone"
-                name="telephoneNumber"
-                required="true"
-                placeholder="Your telephone number"
-              ></ion-input>
+              <ion-input [(ngModel)]="form.details.telephone" name="telephoneNumber" required="true"
+                placeholder="Your telephone number"></ion-input>
               <!-- <ion-text
                 name="surnameMessage"
                 [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
@@ -87,12 +74,8 @@
               <ion-label position="stacked">
                 Email Address<span class="requirewd">*</span>
               </ion-label>
-              <ion-input
-                [(ngModel)]="form.details.email"
-                name="email"
-                required="true"
-                placeholder="Your email address"
-              ></ion-input>
+              <ion-input [(ngModel)]="form.details.email" name="email" required="true" placeholder="Your email address">
+              </ion-input>
               <!-- <ion-text
                 name="surnameMessage"
                 [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
@@ -116,12 +99,8 @@
               <ion-label position="stacked">
                 Address Line 1<span class="requirewd">*</span>
               </ion-label>
-              <ion-input
-                [(ngModel)]="form.details.address1"
-                name="addressFirst"
-                required="true"
-                placeholder="Your house number & street"
-              ></ion-input>
+              <ion-input [(ngModel)]="form.details.address1" name="addressFirst" required="true"
+                placeholder="Your house number & street"></ion-input>
               <!-- <ion-text
               name="surnameMessage"
               [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
@@ -134,24 +113,16 @@
               <ion-label position="stacked">
                 Address Line 2
               </ion-label>
-              <ion-input
-                [(ngModel)]="form.details.address2"
-                name="addressSecond"
-                placeholder="The 2nd line of your address"
-              ></ion-input>
+              <ion-input [(ngModel)]="form.details.address2" name="addressSecond"
+                placeholder="The 2nd line of your address"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Town / City<span class="requirewd">*</span>
               </ion-label>
-              <ion-input
-                (ionChange)="onChangeTown()"
-                [(ngModel)]="form.details.town"
-                name="town"
-                required="true"
-                placeholder="Your town"
-              ></ion-input>
+              <ion-input (ionChange)="onChangeTown()" [(ngModel)]="form.details.town" name="town" required="true"
+                placeholder="Your town"></ion-input>
               <!-- <ion-text
               name="addressTownMessage"
               [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
@@ -165,18 +136,9 @@
                 County<span class="required">*</span>
               </ion-label>
 
-              <ion-select
-                (ionChange)="onChangeCounty()"
-                [(ngModel)]="form.details.county"
-                required
-                name="county"
-                placeholder="Your county"
-              >
-                <ion-select-option
-                  *ngFor="let county of counties"
-                  value="{{county}}"
-                  >{{county}}</ion-select-option
-                >
+              <ion-select (ionChange)="onChangeCounty()" [(ngModel)]="form.details.county" required name="county"
+                placeholder="Your county">
+                <ion-select-option *ngFor="let county of counties" value="{{county}}">{{county}}</ion-select-option>
               </ion-select>
               <!-- <ion-text
               name="addressTownMessage"
@@ -190,12 +152,8 @@
               <ion-label position="stacked">
                 Postcode<span class="required">*</span>
               </ion-label>
-              <ion-input
-                [(ngModel)]="form.details.postCode"
-                name="postcode"
-                required="true"
-                placeholder="Your postcode"
-              ></ion-input>
+              <ion-input [(ngModel)]="form.details.postCode" name="postcode" required="true"
+                placeholder="Your postcode"></ion-input>
               <!-- <ion-text
               name="addressTownMessage"
               [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
@@ -219,47 +177,24 @@
               <ion-label position="stacked">
                 Organisation Name
               </ion-label>
-              <ion-input
-                [(ngModel)]="form.volunteerGroup.name"
-                name="organisationName"
-                placeholder="The organisation name"
-              ></ion-input>
+              <ion-input [(ngModel)]="form.volunteerGroup.name" name="organisationName"
+                placeholder="The organisation name"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Organisation link, such as a Facebook group link (if applicable)
               </ion-label>
-              <ion-select
-                [(ngModel)]="form.volunteerGroup.link"
-                required
-                name="organisationCounty"
-                placeholder="Organisation link, such as a Facebook group link (if applicable)"
-              >
-                <ion-select-option
-                  *ngFor="let county of counties"
-                  value="{{county}}"
-                  >{{county}}</ion-select-option
-                >
-              </ion-select>
+              <ion-input [(ngModel)]="form.volunteerGroup.link" name="organisationLink"
+                placeholder="Organisation link, such as a Facebook group link (if applicable)"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Your role in the volunteer group (if applicable)
               </ion-label>
-              <ion-select
-                [(ngModel)]="form.volunteerGroup.role"
-                required
-                name="organisationCounty"
-                placeholder="Please choose a county where you will volunteer"
-              >
-                <ion-select-option
-                  *ngFor="let county of counties"
-                  value="{{county}}"
-                  >{{county}}</ion-select-option
-                >
-              </ion-select>
+              <ion-input [(ngModel)]="form.volunteerGroup.role" name="organisationRole"
+                placeholder="Your role in the volunteer group (if applicable)"></ion-input>
             </ion-item>
 
             <ion-item>
@@ -267,18 +202,9 @@
                 County of operation
               </ion-label>
 
-              <ion-select
-                (ionChange)="onChangeCounty()"
-                [(ngModel)]="form.organisationCounty"
-                required
-                name="organisationCounty"
-                placeholder="Please choose a county where you will volunteer"
-              >
-                <ion-select-option
-                  *ngFor="let county of counties"
-                  value="{{county}}"
-                  >{{county}}</ion-select-option
-                >
+              <ion-select [(ngModel)]="form.organisationCounty"
+                name="organisationCounty" placeholder="Please choose a county where you will volunteer">
+                <ion-select-option *ngFor="let county of counties" value="{{county}}">{{county}}</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-list>
@@ -295,13 +221,10 @@
           <ion-list>
             <ion-item>
               <ion-label position="stacked">
-                Password
+                Password<span class="requirewd">*</span>
               </ion-label>
-              <ion-input
-                name="password"
-                required="true"
-                placeholder="Min 6 chars & contain at least; 1 capital & 1 number"
-              ></ion-input>
+              <ion-input [(ngModel)]="form.password" name="password" required="true"
+                placeholder="Min 6 chars & contain at least; 1 capital & 1 number"></ion-input>
               <!-- <ion-text
                 name="addressTownMessage"
                 [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
@@ -312,13 +235,10 @@
 
             <ion-item>
               <ion-label position="stacked">
-                Confirm Password
+                Confirm Password<span class="requirewd">*</span>
               </ion-label>
-              <ion-input
-                name="passwordConfirmation"
-                required="true"
-                placeholder="Please confirm your password"
-              ></ion-input>
+              <ion-input [(ngModel)]="form.passwordConfirmation" name="passwordConfirmation" required="true" placeholder="Please confirm your password">
+              </ion-input>
               <!-- <ion-text
                 name="addressTownMessage"
                 [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
@@ -350,9 +270,7 @@
           </p>
           <p>
             I am aware that the team whom have developed the
-            <a href="https://selfisolationhelp.co.uk"
-              >https://selfisolationhelp.co.uk</a
-            >
+            <a href="https://selfisolationhelp.co.uk">https://selfisolationhelp.co.uk</a>
             tool, are proceeding to help people out of good will and I take full
             responsibility in the actions I will be performing further to
             collaborate with Self Isolation Help Team.
@@ -379,6 +297,7 @@
           </p>
         </ion-card-content>
       </ion-card>
+
       <ion-card>
         <ion-card-content>
           <ion-button type="submit">Complete Volunteer Sign up</ion-button>
