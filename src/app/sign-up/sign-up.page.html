@@ -120,12 +120,15 @@
               <ion-label position="stacked">
                 Address Line 2
               </ion-label>
-              <ion-input name="addressSecond" placeholder=""></ion-input>
+              <ion-input
+                name="addressSecond"
+                placeholder="Your suburb or village"
+              ></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
-                Town / City<span class="requirewd">*</span>
+                Town / City<span class="required">*</span>
               </ion-label>
               <ion-input
                 (ionChange)="onChangeTown()"
@@ -216,7 +219,7 @@
                 [(ngModel)]="form.organisationCounty"
                 required
                 name="organisationCounty"
-                placeholder="Please choose a county where you will volunteer"
+                placeholder="The county where you will volunteer"
               >
                 <ion-select-option
                   *ngFor="let county of counties"
@@ -244,7 +247,7 @@
               <ion-input
                 name="password"
                 required="true"
-                placeholder="Min 6 chars & contain at least; 1 capital & 1 number"
+                placeholder="Min 6 characters & include; 1 capital & 1 number"
               ></ion-input>
               <!-- <ion-text
                 name="addressTownMessage"
