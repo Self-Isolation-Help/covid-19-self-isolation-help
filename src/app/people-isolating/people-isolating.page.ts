@@ -30,19 +30,16 @@ export class PeopleIsolatingPage implements OnInit {
   }
 
   ngOnInit() {
-    this.isolators$ = this.user$.pipe(
-      map(user => user.workingCounties),
-      switchMap((counties) => {
-        return this.afs
-          .collection<Isolator>("isolating")
-          .valueChanges()
-          .pipe(
-            map((isolators: Isolator[]) => {
-              return isolators.filter(isolator => !isolator.resolved
-              && (!counties || counties.length < 1 || counties.includes('*') || counties.includes(isolator.details.county)));
-            }));
-      }));
+    this.isolators$ = this.afs
+      .collection<Isolator>("isolating")
+      .valueChanges()
+      .pipe(
+        map((isolators: Isolator[]) => {
+          return isolators.filter(isolator => !isolator.resolved);
+        })
+      );
   }
+
 
   onSignout() {
     this.router.navigate(["/"]);
