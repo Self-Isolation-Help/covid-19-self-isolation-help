@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar class="max-wrap">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Volunteer Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="max-wrap">
+    <ion-card *ngIf="(volunteer$ | async)">
+      <ion-card-content>
+        <h2>Details</h2>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Name:</ion-col>
+            <ion-col>
+              {{(volunteer$ | async)?.details.forename}} {{(volunteer$ |
+              async)?.details.middleNames}} {{(volunteer$ |
+              async)?.details.surname}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>Address:</ion-col>
+            <ion-col>
+              {{(volunteer$ | async)?.details.address1}} {{(volunteer$ |
+              async)?.details.address2}} {{(volunteer$ | async)?.details.town}}
+              {{(volunteer$ | async)?.details.county}} {{(volunteer$ |
+              async)?.details.postCode}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>Email:</ion-col>
+            <ion-col>
+              {{(volunteer$ | async)?.details.email}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>Telephone:</ion-col>
+            <ion-col>
+              {{(volunteer$ | async)?.details.telephone}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <h2>Volunteer Group</h2>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Name:</ion-col>
+            <ion-col>{{(volunteer$ | async)?.volunteerGroup.name}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>Link:</ion-col>
+            <ion-col>{{(volunteer$ | async)?.volunteerGroup.link}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>Role:</ion-col>
+            <ion-col>{{(volunteer$ | async)?.volunteerGroup.role}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <h2>Area of operations</h2>
+        <ion-grid>
+          <ion-row>
+            <ion-col>County/Counties of Operation:</ion-col>
+            <ion-col>{{(volunteer$ | async)?.workingCounties}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>Location(s) of Operation:</ion-col>
+            <ion-col>{{(volunteer$ | async)?.workingLocations}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>Role:</ion-col>
+            <ion-col>{{(volunteer$ | async)?.volunteerGroup.role}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <h2>Disclaimer Signed?</h2>
+        <p>The volunteer taps a checkbox to confirm.</p>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Signed</ion-col>
+            <ion-col
+              >{{(volunteer$ | async)?.checks.disclaimerSigned ? 'Yes' :
+              'No'}}</ion-col
+            >
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <h2>Date Signed Up</h2>
+        <p>{{(volunteer$ | async)?.dateCreated?.toDate() | date : 'medium'}}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card
+      *ngIf="!(volunteer$ | async)?.roles.volunteer && !(volunteer$ | async)?.roles.admin"
+    >
+      <ion-card-content>
+        <h2>Actions</h2>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button
+                expand="full"
+                shape="round"
+                (click)="onClickReject()"
+                color="danger"
+                >Reject</ion-button
+              >
+            </ion-col>
+            <ion-col>
+              <ion-button expand="full" shape="round" (click)="onClickApprove()"
+                >Approve</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

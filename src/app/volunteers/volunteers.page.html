@@ -3,53 +3,97 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>People Isolating</ion-title>
+    <ion-title>Volunteers</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/login']">Sign In</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="max-wrap">
     <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          Sign In
-        </ion-card-title>
-        <ion-card-subtitle>
-          Provide help to people who are self-isolating
-        </ion-card-subtitle>
-      </ion-card-header>
-
       <ion-card-content>
-        <p *ngIf="isDevMode">
-          Thank you for accessing the <em>preview</em> version of the
-          self-isolation tool. This preview is available for you to review and
-          decide if the tool is right for you and your team.
-        </p>
-        <p *ngIf="!isDevMode">
-          Sign in to view and help people who are Self Isolating. Only
-          volunteers who are vetted and security checked have access to the
-          system.
-        </p>
-
-        <ion-button [routerLink]="['/login']">Sign In</ion-button>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          Register as a Volunteer
-        </ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
+        <h1>
+          COVID-19: Volunteer in your local area (United Kingdom)
+        </h1>
         <p>
-          If you would like to register as a Volunteer, please click "Register
-          Now" below.
+          This tool routes self-isolation help requests with volunteers in your local
+          area. As a volunteer, you get a task based view of these self-isolators.
         </p>
 
-        <ion-button [routerLink]="['/register']">Register Now</ion-button>
+        <p>If you are new, please register below. Otherwise you can sign in.</p>
+
+        <p>
+          <ion-button fill="outline" [routerLink]="['/register']"
+            >Register</ion-button
+          >
+          <ion-button fill="outline" [routerLink]="['/login']"
+            >Sign in</ion-button
+          >
+        </p>
+
+        <h2>
+          Mutual Aid Groups: Please consider sharing SelfIsolationHelp.co.uk in
+          the community!
+        </h2>
+        <p>
+          We'd like to request Mutual Aid groups to
+          <ion-text color="danger"
+            >put <em>selfisolationhelp.co.uk</em> in leaflet and social media
+            campaigns</ion-text
+          >. If self-isolators fill in our form at selfisolationhelp.co.uk, then
+          you will have a central place to coordinate with the rest of your
+          group. Please let's help each other co-ordinate the effort, and make
+          sure you watch the video below.
+        </p>
       </ion-card-content>
     </ion-card>
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                Sign In
+              </ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              <p>
+                Sign in to view and help people who are Self Isolating. Only
+                volunteers who are vetted and security checked have access to
+                the system.
+              </p>
+
+              <ion-button fill="outline" [routerLink]="['/login']"
+                >Sign In</ion-button
+              >
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                Register as a Volunteer
+              </ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              <p>
+                If you would like to register as a Volunteer, please click
+                "Register Now" below.
+              </p>
+
+              <ion-button fill="outline" [routerLink]="['/register']"
+                >Register Now</ion-button
+              >
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <div class="ion-card">
       <ion-card>
         <ion-card-header>
