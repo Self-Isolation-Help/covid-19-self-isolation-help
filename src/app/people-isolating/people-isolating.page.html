@@ -11,7 +11,30 @@
 </ion-header>
 
 <ion-content>
-  <div class="max-wrap">
+  <div
+    class="max-wrap"
+    *ngIf="!(user$ | async)?.roles.admin && !(user$ | async)?.roles.volunteer"
+  >
+    <ion-card>
+      <ion-card-content>
+        <h1>Thank you</h1>
+        <p>
+          We are currently reviewing your application and we will be in touch with you directly.
+        </p>
+        <p>When you have been approved, you may return here.</p>
+        <p>
+          If you have any questions or queries, please contact
+          <a href="mailto:volunteers@selfisolationhelp.co.uk"
+            >volunteers@selfisolationhelp.co.uk</a
+          >
+        </p>
+      </ion-card-content></ion-card
+    >
+  </div>
+  <div
+    class="max-wrap"
+    *ngIf="(user$ | async)?.roles.admin || (user$ | async)?.roles.volunteer"
+  >
     <ion-card class="ion-margin-vertical">
       <ion-card-content>
         <p class="ion-margin-none ion-padding-none">
@@ -80,6 +103,4 @@
       </ion-list>
     </ion-card>
   </div>
-
-
 </ion-content>
