@@ -5,15 +5,17 @@
     </ion-buttons>
     <ion-title>Volunteers</ion-title>
     <ion-buttons slot="end">
+      <ion-button *ngIf="(user$ | async)?.roles.admin" color="secondary" [routerLink]="['/approve-volunteers']">Admin</ion-button>
       <ion-button (click)="onSignout()">Sign out</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
   <div
     class="max-wrap"
-    *ngIf="!(user$ | async)?.roles.admin && !(user$ | async)?.roles.volunteer"
+    *ngIf="(user$ | async) && !(user$ | async)?.roles.admin && !(user$ | async)?.roles.volunteer"
   >
     <ion-card>
       <ion-card-content>
@@ -103,4 +105,5 @@
       </ion-list>
     </ion-card>
   </div>
+
 </ion-content>
