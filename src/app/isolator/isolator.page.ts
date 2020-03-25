@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs/internal/Observable";
-import { Isolator } from "../isolator.model";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { AlertController } from "@ionic/angular";
+import { Isolator } from '../models/isolator.model';
 
 @Component({
   selector: "app-isolator",
