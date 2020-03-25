@@ -1,4 +1,4 @@
-export enum VolunteerRole {
-    Editor,
-    Volunteer
+export interface VolunteerRole {
+    volunteer?: boolean;
+    admin?: boolean;
 }

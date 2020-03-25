@@ -3,20 +3,24 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-title> Volunteer Sign Up</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <form #ngForm="ngForm" (ngSubmit)="onSubmitForm($event, ngForm)" class="max-wrap">
-    <div class="background">
-      <div class="background-inner"></div>
-    </div>
-    <div class="header">
-      <h1 class="max-wrap ion-padding">
-        Volunteer Sign Up
-      </h1>
-    </div>
+<ion-content *ngIf="submitting">
+  <div class="container">
+    <ion-spinner></ion-spinner>
+    <p>Signing up...</p>
+  </div>
 
+</ion-content>
+
+<ion-content class="ion-padding" *ngIf="!submitting">
+  <form
+    #ngForm="ngForm"
+    (ngSubmit)="onSubmitForm($event, ngForm)"
+    class="max-wrap"
+  >
     <div class="max-wrap">
       <ion-card>
         <ion-card-header>
@@ -30,21 +34,29 @@
               <ion-label position="stacked">
                 First Name<span class="required">*</span>
               </ion-label>
-              <ion-input [(ngModel)]="form.details.forename" name="forename" required="true"
-                placeholder="Your first name"></ion-input>
-              <!-- <ion-text
+              <ion-input
+                [(ngModel)]="form.details.forename"
+                name="forename"
+                required="true"
+                placeholder="Your first name"
+              ></ion-input>
+              <ion-text
                 name="forenameMessage"
-                [hidden]="ngForm.controls.forename && (ngForm.controls.forename.valid || (ngForm.controls.forename.pristine))"
+                [hidden]="(ngForm?.controls?.forename?.valid || !submitted)"
                 color="danger"
                 >Forename is required</ion-text
-              > -->
+              >
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Middle Name
               </ion-label>
-              <ion-input [(ngModel)]="form.details.middleNames" name="middlename" placeholder="Your middle name">
+              <ion-input
+                [(ngModel)]="form.details.middleNames"
+                name="middlename"
+                placeholder="Your middle name"
+              >
               </ion-input>
             </ion-item>
 
@@ -52,36 +64,57 @@
               <ion-label position="stacked">
                 Last Name<span class="required">*</span>
               </ion-label>
-              <ion-input [(ngModel)]="form.details.surname" name="surname" required="true" placeholder="Your surname">
+              <ion-input
+                [(ngModel)]="form.details.surname"
+                name="surname"
+                required="true"
+                placeholder="Your surname"
+              >
               </ion-input>
+
+              <ion-text
+                name="surnameMessage"
+                [hidden]="(ngForm?.controls?.surname?.valid || !submitted)"
+                color="danger"
+                >Surname is required</ion-text
+              >
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Telephone Number<span class="required">*</span>
               </ion-label>
-              <ion-input [(ngModel)]="form.details.telephone" name="telephoneNumber" required="true"
-                placeholder="Your telephone number"></ion-input>
-              <!-- <ion-text
-                name="surnameMessage"
-                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+              <ion-input
+                [(ngModel)]="form.details.telephone"
+                name="telephone"
+                required="true"
+                placeholder="Your telephone number"
+              ></ion-input>
+              <ion-text
+                name="telephoneMessage"
+                [hidden]="(ngForm?.controls?.telephone?.valid || !submitted)"
                 color="danger"
-                >Forename is required</ion-text
-              > -->
+                >Telephone is required</ion-text
+              >
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Email Address<span class="required">*</span>
               </ion-label>
-              <ion-input [(ngModel)]="form.details.email" name="email" required="true" placeholder="Your email address">
+              <ion-input
+                [(ngModel)]="form.details.email"
+                name="email"
+                required="true"
+                placeholder="Your email address"
+              >
               </ion-input>
-              <!-- <ion-text
+              <ion-text
                 name="surnameMessage"
-                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+                [hidden]="(ngForm?.controls?.email?.valid || !submitted)"
                 color="danger"
-                >Forename is required</ion-text
-              > -->
+                >Email is required</ion-text
+              >
             </ion-item>
           </ion-list>
         </ion-card-content>
@@ -99,36 +132,48 @@
               <ion-label position="stacked">
                 Address Line 1<span class="required">*</span>
               </ion-label>
-              <ion-input [(ngModel)]="form.details.address1" name="addressFirst" required="true"
-                placeholder="Your house number & street"></ion-input>
-              <!-- <ion-text
-              name="surnameMessage"
-              [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
-              color="danger"
-              >Forename is required</ion-text
-            > -->
+              <ion-input
+                [(ngModel)]="form.details.address1"
+                name="addressFirst"
+                required="true"
+                placeholder="Your house number & street"
+              ></ion-input>
+              <ion-text
+                name="address1Message"
+                [hidden]="(ngForm?.controls?.addressFirst?.valid || !submitted)"
+                color="danger"
+                >Address line 1 is required</ion-text
+              >
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Address Line 2
               </ion-label>
-              <ion-input [(ngModel)]="form.details.address2" name="addressSecond"
-                placeholder="The 2nd line of your address"></ion-input>
+              <ion-input
+                [(ngModel)]="form.details.address2"
+                name="addressSecond"
+                placeholder="The 2nd line of your address"
+              ></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Town / City<span class="required">*</span>
               </ion-label>
-              <ion-input (ionChange)="onChangeTown()" [(ngModel)]="form.details.town" name="town" required="true"
-                placeholder="Your town"></ion-input>
-              <!-- <ion-text
-              name="addressTownMessage"
-              [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
-              color="danger"
-              >Forename is required</ion-text
-            > -->
+              <ion-input
+                (ionChange)="onChangeTown()"
+                [(ngModel)]="form.details.town"
+                name="town"
+                required="true"
+                placeholder="Your town"
+              ></ion-input>
+              <ion-text
+                name="addressTownMessage"
+                [hidden]="(ngForm?.controls?.town?.valid || !submitted)"
+                color="danger"
+                >Town is required</ion-text
+              >
             </ion-item>
 
             <ion-item>
@@ -136,32 +181,108 @@
                 County<span class="required">*</span>
               </ion-label>
 
-              <ion-select [(ngModel)]="form.details.county" required name="county"
-                placeholder="Your county">
-                <ion-select-option *ngFor="let county of counties" value="{{county}}">{{county}}</ion-select-option>
+              <ion-select
+                (ionChange)="onChangeCounty()"
+                [(ngModel)]="form.details.county"
+                required
+                name="county"
+                placeholder="Your county"
+              >
+                <ion-select-option
+                  *ngFor="let county of counties"
+                  value="{{county}}"
+                  >{{county}}</ion-select-option
+                >
               </ion-select>
-              <!-- <ion-text
-              name="addressTownMessage"
-              [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
-              color="danger"
-              >Forename is required</ion-text
-            > -->
+
+              <ion-text
+                name="addressTownMessage"
+                [hidden]="(ngForm?.controls?.county?.valid || !submitted)"
+                color="danger"
+                >County is required</ion-text
+              >
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Postcode<span class="required">*</span>
               </ion-label>
-              <ion-input [(ngModel)]="form.details.postCode" name="postcode" required="true"
-                placeholder="Your postcode"></ion-input>
-              <!-- <ion-text
-              name="addressTownMessage"
-              [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
-              color="danger"
-              >Forename is required</ion-text
-            > -->
+              <ion-input
+                [(ngModel)]="form.details.postCode"
+                name="postcode"
+                required="true"
+                placeholder="Your postcode"
+              ></ion-input>
+              <ion-text
+                name="addressTownMessage"
+                [hidden]="(ngForm?.controls?.postcode?.valid || !submitted)"
+                color="danger"
+                >Postcode is required</ion-text
+              >
             </ion-item>
           </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            What area(s) will you volunteer in?
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="stacked">
+              County of operations<span class="required">*</span>
+            </ion-label>
+
+            <ion-select
+              multiple
+              (ionChange)="onChangeWorkingCounty()"
+              [(ngModel)]="form.workingCounties"
+              name="organisationCounty"
+              placeholder="Please choose a county where you will volunteer"
+            >
+              <ion-select-option
+                *ngFor="let county of counties"
+                value="{{county}}"
+                >{{county}}</ion-select-option
+              >
+            </ion-select>
+            <ion-text
+              name="addressTownMessage"
+              [hidden]="(ngForm?.controls?.county?.valid || !submitted)"
+              color="danger"
+              >County of operations is required</ion-text
+            >
+          </ion-item>
+
+          <ion-item *ngFor="let workingLocation of locationGroups">
+            <ion-label position="stacked"
+              >{{workingLocation.locations}}<span class="required"
+                >*</span
+              ></ion-label
+            >
+            <ion-select
+              multiple
+              [(ngModel)]="form.workingLocations"
+              required
+              [name]="workingLocation"
+              [placeholder]="workingLocation.locations"
+            >
+              <ion-select-option
+                *ngFor="let location of workingLocation.items"
+                value="{{location.name}}"
+                >{{location.name}}</ion-select-option
+              >
+            </ion-select>
+            <ion-text
+              name="addressTownMessage"
+              [hidden]="(ngForm?.controls[workingLocation]?.valid || !submitted)"
+              color="danger"
+              >{{workingLocation.locations}} is required</ion-text
+            >
+          </ion-item>
         </ion-card-content>
       </ion-card>
 
@@ -177,35 +298,33 @@
               <ion-label position="stacked">
                 Organisation Name
               </ion-label>
-              <ion-input [(ngModel)]="form.volunteerGroup.name" name="organisationName"
-                placeholder="The organisation name"></ion-input>
+              <ion-input
+                [(ngModel)]="form.volunteerGroup.name"
+                name="organisationName"
+                placeholder="The organisation name"
+              ></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Organisation link, such as a Facebook group link (if applicable)
               </ion-label>
-              <ion-input [(ngModel)]="form.volunteerGroup.link" name="organisationLink"
-                placeholder="Organisation link, such as a Facebook group link (if applicable)"></ion-input>
+              <ion-input
+                [(ngModel)]="form.volunteerGroup.link"
+                name="organisationLink"
+                placeholder="Organisation link, such as a Facebook group link (if applicable)"
+              ></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Your role in the volunteer group (if applicable)
               </ion-label>
-              <ion-input [(ngModel)]="form.volunteerGroup.role" name="organisationRole"
-                placeholder="Your role in the volunteer group (if applicable)"></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-label position="stacked">
-                County of operation
-              </ion-label>
-
-              <ion-select multiple [(ngModel)]="form.workingCounties"
-                name="organisationCounty" placeholder="Please choose a county where you will volunteer">
-                <ion-select-option *ngFor="let county of counties" value="{{county}}">{{county}}</ion-select-option>
-              </ion-select>
+              <ion-input
+                [(ngModel)]="form.volunteerGroup.role"
+                name="organisationRole"
+                placeholder="Your role in the volunteer group (if applicable)"
+              ></ion-input>
             </ion-item>
           </ion-list>
         </ion-card-content>
@@ -218,33 +337,64 @@
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
+          <p>
+            Must contain a minimum of 6 characters & contain at least 1 capital
+            letter and 1 number.
+          </p>
           <ion-list>
             <ion-item>
               <ion-label position="stacked">
                 Password<span class="required">*</span>
               </ion-label>
-              <ion-input [(ngModel)]="password" name="password" required="true"
-                placeholder="Min 6 chars & contain at least; 1 capital & 1 number"></ion-input>
-              <!-- <ion-text
-                name="addressTownMessage"
-                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+              <ion-input
+                [(ngModel)]="password"
+                #passwordInput="ngModel"
+                name="password"
+                required="true"
+                type="password"
+                minlength="6"
+              ></ion-input>
+              <ion-text
+                name="passwordMessage"
+                *ngIf="ngForm.submitted && passwordInput?.errors?.required"
                 color="danger"
-                >Forename is required</ion-text
-              > -->
+                >Password is required</ion-text
+              >
+              <ion-text
+                name="passwordMessage"
+                *ngIf="ngForm.submitted && passwordInput?.errors?.minlength"
+                color="danger"
+                type="password"
+                >Password must be a minimum of 6 characters</ion-text
+              >
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked">
                 Confirm Password<span class="required">*</span>
               </ion-label>
-              <ion-input [(ngModel)]="confirmedPassword" name="confirmedPassword" required="true" placeholder="Please confirm your password">
+              <ion-input
+                [(ngModel)]="confirmedPassword"
+                name="confirmedPassword"
+                required="true"
+                type="password"
+                placeholder="Please confirm your password"
+              >
               </ion-input>
-              <!-- <ion-text
-                name="addressTownMessage"
-                [hidden]="ngForm.controls.surname && (ngForm.controls.surname.valid || (ngForm.controls.surname.pristine))"
+
+              <ion-text
+                name="passwordMessage"
+                [hidden]="(ngForm?.controls?.confirmedPassword?.valid || !submitted)"
                 color="danger"
-                >Forename is required</ion-text
-              > -->
+                type="password"
+                >Confirm password is required</ion-text
+              >
+              <ion-text
+                name="passwordMessage"
+                [hidden]="(!confirmedPassword || !password) || (password === confirmedPassword || !submitted)"
+                color="danger"
+                >Confirmed password is different</ion-text
+              >
             </ion-item>
           </ion-list>
         </ion-card-content>
@@ -260,46 +410,77 @@
             Please be aware we are a <b>NEW volunteering group</b> and as such
             we are taking full responsibility of our actions and our volunteers,
             for that process to happen successfully for everyone involved, we
-            would need you to help us further with 4 more easy steps to follow
-            before getting you up to speed.
+            ask that you follow our agreement below.
           </p>
           <p>
-            I {{form.firstname}} {{form.surname}} have put myself forward as a
-            Volunteer to support those people whom are self-isolating and need
-            medicine and food to be bought to their door step.
+            <em>
+              "I {{form.details.forename}} {{form.details.surname}} have put
+              myself forward as a Volunteer to support those people whom are
+              self-isolating and need medicine and food to be bought to their
+              door step.</em
+            >
           </p>
           <p>
-            I am aware that the team whom have developed the
-            <a href="https://selfisolationhelp.co.uk">https://selfisolationhelp.co.uk</a>
-            tool, are proceeding to help people out of good will and I take full
-            responsibility in the actions I will be performing further to
-            collaborate with Self Isolation Help Team.
+            <em>
+              I am aware that the team whom have developed the
+              <a href="https://selfisolationhelp.co.uk"
+                >https://selfisolationhelp.co.uk</a
+              >
+              tool, are proceeding to help people out of good will and I take
+              full responsibility in the actions I will be performing further to
+              collaborate with Self Isolation Help Team."
+            </em>
+          </p>
+          <h3><strong>COVID-19 Protocols</strong></h3>
+          <p>
+            At the Self Isolation Help Team we deeply care about the health &
+            safety of our friends and family. Our Volunteers will follow all
+            current COVID-19 protocols. You will be asked to use hand sanitizer
+            to keep distance and leave shopping and all the valuables bought at
+            the door step of your self-isolator. We enforce Social Distancing a
+            rule which MUST be respected. Let’s do our part and allow experts to
+            do theirs
           </p>
           <ion-card>
             <ion-card-content>
               <p>I agree to the terms of use</p>
-              <ion-checkbox [(ngModel)]="form.checks.disclaimerSigned" checked="false" name="acceptTerms"></ion-checkbox>
+              <ion-checkbox
+                [(ngModel)]="form.checks.disclaimerSigned"
+                checked="false"
+                required
+                name="acceptTerms"
+              ></ion-checkbox>
+              <p>
+                <ion-text
+                  name="passwordMessage"
+                  [hidden]="(ngForm?.controls?.acceptTerms?.valid || !submitted)"
+                  color="danger"
+                  >You must sign the disclaimer to be able to submit the
+                  form</ion-text
+                >
+              </p>
             </ion-card-content>
           </ion-card>
-          <!-- <ion-checkbox checked="false"></ion-checkbox> -->
-        </ion-card-content>
-      </ion-card>
-      <ion-card>
-        <ion-card-content>
-          <p>
-            COVID-19 Protocols. At the Self Isolation Help Team we deeply care
-            about the health & safety of our friends and family. Our Volunteers
-            will follow all current COVID-19 protocols. You will be asked to use
-            hand sanitizer to keep distance and leave shopping and all the
-            valuables bought at the door step of your self-isolator. We enforce
-            Social Distancing a rule which MUST be respected. Let’s do our part
-            and allow experts to do theirs
-          </p>
         </ion-card-content>
       </ion-card>
 
       <ion-card>
         <ion-card-content>
+          <p>
+            <ion-text
+              color="danger"
+              *ngIf="ngForm.form.status === 'INVALID' && submitted"
+              ><ion-icon name="alert-circle-outline"></ion-icon>
+              Please fill in all required fields
+            </ion-text>
+          </p>
+          <p *ngIf="error">
+            <ion-text color="danger"
+              ><ion-icon name="alert-circle-outline"></ion-icon
+              >{{error}}</ion-text
+            >
+          </p>
+
           <ion-button type="submit">Complete Volunteer Sign up</ion-button>
         </ion-card-content>
       </ion-card>
