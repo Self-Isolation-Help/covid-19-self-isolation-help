@@ -4,10 +4,10 @@ import { COUNTIES } from "../counties";
 import { LOCATIONS } from "../locations";
 import { COUNTIES_LOCATION_MAP } from "../counties-location-map";
 import { SubdomainService } from "../subdomain.service";
-import { Volunteer } from '../models/volunteer';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { NgForm } from '@angular/forms';
+import { Volunteer } from "../models/volunteer";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-sign-up",
@@ -21,8 +21,11 @@ export class SignUpPage implements OnInit {
   counties: string[] = COUNTIES.sort();
   locations = LOCATIONS.sort();
   countiesLocationMap = COUNTIES_LOCATION_MAP;
-  locationsList = [];
+  locationGroups = [];
   subdomain;
+  submitted = false;
+  submitting = false;
+  error: string;
 
   constructor(
     private router: Router,
@@ -33,9 +36,10 @@ export class SignUpPage implements OnInit {
     this.form = {
       details: {},
       volunteerGroup: {},
-      checks: {}
+      checks: {},
+      roles: {}
     } as Volunteer;
-   }
+  }
 
   ngOnInit() {
     this.subdomain = this.subdomainService.getLabelForSubdomain();
@@ -50,12 +54,53 @@ export class SignUpPage implements OnInit {
     }
   }
 
-  onSubmitForm($event, ngForm: NgForm) {
-    if (ngForm.form.valid && this.form.checks.disclaimerSigned && this.password === this.confirmedPassword) {
-      this.auth.createUserWithEmailAndPassword(this.form.details.email, this.password)
-      .then((newFireStoreUser) => {
-        this.afs.doc(`volunteers/${newFireStoreUser.user.uid}`).set(this.form).then(_ => console.log("Submited"));
+  onChangeCounty() {
+    if (this.form.details.county) {
+      this.form.workingCounties = [this.form.details.county];
+    } else {
+      delete this.form.workingCounties;
+    }
+  }
+
+  onChangeWorkingCounty() {
+    this.locationGroups = this.countiesLocationMap
+      .filter(filter => this.form.workingCounties.includes(filter.county))
+      .map(map => {
+        return {
+          ...map,
+          ...{
+            items: this.locations.find(
+              location => location.county === map.county
+            ).items
+          }
+        };
       });
+  }
+
+  onSubmitForm($event, ngForm: NgForm) {
+    this.error = "";
+
+    this.submitted = true;
+    if (
+      ngForm.form.valid &&
+      this.form.checks.disclaimerSigned &&
+      this.password === this.confirmedPassword
+    ) {
+      this.submitting = true;
+      this.auth
+        .createUserWithEmailAndPassword(this.form.details.email, this.password)
+        .then(newFireStoreUser => {
+          this.afs
+            .doc(`volunteers/${newFireStoreUser.user.uid}`)
+            .set(this.form).then(()=>{
+              this.router.navigate(["/people-isolating"]);
+          });
+        })
+        .catch(error => {
+          this.submitting = false;
+          this.error = error.message;
+        })
+
     } else {
     }
   }

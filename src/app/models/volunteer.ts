@@ -23,7 +23,7 @@ export interface Volunteer {
         dbsNumber: string;
         disclaimerSigned: boolean;
     };
-
     workingCounties: string[];
+    workingLocations: string[];
     roles?: VolunteerRole[];
 }
