@@ -15,7 +15,6 @@
 </ion-content>
 
 <ion-content class="ion-padding" *ngIf="!submitting">
-
   <form
     #ngForm="ngForm"
     (ngSubmit)="onSubmitForm($event, ngForm)"
@@ -30,9 +29,9 @@
         </ion-card-header>
         <ion-card-content>
           <p class="leading">
-            To register as a Volunteer and connect with people in need in your area,
-            please follow the instructions below. All volunteer registration requests
-            are vetted manually.
+            To register as a Volunteer and connect with people in need in your
+            area, please follow the instructions below. All volunteer
+            registration requests are vetted manually.
           </p>
 
           <ion-list>
@@ -121,6 +120,18 @@
                 color="danger"
                 >Email is required</ion-text
               >
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                DBS number or equivalent (optional)
+              </ion-label>
+              <ion-input
+                [(ngModel)]="form.details.dbs"
+                name="dbs"
+                placeholder="Your dbs number or equivalent (optional)"
+              >
+              </ion-input>
             </ion-item>
           </ion-list>
         </ion-card-content>
@@ -449,7 +460,14 @@
           </p>
           <ion-card>
             <ion-card-content>
-              <p>I agree to the terms of use</p>
+              <p>
+                I agree to the terms of use and
+                <a
+                  target="_blank"
+                  href="https://selfisolationhelp.co.uk/privacy-policy"
+                  >Privacy Policy</a
+                >
+              </p>
               <ion-checkbox
                 [(ngModel)]="form.checks.disclaimerSigned"
                 checked="false"
@@ -466,6 +484,24 @@
                 >
               </p>
             </ion-card-content>
+            <!-- <ion-card-content>
+              <p>I h</p>
+              <ion-checkbox
+                [(ngModel)]="form.checks.disclaimerSigned"
+                checked="false"
+                required
+                name="acceptTerms"
+              ></ion-checkbox>
+              <p>
+                <ion-text
+                  name="passwordMessage"
+                  [hidden]="(ngForm?.controls?.acceptTerms?.valid || !submitted)"
+                  color="danger"
+                  >You must sign the disclaimer to be able to submit the
+                  form</ion-text
+                >
+              </p>
+            </ion-card-content> -->
           </ion-card>
         </ion-card-content>
       </ion-card>
