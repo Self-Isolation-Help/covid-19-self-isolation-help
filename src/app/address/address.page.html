@@ -19,8 +19,10 @@
     <ion-card>
       <ion-card-header>
         <ion-card-title>
-          Your information
+          Self-isolator's Information
         </ion-card-title>
+        <br/>
+        <ion-text color="dark"><b>If you are entering information on behalf of someone else, please enter their details</b></ion-text>
       </ion-card-header>
       <ion-card-content>
         <p style="margin: 0;">
@@ -35,7 +37,7 @@
               [(ngModel)]="form.forename"
               name="forename"
               required="true"
-              placeholder="Your first name"
+              placeholder="First name"
             ></ion-input>
             <ion-text
               [hidden]="ngForm.controls.forename && (ngForm.controls.forename.valid || (ngForm.controls.forename.pristine))"
@@ -49,7 +51,7 @@
             <ion-input
               [(ngModel)]="form.surname"
               name="surname"
-              placeholder="Your surname"
+              placeholder="Surname"
             ></ion-input>
           </ion-item>
           <ion-item>
@@ -60,7 +62,7 @@
               [(ngModel)]="form.telephone"
               name="telephone"
               required
-              placeholder="Your contact telephone number"
+              placeholder="Contact telephone number"
             ></ion-input>
             <ion-text
               [hidden]="ngForm.controls.telephone && (ngForm.controls.telephone.valid || (ngForm.controls.telephone.pristine))"
@@ -73,7 +75,7 @@
             <ion-input
               [(ngModel)]="form.email"
               name="email"
-              placeholder="Your Email Address"
+              placeholder="Email Address"
             ></ion-input>
           </ion-item>
         </ion-list>
@@ -82,7 +84,7 @@
     <ion-card>
       <ion-card-header>
         <ion-card-title>
-          Your address
+          Address
         </ion-card-title>
       </ion-card-header>
       <ion-card-content>
@@ -95,7 +97,7 @@
               [(ngModel)]="form.streetName"
               required
               name="streetName"
-              placeholder="Your street name"
+              placeholder="Street name only (e.g Squires Lane)"
             ></ion-input>
             <ion-text
               [hidden]="ngForm.controls.streetName && (ngForm.controls.streetName.valid || (ngForm.controls.streetName.pristine))"
@@ -113,7 +115,7 @@
               [(ngModel)]="form.town"
               required
               name="town"
-              placeholder="Your town or city"
+              placeholder="Town or city"
             ></ion-input>
             <ion-text
               [hidden]="ngForm.controls.town && (ngForm.controls.town.valid || (ngForm.controls.town.pristine))"
@@ -131,7 +133,7 @@
               [(ngModel)]="form.county"
               required
               name="county"
-              placeholder="Your county"
+              placeholder="County"
             >
               <ion-select-option
                 *ngFor="let county of counties"
@@ -158,7 +160,7 @@
               [(ngModel)]="form.location"
               required
               name="location"
-              placeholder="Your county"
+              placeholder="County"
             >
               <ion-select-option
                 *ngFor="let location of locationsList"
@@ -182,7 +184,7 @@
                 [(ngModel)]="form.postCode"
                 name="postCode"
                 required
-                placeholder="Your UK postcode"
+                placeholder="UK postcode"
               ></ion-input>
               <ion-text
                 [hidden]="ngForm.controls.postCode && (ngForm.controls.postCode.valid || (ngForm.controls.postCode.pristine))"
