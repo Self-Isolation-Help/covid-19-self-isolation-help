@@ -8,6 +8,7 @@ import { Volunteer } from "../models/volunteer";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { NgForm } from "@angular/forms";
+import * as firebase from "firebase";
 
 @Component({
   selector: "app-sign-up",
@@ -37,7 +38,7 @@ export class SignUpPage implements OnInit {
       details: {},
       volunteerGroup: {},
       checks: {},
-      roles: {}
+      roles: {},
     } as Volunteer;
   }
 
@@ -79,7 +80,7 @@ export class SignUpPage implements OnInit {
 
   onSubmitForm($event, ngForm: NgForm) {
     this.error = "";
-
+    this.form.dateCreated = firebase.firestore.FieldValue.serverTimestamp();
     this.submitted = true;
     if (
       ngForm.form.valid &&

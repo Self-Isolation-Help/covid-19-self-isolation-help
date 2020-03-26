@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar class="max-wrap">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Volunteer Admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="max-wrap">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Needs Approval
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item detail *ngFor="let volunteer of volunteersNeedApproval" [routerLink]="['/volunteer']" [queryParams]="{id: volunteer.id}">
+          <ion-label><strong>{{volunteer.details.forename}} {{volunteer.details.surname}}</strong> </ion-label>
+          <ion-badge slot="end">{{volunteer.workingCounties}}</ion-badge>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Already Approved
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item detail *ngFor="let volunteer of volunteersAlreadyApproved" [routerLink]="['/volunteer']" [queryParams]="{id: volunteer.id}">
+          <ion-label><strong>{{volunteer.details.forename}} {{volunteer.details.surname}}</strong> </ion-label>
+          <ion-badge slot="end">{{volunteer.workingCounties}}</ion-badge>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

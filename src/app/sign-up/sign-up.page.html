@@ -12,10 +12,10 @@
     <ion-spinner></ion-spinner>
     <p>Signing up...</p>
   </div>
-
 </ion-content>
 
 <ion-content class="ion-padding" *ngIf="!submitting">
+
   <form
     #ngForm="ngForm"
     (ngSubmit)="onSubmitForm($event, ngForm)"
@@ -29,6 +29,12 @@
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
+          <p class="leading">
+            To register as a Volunteer and connect with people in need in your area,
+            please follow the instructions below. All volunteer registration requests
+            are vetted manually.
+          </p>
+
           <ion-list>
             <ion-item>
               <ion-label position="stacked">

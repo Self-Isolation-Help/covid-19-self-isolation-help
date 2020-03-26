@@ -106,7 +106,7 @@ const routes: Routes = [
   {
     path: "register",
     loadChildren: () =>
-      import("./register/register.module").then(m => m.RegisterPageModule)
+      import("./sign-up/sign-up.module").then(m => m.SignUpPageModule)
   },
   {
     path: "contact",
@@ -125,6 +125,14 @@ const routes: Routes = [
   {
     path: 'sign-up',
     loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
+  },
+  {
+    path: 'approve-volunteers',
+    loadChildren: () => import('./approve-volunteers/approve-volunteers.module').then( m => m.ApproveVolunteersPageModule)
+  },
+  {
+    path: 'volunteer',
+    loadChildren: () => import('./volunteer/volunteer.module').then( m => m.VolunteerPageModule)
   }
 ];
 

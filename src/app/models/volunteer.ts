@@ -26,4 +26,6 @@ export interface Volunteer {
     workingCounties: string[];
     workingLocations: string[];
     roles?: VolunteerRole[];
+    dateCreated?: any;
+    approved?: boolean;
 }
