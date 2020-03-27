@@ -15,6 +15,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 export class IsolatorPage implements OnInit {
   isolator: any;
   id: string;
+  userUid: string;
   constructor(
     private afs: AngularFirestore,
     public auth: AngularFireAuth,
@@ -27,6 +28,12 @@ export class IsolatorPage implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       this.id = params.id;
       this.getIsolator(params.id);
+    });
+
+    this.auth.authState.subscribe(user => {
+      if (user) {
+        this.userUid = user.uid;
+      }
     });
   }
 
@@ -70,7 +77,7 @@ export class IsolatorPage implements OnInit {
       .doc(this.id)
       .update({
         resolved: true,
-        lastUpdatedBy: firebase.auth().currentUser.uid,
+        lastUpdatedBy: this.userUid,
         lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp()
       });
     this.router.navigate(["/people-isolating-grouped"], {
@@ -84,7 +91,7 @@ export class IsolatorPage implements OnInit {
       .doc(this.id)
       .update({
         inProgress: true,
-        lastUpdatedBy: firebase.auth().currentUser.uid,
+        lastUpdatedBy: this.userUid,
         lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp()
       });
     console.log("after update: " + this.getIsolator(this.id));
