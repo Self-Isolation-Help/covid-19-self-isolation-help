@@ -28,6 +28,8 @@ export interface Isolator {
   };
   hasCompletedForm: boolean;
   resolved?: boolean;
+  lastUpdatedBy?: string;
+  lastUpdatedTime?: any;
   id?: string;
   inProgress?: boolean;
 }
