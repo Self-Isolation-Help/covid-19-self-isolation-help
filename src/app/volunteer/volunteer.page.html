@@ -114,6 +114,26 @@
           <ion-row>
             <ion-col>
               <ion-button
+                *ngIf="!(volunteer$ | async)?.inProgress.inProgress"
+                expand="full"
+                shape="round"
+                (click)="onClickInProgress()"
+                color="warning"
+                >In Progress</ion-button
+              >
+              <ion-button
+                *ngIf="(volunteer$ | async)?.inProgress.inProgress"
+                shape="round"
+                expand="full"
+                (click)="onClickRemoveInProgress()"
+                fill="outline"
+                color="warning"
+                >Remove "In Progress" label</ion-button
+              >
+            </ion-col>
+
+            <ion-col>
+              <ion-button
                 expand="full"
                 shape="round"
                 (click)="onClickReject()"

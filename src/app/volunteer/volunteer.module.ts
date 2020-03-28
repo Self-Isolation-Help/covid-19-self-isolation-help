@@ -1,3 +1,4 @@
+import { AngularFireAuth } from "@angular/fire/auth";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
@@ -12,6 +13,6 @@ import { AngularFirestore } from "@angular/fire/firestore";
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, VolunteerPageRoutingModule],
   declarations: [VolunteerPage],
-  providers: [AngularFirestore]
+  providers: [AngularFirestore, AngularFireAuth]
 })
 export class VolunteerPageModule {}

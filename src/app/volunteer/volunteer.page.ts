@@ -5,6 +5,8 @@ import { Isolator } from "../models/isolator.model";
 import { Volunteer } from "../models/volunteer";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AlertController } from "@ionic/angular";
+import * as firebase from "firebase";
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
   selector: "app-volunteer",
@@ -14,18 +16,25 @@ import { AlertController } from "@ionic/angular";
 export class VolunteerPage implements OnInit {
   volunteer$: Observable<Volunteer>;
   id: string;
+  userUid: string;
 
   constructor(
     private afs: AngularFirestore,
     private activatedRoute: ActivatedRoute,
     private alertController: AlertController,
-    private router: Router
+    private router: Router,
+    public auth: AngularFireAuth
   ) {}
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.id = params.id;
       this.getVolunteer(params.id);
+    });
+    this.auth.authState.subscribe(user => {
+      if (user) {
+        this.userUid = user.uid;
+      }
     });
   }
 
@@ -43,7 +52,7 @@ export class VolunteerPage implements OnInit {
       .update({
         rejected: true
       });
-    this.router.navigate(['/approve-volunteers'])
+    this.router.navigate(["/approve-volunteers"]);
   }
 
   onApprove() {
@@ -52,10 +61,37 @@ export class VolunteerPage implements OnInit {
       .doc(this.id)
       .update({
         roles: {
-            volunteer: true
+          volunteer: true
         }
       });
   }
+
+  onClickInProgress() {
+    this.afs
+      .collection<Isolator>("volunteers")
+      .doc(this.id)
+      .update({
+        inProgress: {
+          inProgress: true,
+          lastUpdatedBy: this.userUid,
+          lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp()
+        }
+      });
+  }
+
+  onClickRemoveInProgress() {
+    this.afs
+      .collection<Isolator>("volunteers")
+      .doc(this.id)
+      .update({
+        inProgress: {
+          inProgress: false,
+          lastUpdatedBy: this.userUid,
+          lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp()
+        }
+      });
+  }
+
   async onClickReject() {
     const alert = await this.alertController.create({
       header: "Confirm Resolve",

@@ -102,7 +102,9 @@ export class IsolatorPage implements OnInit {
       .collection<Isolator>("isolating")
       .doc(this.id)
       .update({
-        inProgress: false
+        inProgress: false,
+        lastUpdatedBy: this.userUid,
+        lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp()
       });
   }
 
