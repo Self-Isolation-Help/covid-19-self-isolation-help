@@ -28,8 +28,16 @@
               >{{volunteer.details.forename}}
               {{volunteer.details.surname}}</strong
             >
+            <br />
+            <ion-note
+              >{{volunteer.dateCreated.toDate() | date: 'medium'}}<br />
+              <strong>{{volunteer.workingLocations}}</strong></ion-note
+            >
           </ion-label>
-          <ion-badge slot="end">{{volunteer.workingCounties}}</ion-badge>
+
+          <ion-badge *ngFor="let county of volunteer.workingCounties" slot="end"
+            >{{county}}</ion-badge
+          >
         </ion-item>
       </ion-card-content>
     </ion-card>
@@ -52,6 +60,11 @@
               ><strong
                 >{{volunteer.details.forename}}
                 {{volunteer.details.surname}}</strong
+              >
+              <br />
+              <ion-note
+                >{{volunteer.dateCreated.toDate() | date: 'medium'}}<br />
+                <strong>{{volunteer.workingLocations}}</strong></ion-note
               >
             </ion-label>
             <ion-badge slot="end">{{volunteer.workingCounties}}</ion-badge>
