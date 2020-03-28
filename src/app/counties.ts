@@ -5,7 +5,6 @@ export const COUNTIES: string[] = [
     "Buckinghamshire",
     "Cambridgeshire",
     "Cheshire",
-    "City of London",
     "Cornwall",
     "Cumbria",
     "Derbyshire",
