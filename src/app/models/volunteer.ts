@@ -28,8 +28,10 @@ export interface Volunteer {
   workingLocations: string[];
   roles?: VolunteerRole[];
   dateCreated?: any;
-  lastUpdatedTime?: any;
-  lastUpdatedBy?: string;
-  inProgress?: boolean;
+  inProgress: {
+    lastUpdatedTime?: any;
+    lastUpdatedBy?: string;
+    inProgress?: boolean;
+  };
   approved?: boolean;
 }
