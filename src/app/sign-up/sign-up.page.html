@@ -124,12 +124,12 @@
 
             <ion-item>
               <ion-label position="stacked">
-                DBS number or equivalent (optional)
+                DBS number or equivalent
               </ion-label>
               <ion-input
-                [(ngModel)]="form.details.dbs"
+                [(ngModel)]="form.checks.dbsNumber"
                 name="dbs"
-                placeholder="Your dbs number or equivalent (optional)"
+                placeholder="Your dbs number or equivalent"
               >
               </ion-input>
             </ion-item>
@@ -460,27 +460,54 @@
           </p>
           <ion-card>
             <ion-card-content>
-              <p>
-                I agree to the terms of use and
+              <p class="ion-no-margin">
+                I agree to the terms of use above
+              </p>
+
+              <ion-item class="ion-margin-bottom" lines="full">
+                <ion-checkbox
+                  slot="start"
+                  [(ngModel)]="form.checks.disclaimerSigned"
+                  checked="false"
+                  required
+                  name="acceptTerms"
+                ></ion-checkbox>
+                <ion-label>Agree</ion-label>
+              </ion-item>
+
+              <p
+                class="ion-no-margin"
+                [hidden]="(ngForm?.controls?.acceptTerms?.valid || !submitted)"
+              >
+                <ion-text name="passwordMessage" color="danger"
+                  >You must sign the disclaimer to be able to submit the
+                  form</ion-text
+                >
+              </p>
+
+              <p class="ion-no-margin">
+                I agree to the processing of my data in accordance with the
                 <a
                   target="_blank"
-                  href="https://selfisolationhelp.co.uk/privacy-policy"
+                  [routerLink]="['/privacy-policy']"
                   >Privacy Policy</a
                 >
               </p>
-              <ion-checkbox
-                [(ngModel)]="form.checks.disclaimerSigned"
-                checked="false"
-                required
-                name="acceptTerms"
-              ></ion-checkbox>
-              <p>
-                <ion-text
-                  name="passwordMessage"
-                  [hidden]="(ngForm?.controls?.acceptTerms?.valid || !submitted)"
-                  color="danger"
-                  >You must sign the disclaimer to be able to submit the
-                  form</ion-text
+              <ion-item class="ion-margin-bottom" lines="full">
+                <ion-checkbox
+                  slot="start"
+                  [(ngModel)]="form.checks.gdprSigned"
+                  checked="false"
+                  required
+                  name="acceptGdpr"
+                ></ion-checkbox>
+                <ion-label>Agree</ion-label>
+              </ion-item>
+
+              <p [hidden]="(ngForm?.controls?.acceptGdpr?.valid || !submitted)">
+                <ion-text name="passwordMessage" color="danger"
+                  >You must consent to the processing of your data to
+                  register</ion-text
                 >
               </p>
             </ion-card-content>

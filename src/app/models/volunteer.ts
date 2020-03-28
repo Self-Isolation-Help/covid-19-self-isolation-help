@@ -22,6 +22,7 @@ export interface Volunteer {
         hasCriminalRecord: boolean;
         dbsNumber: string;
         disclaimerSigned: boolean;
+        gdprSigned: boolean;
     };
     workingCounties: string[];
     workingLocations: string[];
