@@ -3,7 +3,9 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs/internal/Observable";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { AlertController } from "@ionic/angular";
-import { Isolator } from '../models/isolator.model';
+import { Isolator } from "../models/isolator.model";
+import * as firebase from "firebase";
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
   selector: "app-isolator",
@@ -13,8 +15,10 @@ import { Isolator } from '../models/isolator.model';
 export class IsolatorPage implements OnInit {
   isolator: any;
   id: string;
+  userUid: string;
   constructor(
     private afs: AngularFirestore,
+    public auth: AngularFireAuth,
     private activatedRoute: ActivatedRoute,
     private alertController: AlertController,
     private router: Router
@@ -24,6 +28,12 @@ export class IsolatorPage implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       this.id = params.id;
       this.getIsolator(params.id);
+    });
+
+    this.auth.authState.subscribe(user => {
+      if (user) {
+        this.userUid = user.uid;
+      }
     });
   }
 
@@ -66,7 +76,9 @@ export class IsolatorPage implements OnInit {
       .collection<Isolator>("isolating")
       .doc(this.id)
       .update({
-        resolved: true
+        resolved: true,
+        lastUpdatedBy: this.userUid,
+        lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp()
       });
     this.router.navigate(["/people-isolating-grouped"], {
       queryParams: { county: this.isolator.details.county }
@@ -78,8 +90,11 @@ export class IsolatorPage implements OnInit {
       .collection<Isolator>("isolating")
       .doc(this.id)
       .update({
-        inProgress: true
+        inProgress: true,
+        lastUpdatedBy: this.userUid,
+        lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp()
       });
+    console.log("after update: " + this.getIsolator(this.id));
   }
 
   onClickRemoveInProgress() {
