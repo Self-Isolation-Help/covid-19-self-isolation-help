@@ -18,10 +18,7 @@ If you want to use this tool with your Volunteer group, please visit http://self
 
 ### Supported Locations as of 21st of March 2020:
 
-- Richmond, Greater London
-- Kingston, Greater London
-
-More coming soon...
+The whole of the UK.
 
 ## This project is accepting Pull Requests
 
