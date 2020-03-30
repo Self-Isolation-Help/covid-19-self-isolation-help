@@ -12,6 +12,7 @@ export interface Volunteer {
         town: string;
         county: string;
         postCode: string;
+        socialMediaLink: string;
     };
     volunteerGroup: {
         name: string;
