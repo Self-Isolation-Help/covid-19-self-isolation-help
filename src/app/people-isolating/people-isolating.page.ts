@@ -1,3 +1,5 @@
+//import { Volunteer } from "./../../../../../covid-19-self-isolation-help/src/app/models/volunteer";
+import { VolunteerRole } from "./../models/volunteer-role.enum";
 import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs/internal/Observable";
@@ -16,6 +18,7 @@ export class PeopleIsolatingPage implements OnInit {
   isolators$: Observable<Array<Isolator>>;
   user$: Observable<Volunteer>;
   volunteerLocations: [string] = ["None"];
+  isAdmin: boolean;
   constructor(
     private afs: AngularFirestore,
 
@@ -36,12 +39,9 @@ export class PeopleIsolatingPage implements OnInit {
 
     this.user$.subscribe(user => {
       if (user) {
-        console.log("this user has the county : " + user.details.county);
-        this.fillWorkingLocations(user);
+        this.volunteerLocations = this.filterLoc(user);
+        this.isAdmin = this.checkAdmin(user);
       }
-      this.volunteerLocations.forEach(element => {
-        console.log("volunteerlocs: " + element);
-      });
     });
 
     this.isolators$ = this.afs
@@ -49,38 +49,48 @@ export class PeopleIsolatingPage implements OnInit {
       .valueChanges()
       .pipe(
         map((isolators: any) => {
-          return isolators.filter(
-            isolator =>
-              !isolator.resolved &&
-              (this.volunteerLocations.includes(isolator.details.county) ||
-                this.volunteerLocations.includes(isolator.details.location))
-          );
+          return this.filterByRole(isolators);
         })
       );
   }
 
-  fillWorkingLocations(user) {
-    var GLondon = "Greater London";
-    console.log("user county is " + user.details.county);
-    this.volunteerLocations.push(user.details.county);
-    if (user.details.county == GLondon) {
-      console.log("we are in greater london");
-      if (user.workingLocations != undefined) {
-        console.log("workign locations aren't undefined");
-        user.workingLocations.forEach(element => {
-          this.volunteerLocations.push(element);
-          console.log("working location: " + element);
-        });
-      } else {
-        console.log("we are doing working counties, must not have locations");
-        if (user.workingCounties != undefined) {
-          this.volunteerLocations.splice(0, 2);
-          user.workingCounties.forEach(element => {
-            this.volunteerLocations.push(element);
-            console.log("working county: " + element);
-          });
-        }
+  filterByRole(isolators) {
+    if (this.isAdmin) {
+      return this.filterIsolatorForAdmin(isolators);
+    } else {
+      return this.filterIsolatorForVolunteer(isolators);
+    }
+  }
+
+  filterIsolatorForVolunteer(isolators) {
+    return isolators.filter(
+      isolator =>
+        !isolator.resolved &&
+        (this.volunteerLocations.includes(isolator.details.county) ||
+          this.volunteerLocations.includes(isolator.details.location))
+    );
+  }
+
+  filterIsolatorForAdmin(isolators) {
+    return isolators.filter(isolator => !isolator.resolved);
+  }
+
+  filterLoc(user) {
+    if (user.workingLocations != undefined) {
+      return user.workingLocations;
+    } else if (user.workingCounties != undefined) {
+      return user.workingCounties;
+    } else {
+      return [user.details.county];
+    }
+  }
+
+  checkAdmin(user) {
+    if (user != undefined) {
+      if (user.roles.admin == undefined) {
+        return false;
       }
+      return true;
     }
   }
 
