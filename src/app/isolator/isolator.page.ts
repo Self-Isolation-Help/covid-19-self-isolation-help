@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { Observable } from "rxjs/internal/Observable";
-import { ActivatedRoute, Router, RouterLink } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { AlertController } from "@ionic/angular";
 import { Isolator } from "../models/isolator.model";
 import * as firebase from "firebase";
@@ -94,7 +93,6 @@ export class IsolatorPage implements OnInit {
         lastUpdatedBy: this.userUid,
         lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp()
       });
-    console.log("after update: " + this.getIsolator(this.id));
   }
 
   onClickRemoveInProgress() {

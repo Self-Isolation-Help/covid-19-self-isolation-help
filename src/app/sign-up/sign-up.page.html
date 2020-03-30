@@ -133,6 +133,25 @@
               >
               </ion-input>
             </ion-item>
+            <ion-item>
+              <ion-label position="stacked">
+                Social media link<span class="required">*</span>
+              </ion-label>
+              <ion-input
+                #socialMediaLink="ngModel"
+                required
+                [(ngModel)]="form.details.socialMediaLink"
+                name="dbs"
+                placeholder="A social media link e.g Facebook, LinkedIn, Twitter"
+              >
+              </ion-input>
+              <ion-text
+                name="socialmedia"
+                *ngIf="ngForm.submitted && socialMediaLink?.errors?.required"
+                color="danger"
+                >Social media link is required</ion-text
+              >
+            </ion-item>
           </ion-list>
         </ion-card-content>
       </ion-card>
@@ -488,9 +507,7 @@
 
               <p class="ion-no-margin">
                 I agree to the processing of my data in accordance with the
-                <a
-                  target="_blank"
-                  [routerLink]="['/privacy-policy']"
+                <a target="_blank" [routerLink]="['/privacy-policy']"
                   >Privacy Policy</a
                 >
               </p>
