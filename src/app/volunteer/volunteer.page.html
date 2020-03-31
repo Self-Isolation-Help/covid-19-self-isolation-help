@@ -42,6 +42,18 @@
               {{(volunteer$ | async)?.details.telephone}}
             </ion-col>
           </ion-row>
+          <ion-row>
+            <ion-col>DBS Number or equivalent:</ion-col>
+            <ion-col>
+              {{(volunteer$ | async)?.checks.dbsNumber}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>Social Media Link:</ion-col>
+            <ion-col>
+              {{(volunteer$ | async)?.details.socialMediaLink}}
+            </ion-col>
+          </ion-row>
         </ion-grid>
       </ion-card-content>
     </ion-card>
@@ -76,10 +88,6 @@
             <ion-col>Location(s) of Operation:</ion-col>
             <ion-col>{{(volunteer$ | async)?.workingLocations}}</ion-col>
           </ion-row>
-          <ion-row>
-            <ion-col>Role:</ion-col>
-            <ion-col>{{(volunteer$ | async)?.volunteerGroup.role}}</ion-col>
-          </ion-row>
         </ion-grid>
       </ion-card-content>
     </ion-card>
@@ -102,6 +110,43 @@
       <ion-card-content>
         <h2>Date Signed Up</h2>
         <p>{{(volunteer$ | async)?.dateCreated?.toDate() | date : 'medium'}}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <h2>Notes</h2>
+        <ion-list>
+          <ion-item *ngFor="let note of (volunteerNotes$ | async);">
+            <ion-label>
+              <ion-note>
+                <strong>{{note.user.details.forename}}</strong> on {{note?.created?.toDate() |
+                date: 'medium'}}<br />
+              </ion-note>
+              {{note?.note}}
+            </ion-label>
+            <ion-button *ngIf="userUid === note.userUid" (click)="onRemoveNote(note.id)" slot="end" fill="clear" color="danger">
+              <ion-icon name="close-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+        <form (ngSubmit)="onSubmitNotes()">
+
+          <ion-item>
+            <ion-textarea
+              [(ngModel)]="notes"
+              name="notes"
+              [autoGrow]="true"
+              placeholder="Add notes about the volunteer here..."
+            ></ion-textarea>
+          </ion-item>
+          <ion-button
+            type="submit"
+            class="ion-margin-vertical ion-float-end"
+            size="small"
+            shape="round"
+            >Add note</ion-button
+          >
+        </form>
       </ion-card-content>
     </ion-card>
     <ion-card

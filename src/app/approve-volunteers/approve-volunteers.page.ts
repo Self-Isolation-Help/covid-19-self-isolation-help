@@ -17,27 +17,32 @@ export class ApproveVolunteersPage implements OnInit {
   volunteersAlreadyApproved: Array<Volunteer>;
 
   constructor(
-    private afs: AngularFirestore,
-    private alertController: AlertController
+    private afs: AngularFirestore
   ) {}
 
   ngOnInit() {
     this.volunteers$ = this.afs
-      .collection<Isolator>("volunteers")
+      .collection<Isolator>("volunteers", ref => ref.orderBy("dateCreated", "asc"))
       .valueChanges({ idField: "id" })
       .pipe(
         map((volunteers: any) => {
-          return volunteers.filter(volunteer => volunteer.approved !== false && !volunteer.rejected);
+          return volunteers.filter(
+            volunteer => volunteer.approved !== false && !volunteer.rejected
+          );
         })
       );
 
     this.volunteers$.subscribe((volunteers: any) => {
-      console.log(volunteers);
       this.volunteersNeedApproval = volunteers.filter(
-          volunteer => volunteer.roles && (!volunteer.roles.admin && !volunteer.roles.volunteer)
+        volunteer =>
+          volunteer.roles &&
+          !volunteer.roles.admin &&
+          !volunteer.roles.volunteer
       );
       this.volunteersAlreadyApproved = volunteers.filter(
-        volunteer => volunteer.roles && (volunteer.roles.admin || volunteer.roles.volunteer)
+        volunteer =>
+          volunteer.roles &&
+          (volunteer.roles.admin || volunteer.roles.volunteer)
       );
     });
   }

@@ -17,9 +17,27 @@
       </ion-card-header>
 
       <ion-card-content>
-        <ion-item detail *ngFor="let volunteer of volunteersNeedApproval" [routerLink]="['/volunteer']" [queryParams]="{id: volunteer.id}">
-          <ion-label><strong>{{volunteer.details.forename}} {{volunteer.details.surname}}</strong> </ion-label>
-          <ion-badge slot="end">{{volunteer.workingCounties}}</ion-badge>
+        <ion-item
+          detail
+          *ngFor="let volunteer of volunteersNeedApproval"
+          [routerLink]="['/volunteer']"
+          [queryParams]="{id: volunteer.id}"
+        >
+          <ion-label
+            ><strong
+              >{{volunteer.details.forename}}
+              {{volunteer.details.surname}}</strong
+            >
+            <br />
+            <ion-note
+              >{{volunteer.dateCreated.toDate() | date: 'medium'}}<br />
+              <strong>{{volunteer.workingLocations}}</strong></ion-note
+            >
+          </ion-label>
+
+          <ion-badge *ngFor="let county of volunteer.workingCounties" slot="end"
+            >{{county}}</ion-badge
+          >
         </ion-item>
       </ion-card-content>
     </ion-card>
@@ -31,10 +49,27 @@
       </ion-card-header>
 
       <ion-card-content>
-        <ion-item detail *ngFor="let volunteer of volunteersAlreadyApproved" [routerLink]="['/volunteer']" [queryParams]="{id: volunteer.id}">
-          <ion-label><strong>{{volunteer.details.forename}} {{volunteer.details.surname}}</strong> </ion-label>
-          <ion-badge slot="end">{{volunteer.workingCounties}}</ion-badge>
-        </ion-item>
+        <ng-container *ngFor="let volunteer of volunteersAlreadyApproved">
+          <ion-item
+            *ngIf="volunteer.details"
+            detail
+            [routerLink]="['/volunteer']"
+            [queryParams]="{id: volunteer.id}"
+          >
+            <ion-label
+              ><strong
+                >{{volunteer.details.forename}}
+                {{volunteer.details.surname}}</strong
+              >
+              <br />
+              <ion-note
+                >{{volunteer.dateCreated.toDate() | date: 'medium'}}<br />
+                <strong>{{volunteer.workingLocations}}</strong></ion-note
+              >
+            </ion-label>
+            <ion-badge slot="end">{{volunteer.workingCounties}}</ion-badge>
+          </ion-item>
+        </ng-container>
       </ion-card-content>
     </ion-card>
   </div>
