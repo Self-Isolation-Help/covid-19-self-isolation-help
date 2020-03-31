@@ -2,42 +2,36 @@ const functions = require("firebase-functions");
 const nodemailer = require("nodemailer");
 
 exports.addMessage = functions.https.onCall((data, context) => {
-  // ...
+    console.log(data, context);
+    sendEmail()
 });
 
-// exports.emailMessage = args => {
-//   const transport = nodemailer.createTransport({
-//     service: "",
-//     auth: {
-//       user: "volunteers@selfisolationhelp.co.uk",
-//       pass: " ! ! password goes here ! ! "
-//     }
-//   });
-//   const mailOptions = {
-//     from: "volunteers@selfisolationhelp.co.uk",
-//     to: args.email,
-//     subject: "Isolation Help - Applicattion ACCEPTED",
-//     html: "Need some text here........"
-//   };
-//   transport.sendMail(mailOptions, (error, info) => {
-//     if (error) {
-//       //TODO email failed
-//     }
-//     //TODO email success
-//   });
-// };
-//
-// exports.updatingVolunteer = functions.database
-//   .ref("/volunteer/{id}")
-//   .onUpdate((change, context) => {
-//     const agreebefore = change.before.child("volunteer").val();
-//     const agreeAfter = change.after.child("volunteer").val();
-//     const email; //TODO get email for voluteer
-//
-//     if (
-//       (agreebefore === null && agreeAfter === true) ||
-//       (agreebefore === failse && agreeAfter == true)
-//     ) {
-//       this.emailMessage(email);
-//     }
-//   });
+async function  sendEmail() {
+  // Generate test SMTP service account from ethereal.email
+  // Only needed if you don't have a real mail account for testing
+  // let testAccount = await nodemailer.createTestAccount();
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    pool: true,
+    host: "mail.selfisolationhelp.co.uk",
+    port: 465,
+    secure: true, // use TLS
+    auth: {
+      user: "volunteers@selfisolationhelp.co.uk",
+      pass: ""
+    }
+  });
+
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: '"Fred Foo 👻" <volunteers@selfisolationhelp.co.uk>', // sender address
+    to: "contactstevebrown@gmail.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>" // html body
+  });
+
+}
+
+sendEmail().catch(console.error);

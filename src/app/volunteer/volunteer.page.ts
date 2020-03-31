@@ -60,6 +60,10 @@ export class VolunteerPage implements OnInit {
         this.fns.httpsCallable('my-fn-name');
     });
   }
+
+  onClickTest() {
+    this.fns.httpsCallable('addMessage')({text: 'text'}).subscribe()
+  }
   async onClickReject() {
     const alert = await this.alertController.create({
       header: "Confirm Resolve",
