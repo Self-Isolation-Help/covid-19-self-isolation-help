@@ -3,7 +3,7 @@ export interface Isolator {
     lat?: string;
     lng?: string;
   };
-  info: {
+  info?: {
     needsMedicine?: boolean;
     needsFood?: boolean;
     needsSomeoneToTalkTo?: boolean;
@@ -24,9 +24,9 @@ export interface Isolator {
     county?: string;
     postCode?: string;
     locationType?: string;
-    selectedLocation: any;
+    selectedLocation?: any;
   };
-  hasCompletedForm: boolean;
+  hasCompletedForm?: boolean;
   resolved?: boolean;
   lastUpdatedBy?: string;
   lastUpdatedTime?: any;
