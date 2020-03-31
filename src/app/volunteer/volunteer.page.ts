@@ -5,6 +5,7 @@ import { Isolator } from "../models/isolator.model";
 import { Volunteer } from "../models/volunteer";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AlertController } from "@ionic/angular";
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Component({
   selector: "app-volunteer",
@@ -19,7 +20,8 @@ export class VolunteerPage implements OnInit {
     private afs: AngularFirestore,
     private activatedRoute: ActivatedRoute,
     private alertController: AlertController,
-    private router: Router
+    private router: Router,
+    private fns: AngularFireFunctions
   ) {}
 
   ngOnInit() {
@@ -54,7 +56,9 @@ export class VolunteerPage implements OnInit {
         roles: {
             volunteer: true
         }
-      });
+      }).then(()=> {
+        this.fns.httpsCallable('my-fn-name');
+    });
   }
   async onClickReject() {
     const alert = await this.alertController.create({
