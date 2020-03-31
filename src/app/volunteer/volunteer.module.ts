@@ -8,10 +8,11 @@ import { VolunteerPageRoutingModule } from "./volunteer-routing.module";
 
 import { VolunteerPage } from "./volunteer.page";
 import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, VolunteerPageRoutingModule],
   declarations: [VolunteerPage],
-  providers: [AngularFirestore]
+  providers: [AngularFirestore, AngularFireFunctions]
 })
 export class VolunteerPageModule {}

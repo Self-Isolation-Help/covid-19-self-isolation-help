@@ -5,6 +5,7 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
 import { isDevMode } from '@angular/core';
 import * as firebase from "firebase";
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Component({
   selector: "app-confirmation",
@@ -18,7 +19,8 @@ export class ConfirmationPage implements OnInit {
   constructor(
     public userService: UserService,
     private afs: AngularFirestore,
-    private router: Router
+    private router: Router,
+    private fns: AngularFireFunctions
   ) {}
 
   ngOnInit() {
@@ -37,7 +39,12 @@ export class ConfirmationPage implements OnInit {
       .add(this.userService.getUser())
       .then(() => {
         this.router.navigateByUrl("/complete");
+        this.distributeEmailsToVolunteers();
       });
+  }
+
+  distributeEmailsToVolunteers() {
+      this.fns.httpsCallable('addMessage')({text: 'text'}).subscribe()
   }
 
 }
