@@ -19,6 +19,7 @@ export class PeopleIsolatingPage implements OnInit {
   user$: Observable<Volunteer>;
   volunteerLocations: [string] = ["None"];
   isAdmin: boolean;
+  volloc: string = "all";
   constructor(
     private afs: AngularFirestore,
 
@@ -39,8 +40,11 @@ export class PeopleIsolatingPage implements OnInit {
 
     this.user$.subscribe(user => {
       if (user) {
-        this.volunteerLocations = this.filterLoc(user);
         this.isAdmin = this.checkAdmin(user);
+        if (!this.isAdmin) {
+          this.volunteerLocations = this.filterLoc(user);
+          this.volloc = this.volunteerLocations.join();
+        }
       }
     });
 
@@ -76,13 +80,16 @@ export class PeopleIsolatingPage implements OnInit {
   }
 
   filterLoc(user) {
-    if (user.workingLocations != undefined) {
-      return user.workingLocations;
-    } else if (user.workingCounties != undefined) {
-      return user.workingCounties;
-    } else {
-      return [user.details.county];
+    if (!this.checkAdmin(user)) {
+      if (user.workingLocations != undefined) {
+        return user.workingLocations;
+      } else if (user.workingCounties != undefined) {
+        return user.workingCounties;
+      } else {
+        return [user.details.county];
+      }
     }
+    return ["all"];
   }
 
   checkAdmin(user) {

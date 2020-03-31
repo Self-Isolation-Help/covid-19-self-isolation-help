@@ -5,14 +5,18 @@
     </ion-buttons>
     <ion-title>Volunteers</ion-title>
     <ion-buttons slot="end">
-      <ion-button *ngIf="(user$ | async)?.roles.admin" color="secondary" [routerLink]="['/approve-volunteers']">Admin</ion-button>
+      <ion-button
+        *ngIf="(user$ | async)?.roles.admin"
+        color="secondary"
+        [routerLink]="['/approve-volunteers']"
+        >Admin</ion-button
+      >
       <ion-button (click)="onSignout()">Sign out</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
   <div
     class="max-wrap"
     *ngIf="(user$ | async) && !(user$ | async)?.roles.admin && !(user$ | async)?.roles.volunteer"
@@ -21,7 +25,8 @@
       <ion-card-content>
         <h1>Thank you</h1>
         <p>
-          We are currently reviewing your application and we will be in touch with you directly.
+          We are currently reviewing your application and we will be in touch
+          with you directly.
         </p>
         <p>When you have been approved, you may return here.</p>
         <p>
@@ -64,7 +69,7 @@
             detail="true"
             lines="full"
             [routerLink]="['/people-isolating-grouped']"
-            [queryParams]="{county: isolator.value[0].details.county}"
+            [queryParams]="{county: isolator.value[0].details.county, volloc:volloc}"
           >
             <ion-label>
               {{isolator.value[0].details.county}}
@@ -93,7 +98,7 @@
             detail="true"
             lines="full"
             [routerLink]="['/people-isolating-grouped']"
-            [queryParams]="{location: isolator.value[0].details.location}"
+            [queryParams]="{location: isolator.value[0].details.location, volloc:volloc}"
           >
             <ion-label>
               {{isolator.value[0].details.location}}
@@ -105,5 +110,4 @@
       </ion-list>
     </ion-card>
   </div>
-
 </ion-content>
