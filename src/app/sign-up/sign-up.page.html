@@ -15,7 +15,6 @@
 </ion-content>
 
 <ion-content class="ion-padding" *ngIf="!submitting">
-
   <form
     #ngForm="ngForm"
     (ngSubmit)="onSubmitForm($event, ngForm)"
@@ -30,9 +29,9 @@
         </ion-card-header>
         <ion-card-content>
           <p class="leading">
-            To register as a Volunteer and connect with people in need in your area,
-            please follow the instructions below. All volunteer registration requests
-            are vetted manually.
+            To register as a Volunteer and connect with people in need in your
+            area, please follow the instructions below. All volunteer
+            registration requests are vetted manually.
           </p>
 
           <ion-list>
@@ -120,6 +119,37 @@
                 [hidden]="(ngForm?.controls?.email?.valid || !submitted)"
                 color="danger"
                 >Email is required</ion-text
+              >
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">
+                DBS number or equivalent
+              </ion-label>
+              <ion-input
+                [(ngModel)]="form.checks.dbsNumber"
+                name="dbs"
+                placeholder="Your dbs number or equivalent"
+              >
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">
+                Social media link<span class="required">*</span>
+              </ion-label>
+              <ion-input
+                #socialMediaLink="ngModel"
+                required
+                [(ngModel)]="form.details.socialMediaLink"
+                name="dbs"
+                placeholder="A social media link e.g Facebook, LinkedIn, Twitter"
+              >
+              </ion-input>
+              <ion-text
+                name="socialmedia"
+                *ngIf="ngForm.submitted && socialMediaLink?.errors?.required"
+                color="danger"
+                >Social media link is required</ion-text
               >
             </ion-item>
           </ion-list>
@@ -246,6 +276,7 @@
               multiple
               (ionChange)="onChangeWorkingCounty()"
               [(ngModel)]="form.workingCounties"
+              required="true"
               name="organisationCounty"
               placeholder="Please choose a county where you will volunteer"
             >
@@ -449,20 +480,52 @@
           </p>
           <ion-card>
             <ion-card-content>
-              <p>I agree to the terms of use</p>
-              <ion-checkbox
-                [(ngModel)]="form.checks.disclaimerSigned"
-                checked="false"
-                required
-                name="acceptTerms"
-              ></ion-checkbox>
-              <p>
-                <ion-text
-                  name="passwordMessage"
-                  [hidden]="(ngForm?.controls?.acceptTerms?.valid || !submitted)"
-                  color="danger"
+              <p class="ion-no-margin">
+                I agree to the terms of use above
+              </p>
+
+              <ion-item class="ion-margin-bottom" lines="full">
+                <ion-checkbox
+                  slot="start"
+                  [(ngModel)]="form.checks.disclaimerSigned"
+                  checked="false"
+                  required
+                  name="acceptTerms"
+                ></ion-checkbox>
+                <ion-label>Agree</ion-label>
+              </ion-item>
+
+              <p
+                class="ion-no-margin"
+                [hidden]="(ngForm?.controls?.acceptTerms?.valid || !submitted)"
+              >
+                <ion-text name="passwordMessage" color="danger"
                   >You must sign the disclaimer to be able to submit the
                   form</ion-text
+                >
+              </p>
+
+              <p class="ion-no-margin">
+                I agree to the processing of my data in accordance with the
+                <a target="_blank" [routerLink]="['/privacy-policy']"
+                  >Privacy Policy</a
+                >
+              </p>
+              <ion-item class="ion-margin-bottom" lines="full">
+                <ion-checkbox
+                  slot="start"
+                  [(ngModel)]="form.checks.gdprSigned"
+                  checked="false"
+                  required
+                  name="acceptGdpr"
+                ></ion-checkbox>
+                <ion-label>Agree</ion-label>
+              </ion-item>
+
+              <p [hidden]="(ngForm?.controls?.acceptGdpr?.valid || !submitted)">
+                <ion-text name="passwordMessage" color="danger"
+                  >You must consent to the processing of your data to
+                  register</ion-text
                 >
               </p>
             </ion-card-content>

@@ -25,7 +25,9 @@ export class PeopleIsolatingPage implements OnInit {
     this.user$ = this.auth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.afs.doc<Volunteer>(`volunteers/${user.uid}`).valueChanges();
+          return this.afs
+            .doc<Volunteer>(`volunteers/${user.uid}`)
+            .valueChanges();
         }
       })
     );
