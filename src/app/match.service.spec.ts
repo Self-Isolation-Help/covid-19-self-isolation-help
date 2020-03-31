@@ -45,21 +45,21 @@ const isolators: Array<Isolator> = [
     details: {
       forename: "y",
       county: "a",
-      selectedLocation: "1"
+      selectedLocation: {name: "1"}
     }
   },
   {
     details: {
       forename: "x",
       county: "b",
-      selectedLocation: "1"
+      selectedLocation: {name: "1"}
     }
   },
   {
     details: {
       forename: "w",
       county: "b",
-      selectedLocation: "2"
+      selectedLocation: {name: "2"}
     }
   }
 ];
@@ -87,7 +87,7 @@ fdescribe("MatchService", () => {
         details: {
           forename: "y",
           county: "a",
-          selectedLocation: "1"
+          selectedLocation: {name: "1"}
         }
       }
     ]);
@@ -108,21 +108,21 @@ fdescribe("MatchService", () => {
         details: {
           forename: "y",
           county: "a",
-          selectedLocation: "1"
+          selectedLocation: {name: "1"}
         }
       },
       {
         details: {
           forename: "x",
           county: "b",
-          selectedLocation: "1"
+          selectedLocation: {name: "1"}
         }
       },
       {
         details: {
           forename: "w",
           county: "b",
-          selectedLocation: "2"
+          selectedLocation: {name: "2"}
         }
       }
     ]);
@@ -140,14 +140,14 @@ fdescribe("MatchService", () => {
         details: {
           forename: "y",
           county: "a",
-          selectedLocation: "1"
+          selectedLocation: {name: "1"}
         }
       },
       {
         details: {
           forename: "x",
           county: "b",
-          selectedLocation: "1"
+          selectedLocation: {name: "1"}
         }
       }
     ]);
@@ -162,21 +162,21 @@ fdescribe("MatchService", () => {
         details: {
           forename: "y",
           county: "a",
-          selectedLocation: "1"
+          selectedLocation: {name: "1"}
         }
       },
       {
         details: {
           forename: "x",
           county: "b",
-          selectedLocation: "1"
+          selectedLocation: {name: "1"}
         }
       },
       {
         details: {
           forename: "w",
           county: "b",
-          selectedLocation: "2"
+          selectedLocation: {name: "2"}
         }
       }
     ]);

@@ -24,7 +24,11 @@ export interface Isolator {
     county?: string;
     postCode?: string;
     locationType?: string;
-    selectedLocation?: any;
+    selectedLocation?: {
+      name: string;
+      volunteerGroup?: string;
+      volunteerImage?: string;
+    };
   };
   hasCompletedForm?: boolean;
   resolved?: boolean;
