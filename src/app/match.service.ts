@@ -17,7 +17,7 @@ export class MatchService {
           volunteer.workingCounties.includes(isolator.details.county)) ||
         (volunteer.workingLocations &&
           volunteer.workingLocations.includes(
-            isolator.details.selectedLocation
+            isolator.details.selectedLocation && isolator.details.selectedLocation.name
           ))
     );
   }
