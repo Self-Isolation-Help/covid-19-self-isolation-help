@@ -4,112 +4,112 @@ export const LOCATIONS = [
     county: "Greater London",
     items: [
       {
-        name: "City of London"
+        name: "City of London",
       },
       {
-        name: "Barking and Dagenham"
+        name: "Barking and Dagenham",
       },
       {
-        name: "Barnet"
+        name: "Barnet",
       },
       {
-        name: "Bexley"
+        name: "Bexley",
       },
       {
-        name: "Brent"
+        name: "Brent",
       },
       {
-        name: "Bromley"
+        name: "Bromley",
       },
       {
-        name: "Camden"
+        name: "Camden",
       },
       {
-        name: "Croydon"
+        name: "Croydon",
       },
       {
-        name: "Ealing"
+        name: "Ealing",
       },
       {
-        name: "Enfield"
+        name: "Enfield",
       },
       {
-        name: "Greenwich"
+        name: "Greenwich",
       },
       {
-        name: "Hackney"
+        name: "Hackney",
       },
       {
-        name: "Hammersmith and Fulham"
+        name: "Hammersmith and Fulham",
       },
       {
-        name: "Haringey"
+        name: "Haringey",
       },
       {
-        name: "Harrow"
+        name: "Harrow",
       },
       {
-        name: "Havering"
+        name: "Havering",
       },
       {
-        name: "Hillingdon"
+        name: "Hillingdon",
       },
       {
-        name: "Hounslow"
+        name: "Hounslow",
       },
       {
-        name: "Islington"
+        name: "Islington",
       },
       {
-        name: "Kensington and Chelsea"
+        name: "Kensington and Chelsea",
       },
 
       {
         name: "Kingston upon Thames",
         volunteerGroup: "Task Force Kingston",
-        volunteerImage: "/assets/image.jpg"
+        volunteerImage: "/assets/image.jpg",
       },
 
       {
-        name: "Lambeth"
+        name: "Lambeth",
       },
       {
-        name: "Lewisham"
+        name: "Lewisham",
       },
       {
-        name: "Merton"
+        name: "Merton",
       },
       {
-        name: "Newham"
+        name: "Newham",
       },
       {
-        name: "Redbridge"
+        name: "Redbridge",
       },
 
       {
         name: "Richmond upon Thames",
         volunteerGroup: "Task Force Richmond",
-        volunteerImage: "/assets/image.jpg"
+        volunteerImage: "/assets/image.jpg",
       },
 
       {
-        name: "Southwark"
+        name: "Southwark",
       },
       {
-        name: "Sutton"
+        name: "Sutton",
       },
       {
-        name: "Tower Hamlets"
+        name: "Tower Hamlets",
       },
       {
-        name: "Waltham Forest"
+        name: "Waltham Forest",
       },
       {
-        name: "Wandsworth"
+        name: "Wandsworth",
       },
       {
-        name: "Westminster"
-      }
-    ]
-  }
+        name: "Westminster",
+      },
+    ],
+  },
 ];

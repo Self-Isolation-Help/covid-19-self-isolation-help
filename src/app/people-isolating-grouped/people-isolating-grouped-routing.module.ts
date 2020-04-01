@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { PeopleIsolatingGroupedPage } from './people-isolating-grouped.page';
+import { PeopleIsolatingGroupedPage } from "./people-isolating-grouped.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: PeopleIsolatingGroupedPage
-  }
+    path: "",
+    component: PeopleIsolatingGroupedPage,
+  },
 ];
 
 @NgModule({

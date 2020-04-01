@@ -9,7 +9,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 @Component({
   selector: "app-isolator",
   templateUrl: "./isolator.page.html",
-  styleUrls: ["./isolator.page.scss"]
+  styleUrls: ["./isolator.page.scss"],
 })
 export class IsolatorPage implements OnInit {
   isolator: any;
@@ -24,12 +24,12 @@ export class IsolatorPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe((params) => {
       this.id = params.id;
       this.getIsolator(params.id);
     });
 
-    this.auth.authState.subscribe(user => {
+    this.auth.authState.subscribe((user) => {
       if (user) {
         this.userUid = user.uid;
       }
@@ -41,7 +41,7 @@ export class IsolatorPage implements OnInit {
       .collection<Isolator>("isolating")
       .doc(id)
       .valueChanges()
-      .subscribe(resp => {
+      .subscribe((resp) => {
         this.isolator = resp;
       });
   }
@@ -55,53 +55,44 @@ export class IsolatorPage implements OnInit {
         {
           text: "Cancel",
           role: "cancel",
-          cssClass: "secondary"
+          cssClass: "secondary",
         },
         {
           text: "Confirm",
           cssClass: "danger",
           handler: () => {
             this.onResolve();
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();
   }
 
   onResolve() {
-    this.afs
-      .collection<Isolator>("isolating")
-      .doc(this.id)
-      .update({
-        resolved: true,
-        lastUpdatedBy: this.userUid,
-        lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp()
-      });
+    this.afs.collection<Isolator>("isolating").doc(this.id).update({
+      resolved: true,
+      lastUpdatedBy: this.userUid,
+      lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp(),
+    });
     this.router.navigate(["/people-isolating-grouped"], {
-      queryParams: { county: this.isolator.details.county }
+      queryParams: { county: this.isolator.details.county },
     });
   }
 
   onInProgress() {
-    this.afs
-      .collection<Isolator>("isolating")
-      .doc(this.id)
-      .update({
-        inProgress: true,
-        lastUpdatedBy: this.userUid,
-        lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp()
-      });
+    this.afs.collection<Isolator>("isolating").doc(this.id).update({
+      inProgress: true,
+      lastUpdatedBy: this.userUid,
+      lastUpdatedTime: firebase.firestore.FieldValue.serverTimestamp(),
+    });
   }
 
   onClickRemoveInProgress() {
-    this.afs
-      .collection<Isolator>("isolating")
-      .doc(this.id)
-      .update({
-        inProgress: false
-      });
+    this.afs.collection<Isolator>("isolating").doc(this.id).update({
+      inProgress: false,
+    });
   }
 
   async onClickInProgress() {
@@ -113,16 +104,16 @@ export class IsolatorPage implements OnInit {
         {
           text: "Cancel",
           role: "cancel",
-          cssClass: "secondary"
+          cssClass: "secondary",
         },
         {
           text: "Confirm",
           cssClass: "danger",
           handler: () => {
             this.onInProgress();
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();

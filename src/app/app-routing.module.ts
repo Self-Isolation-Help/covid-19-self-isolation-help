@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import {
   AngularFireAuthGuard,
-  redirectUnauthorizedTo
+  redirectUnauthorizedTo,
 } from "@angular/fire/auth-guard";
 import "firebase/firestore";
 const redirectUnauthorizedToLogin = () =>
@@ -13,134 +13,143 @@ const routes: Routes = [
 
   {
     path: "home",
-    loadChildren: () => import("./home/home.module").then(m => m.HomePageModule)
+    loadChildren: () =>
+      import("./home/home.module").then((m) => m.HomePageModule),
   },
   {
     path: "privacy-policy",
     loadChildren: () =>
       import("./privacy-policy/privacy-policy.module").then(
-        m => m.PrivacyPolicyPageModule
-      )
+        (m) => m.PrivacyPolicyPageModule
+      ),
   },
   {
     path: "share-location",
     loadChildren: () =>
       import("./share-location/share-location.module").then(
-        m => m.ShareLocationPageModule
-      )
+        (m) => m.ShareLocationPageModule
+      ),
   },
   {
     path: "question-one",
     loadChildren: () =>
       import("./question-one/question-one.module").then(
-        m => m.QuestionOnePageModule
-      )
+        (m) => m.QuestionOnePageModule
+      ),
   },
   {
     path: "info",
-    loadChildren: () => import("./info/info.module").then(m => m.InfoPageModule)
+    loadChildren: () =>
+      import("./info/info.module").then((m) => m.InfoPageModule),
   },
   {
     path: "address",
     loadChildren: () =>
-      import("./address/address.module").then(m => m.AddressPageModule)
+      import("./address/address.module").then((m) => m.AddressPageModule),
   },
   {
     path: "more-info",
     loadChildren: () =>
-      import("./more-info/more-info.module").then(m => m.MoreInfoPageModule)
+      import("./more-info/more-info.module").then((m) => m.MoreInfoPageModule),
   },
   {
     path: "confirmation",
     loadChildren: () =>
       import("./confirmation/confirmation.module").then(
-        m => m.ConfirmationPageModule
-      )
+        (m) => m.ConfirmationPageModule
+      ),
   },
   {
     path: "complete",
     loadChildren: () =>
-      import("./complete/complete.module").then(m => m.CompletePageModule)
+      import("./complete/complete.module").then((m) => m.CompletePageModule),
   },
   {
     path: "login",
     loadChildren: () =>
-      import("./login/login.module").then(m => m.LoginPageModule)
+      import("./login/login.module").then((m) => m.LoginPageModule),
   },
   {
     path: "people-isolating",
     canActivate: [AngularFireAuthGuard],
     data: {
-      authGuardPipe: redirectUnauthorizedToLogin
+      authGuardPipe: redirectUnauthorizedToLogin,
     },
     loadChildren: () =>
       import("./people-isolating/people-isolating.module").then(
-        m => m.PeopleIsolatingPageModule
-      )
+        (m) => m.PeopleIsolatingPageModule
+      ),
   },
   {
     path: "isolator",
     canActivate: [AngularFireAuthGuard],
     data: {
-      authGuardPipe: redirectUnauthorizedToLogin
+      authGuardPipe: redirectUnauthorizedToLogin,
     },
     loadChildren: () =>
-      import("./isolator/isolator.module").then(m => m.IsolatorPageModule)
+      import("./isolator/isolator.module").then((m) => m.IsolatorPageModule),
   },
   {
     path: "people-isolating-grouped",
     canActivate: [AngularFireAuthGuard],
     data: {
-      authGuardPipe: redirectUnauthorizedToLogin
+      authGuardPipe: redirectUnauthorizedToLogin,
     },
     loadChildren: () =>
       import("./people-isolating-grouped/people-isolating-grouped.module").then(
-        m => m.PeopleIsolatingGroupedPageModule
-      )
+        (m) => m.PeopleIsolatingGroupedPageModule
+      ),
   },
   {
     path: "volunteers",
     loadChildren: () =>
-      import("./volunteers/volunteers.module").then(m => m.VolunteersPageModule)
+      import("./volunteers/volunteers.module").then(
+        (m) => m.VolunteersPageModule
+      ),
   },
   {
     path: "register",
     loadChildren: () =>
-      import("./sign-up/sign-up.module").then(m => m.SignUpPageModule)
+      import("./sign-up/sign-up.module").then((m) => m.SignUpPageModule),
   },
   {
     path: "contact",
     loadChildren: () =>
-      import("./contact/contact.module").then(m => m.ContactPageModule)
+      import("./contact/contact.module").then((m) => m.ContactPageModule),
   },
   {
     path: "dashboard",
     canActivate: [AngularFireAuthGuard],
     data: {
-      authGuardPipe: redirectUnauthorizedToLogin
+      authGuardPipe: redirectUnauthorizedToLogin,
     },
     loadChildren: () =>
-      import("./dashboard/dashboard.module").then(m => m.DashboardPageModule)
+      import("./dashboard/dashboard.module").then((m) => m.DashboardPageModule),
   },
   {
-    path: 'sign-up',
-    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
+    path: "sign-up",
+    loadChildren: () =>
+      import("./sign-up/sign-up.module").then((m) => m.SignUpPageModule),
   },
   {
-    path: 'approve-volunteers',
-    loadChildren: () => import('./approve-volunteers/approve-volunteers.module').then( m => m.ApproveVolunteersPageModule)
+    path: "approve-volunteers",
+    loadChildren: () =>
+      import("./approve-volunteers/approve-volunteers.module").then(
+        (m) => m.ApproveVolunteersPageModule
+      ),
   },
   {
-    path: 'volunteer',
-    loadChildren: () => import('./volunteer/volunteer.module').then( m => m.VolunteerPageModule)
-  }
+    path: "volunteer",
+    loadChildren: () =>
+      import("./volunteer/volunteer.module").then((m) => m.VolunteerPageModule),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
   providers: [AngularFireAuthGuard],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
