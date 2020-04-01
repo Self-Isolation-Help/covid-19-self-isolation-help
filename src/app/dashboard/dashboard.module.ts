@@ -13,6 +13,6 @@ import { AngularFireAuth } from "@angular/fire/auth";
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, DashboardPageRoutingModule],
   declarations: [DashboardPage],
-  providers: [AngularFirestore, AngularFireAuth]
+  providers: [AngularFirestore, AngularFireAuth],
 })
 export class DashboardPageModule {}

@@ -7,7 +7,7 @@ import { isDevMode } from "@angular/core";
 @Component({
   selector: "app-login",
   templateUrl: "./login.page.html",
-  styleUrls: ["./login.page.scss"]
+  styleUrls: ["./login.page.scss"],
 })
 export class LoginPage implements OnInit {
   form: any = {};
@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
       this.loading = true;
       this.auth
         .signInWithEmailAndPassword(this.form.email, this.form.password)
-        .then(resp => {
+        .then((resp) => {
           this.error = false;
           this.router.navigate(["/people-isolating"]);
         })

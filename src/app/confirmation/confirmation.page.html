@@ -110,9 +110,13 @@
       </ion-card-header>
       <ion-card-content>
         <p>
-          By clicking this button you agree to share the above details and your location to request self-isolation support.
+          By clicking this button you agree to share the above details and your
+          location to request self-isolation support.
         </p>
-        <p>You also agree to the processing of your data according to our <a [routerLink]="['/privacy-policy']">privacy policy</a>.</p>
+        <p>
+          You also agree to the processing of your data according to our
+          <a [routerLink]="['/privacy-policy']">privacy policy</a>.
+        </p>
         <ion-button (click)="onComplete()" [disabled]="disabled"
           >Complete application</ion-button
         >
