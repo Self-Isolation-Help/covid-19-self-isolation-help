@@ -8,6 +8,7 @@
     "start": "ionic serve",
     "build": "ng build",
     "test": "ng test",
+    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -71,7 +72,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm test"
+      "pre-push": "npm run test-headless"
     }
   }
 }
