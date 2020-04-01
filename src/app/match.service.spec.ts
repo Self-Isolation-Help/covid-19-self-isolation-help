@@ -45,22 +45,89 @@ const isolators: Array<Isolator> = [
     details: {
       forename: "y",
       county: "a",
-      selectedLocation: {name: "1"}
+      selectedLocation: { name: "1" }
     }
   },
   {
     details: {
       forename: "x",
       county: "b",
-      selectedLocation: {name: "1"}
+      selectedLocation: { name: "1" }
     }
   },
   {
     details: {
       forename: "w",
       county: "b",
-      selectedLocation: {name: "2"}
+      selectedLocation: { name: "2" }
     }
+  }
+];
+
+const isolatorCountyOnly: Isolator = {
+  details: {
+    forename: "z",
+    county: "a"
+  }
+};
+
+const isolatorSelectedLocation: Isolator = {
+  details: {
+    forename: "x",
+    county: "b",
+    selectedLocation: {
+      name: "z"
+    }
+  }
+};
+
+const volunteers: Array<Volunteer> = [
+  {
+    details: {
+      forename: "Test"
+    },
+    workingCounties: ["a"]
+  },
+  {
+    details: {
+      forename: "Test"
+    },
+    workingCounties: ["b"]
+  },
+  {
+    details: {
+      forename: "Test"
+    },
+    workingCounties: ["a", "b"]
+  },
+  {
+    details: {
+      forename: "Test"
+    },
+    workingCounties: ["a"],
+    workingLocations: ["z"]
+  },
+  {
+    details: {
+      forename: "Test"
+    },
+    workingCounties: ["a"],
+    workingLocations: ["z", "x"]
+  },
+  {
+    details: {
+      forename: "Test"
+    },
+    workingCounties: ["a", "b"],
+    workingLocations: ["z", "x"]
+  },
+
+  {
+    details: {
+      forename: "Test"
+    },
+    workingCounties: ["a"],
+    workingLocations: ["z", "x"]
   }
 ];
 
@@ -71,8 +138,7 @@ fdescribe("MatchService", () => {
     const service: MatchService = TestBed.get(MatchService);
     expect(service).toBeTruthy();
   });
-
-  it("should match isolators by county IF the volunteer has no workingLocations", () => {
+  it("should match isolators by county IF the volunteer has NO workingLocations", () => {
     const service: MatchService = TestBed.get(MatchService);
     expect(
       service.matchIsolatorsWithVolunteer(volunteerOneCountyOnly, isolators)
@@ -87,7 +153,7 @@ fdescribe("MatchService", () => {
         details: {
           forename: "y",
           county: "a",
-          selectedLocation: {name: "1"}
+          selectedLocation: { name: "1" }
         }
       }
     ]);
@@ -108,21 +174,21 @@ fdescribe("MatchService", () => {
         details: {
           forename: "y",
           county: "a",
-          selectedLocation: {name: "1"}
+          selectedLocation: { name: "1" }
         }
       },
       {
         details: {
           forename: "x",
           county: "b",
-          selectedLocation: {name: "1"}
+          selectedLocation: { name: "1" }
         }
       },
       {
         details: {
           forename: "w",
           county: "b",
-          selectedLocation: {name: "2"}
+          selectedLocation: { name: "2" }
         }
       }
     ]);
@@ -140,14 +206,14 @@ fdescribe("MatchService", () => {
         details: {
           forename: "y",
           county: "a",
-          selectedLocation: {name: "1"}
+          selectedLocation: { name: "1" }
         }
       },
       {
         details: {
           forename: "x",
           county: "b",
-          selectedLocation: {name: "1"}
+          selectedLocation: { name: "1" }
         }
       }
     ]);
@@ -162,22 +228,106 @@ fdescribe("MatchService", () => {
         details: {
           forename: "y",
           county: "a",
-          selectedLocation: {name: "1"}
+          selectedLocation: { name: "1" }
         }
       },
       {
         details: {
           forename: "x",
           county: "b",
-          selectedLocation: {name: "1"}
+          selectedLocation: { name: "1" }
         }
       },
       {
         details: {
           forename: "w",
           county: "b",
-          selectedLocation: {name: "2"}
+          selectedLocation: { name: "2" }
         }
+      }
+    ]);
+  });
+  it("should match volunteers by workingCounties IF the isolator has NO selectedLocation", () => {
+    const service: MatchService = TestBed.get(MatchService);
+    expect(
+      service.matchVolunteersWithIsolator(isolatorCountyOnly, volunteers)
+    ).toEqual([
+      {
+        details: {
+          forename: "Test"
+        },
+        workingCounties: ["a"]
+      },
+      {
+        details: {
+          forename: "Test"
+        },
+        workingCounties: ["a", "b"]
+      },
+      {
+        details: {
+          forename: "Test"
+        },
+        workingCounties: ["a"],
+        workingLocations: ["z"]
+      },
+      {
+        details: {
+          forename: "Test"
+        },
+        workingCounties: ["a"],
+        workingLocations: ["z", "x"]
+      },
+      {
+        details: {
+          forename: "Test"
+        },
+        workingCounties: ["a", "b"],
+        workingLocations: ["z", "x"]
+      },
+
+      {
+        details: {
+          forename: "Test"
+        },
+        workingCounties: ["a"],
+        workingLocations: ["z", "x"]
+      }
+    ]);
+  });
+  it("should match volunteers by workingLocations IF the isolator has selectedLocation", () => {
+    const service: MatchService = TestBed.get(MatchService);
+    expect(
+      service.matchVolunteersWithIsolator(isolatorSelectedLocation, volunteers)
+    ).toEqual([
+      {
+        details: {
+          forename: "Test"
+        },
+        workingCounties: ["a"],
+        workingLocations: ["z"]
+      },
+      {
+        details: {
+          forename: "Test"
+        },
+        workingCounties: ["a"],
+        workingLocations: ["z", "x"]
+      },
+      {
+        details: {
+          forename: "Test"
+        },
+        workingCounties: ["a", "b"],
+        workingLocations: ["z", "x"]
+      },
+
+      {
+        details: {
+          forename: "Test"
+        },
+        workingCounties: ["a"],
+        workingLocations: ["z", "x"]
       }
     ]);
   });
