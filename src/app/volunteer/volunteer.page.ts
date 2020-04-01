@@ -5,12 +5,9 @@ import { Isolator } from "../models/isolator.model";
 import { Volunteer } from "../models/volunteer";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AlertController } from "@ionic/angular";
-import { AngularFireFunctions } from "@angular/fire/functions";
 import { AngularFireAuth } from "@angular/fire/auth";
 import * as firebase from "firebase";
 import { combineLatest, flatMap, map, take } from "rxjs/operators";
-import { MatchService } from '../match.service';
-
 @Component({
   selector: "app-volunteer",
   templateUrl: "./volunteer.page.html",
@@ -23,20 +20,15 @@ export class VolunteerPage implements OnInit {
   notes: string;
   userUid: string;
   volunteerNotes$: Observable<any>;
-  user: Volunteer;
 
   isolator: any;
-  isolators: Array<Isolator>;
-
 
   constructor(
     private afs: AngularFirestore,
     private activatedRoute: ActivatedRoute,
     private alertController: AlertController,
     private router: Router,
-    private fns: AngularFireFunctions,
-    private auth: AngularFireAuth,
-    private matchService: MatchService
+    private auth: AngularFireAuth
   ) {}
 
   ngOnInit() {
@@ -48,29 +40,15 @@ export class VolunteerPage implements OnInit {
     this.auth.authState.subscribe(user => {
       if (user) {
         this.userUid = user.uid;
-
-        //
-
-          this.getVolunteer(this.userUid).pipe(take(1)).subscribe((user: Volunteer) => this.user = user);
-          this.getIsolators().pipe(take(1)).subscribe((isolators: Array<Isolator>) => this.isolators = isolators);
-          //
       }
     });
-
-
   }
 
   getVolunteer(id) {
-    return this.volunteer$ = this.afs
+    this.volunteer$ = this.afs
       .collection<Isolator>("volunteers")
       .doc<Volunteer>(this.id)
       .valueChanges();
-  }
-
-  getIsolators() {
-      return this.afs
-          .collection<Isolator>("isolating")
-          .valueChanges();
   }
 
   subscribeNotes(id) {
@@ -83,11 +61,11 @@ export class VolunteerPage implements OnInit {
           .collection<Volunteer>("volunteers")
           .doc<Volunteer>(this.id)
           .collection("notes", ref => ref.orderBy("created", "asc"))
-          .valueChanges({ idField: "id" })
+          .valueChanges({idField: 'id'})
           .pipe(
             map((notes: any) => {
               return notes.map(note => {
-                note.user = volunteers.find(volunteer => {
+                note.user = volunteers.find((volunteer) => {
                   return volunteer.id === note.userUid;
                 });
                 return note;
@@ -95,6 +73,7 @@ export class VolunteerPage implements OnInit {
             })
           );
 
+        this.volunteerNotes$.subscribe(resp => console.log(resp));
       });
   }
 
@@ -125,18 +104,7 @@ export class VolunteerPage implements OnInit {
         roles: {
           volunteer: true
         }
-      })
-      .then(() => {
-        this.fns.httpsCallable("my-fn-name");
       });
-  }
-
-  onClickTest() {
-    console.log(this.user, this.isolators)
-    console.log(this.matchService.matchIsolatorsWithVolunteer(this.user, this.isolators))
-    // this.fns
-    //   .httpsCallable("addMessage")({ text: "text" })
-    //   .subscribe();
   }
 
   onSubmitNotes() {
