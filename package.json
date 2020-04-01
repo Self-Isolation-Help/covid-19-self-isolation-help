@@ -72,7 +72,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run test-headless"
+      "pre-push": "npm run test-headless",
+      "pre-commit": "npx prettier@2.0.2 . --write"
     }
   }
 }
