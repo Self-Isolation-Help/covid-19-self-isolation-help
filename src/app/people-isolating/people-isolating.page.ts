@@ -1,3 +1,4 @@
+import { MatchService } from "./../match.service";
 import { Component, OnInit } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs/internal/Observable";
@@ -15,10 +16,12 @@ import { Volunteer } from "../models/volunteer";
 export class PeopleIsolatingPage implements OnInit {
   isolators$: Observable<Array<Isolator>>;
   user$: Observable<Volunteer>;
+  volunteer: Volunteer;
   constructor(
     private afs: AngularFirestore,
     public auth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private matchservice: MatchService
   ) {}
 
   ngOnInit() {
@@ -36,11 +39,22 @@ export class PeopleIsolatingPage implements OnInit {
       .valueChanges()
       .pipe(
         map((isolators: any) => {
-          return isolators.filter(isolator => !isolator.resolved);
+          if (this.volunteer.roles && this.volunteer.roles["volunteer"]) {
+            return this.matchservice.matchIsolatorsWithVolunteer(
+              this.volunteer,
+              isolators
+            );
+          } else {
+            return isolators.filter(isolator => !isolator.resolved);
+          }
         })
       );
 
-    this.user$.subscribe(resp => console.log(resp));
+    this.user$.subscribe(user => {
+      if (user) {
+        this.volunteer = user;
+      }
+    });
   }
 
   onSignout() {
