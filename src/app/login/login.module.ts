@@ -12,6 +12,6 @@ import { AngularFireAuth } from "@angular/fire/auth";
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, LoginPageRoutingModule],
   declarations: [LoginPage],
-  providers: [AngularFireAuth]
+  providers: [AngularFireAuth],
 })
 export class LoginPageModule {}

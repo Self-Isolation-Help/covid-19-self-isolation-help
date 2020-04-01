@@ -9,38 +9,38 @@ import { AlertController } from "@ionic/angular";
 @Component({
   selector: "app-approve-volunteers",
   templateUrl: "./approve-volunteers.page.html",
-  styleUrls: ["./approve-volunteers.page.scss"]
+  styleUrls: ["./approve-volunteers.page.scss"],
 })
 export class ApproveVolunteersPage implements OnInit {
   volunteers$: Observable<Volunteer>;
   volunteersNeedApproval: Array<Volunteer>;
   volunteersAlreadyApproved: Array<Volunteer>;
 
-  constructor(
-    private afs: AngularFirestore
-  ) {}
+  constructor(private afs: AngularFirestore) {}
 
   ngOnInit() {
     this.volunteers$ = this.afs
-      .collection<Isolator>("volunteers", ref => ref.orderBy("dateCreated", "asc"))
+      .collection<Isolator>("volunteers", (ref) =>
+        ref.orderBy("dateCreated", "asc")
+      )
       .valueChanges({ idField: "id" })
       .pipe(
         map((volunteers: any) => {
           return volunteers.filter(
-            volunteer => volunteer.approved !== false && !volunteer.rejected
+            (volunteer) => volunteer.approved !== false && !volunteer.rejected
           );
         })
       );
 
     this.volunteers$.subscribe((volunteers: any) => {
       this.volunteersNeedApproval = volunteers.filter(
-        volunteer =>
+        (volunteer) =>
           volunteer.roles &&
           !volunteer.roles.admin &&
           !volunteer.roles.volunteer
       );
       this.volunteersAlreadyApproved = volunteers.filter(
-        volunteer =>
+        (volunteer) =>
           volunteer.roles &&
           (volunteer.roles.admin || volunteer.roles.volunteer)
       );
