@@ -6,7 +6,7 @@ import { UserService } from "../user.service";
 @Component({
   selector: "app-share-location",
   templateUrl: "./share-location.page.html",
-  styleUrls: ["./share-location.page.scss"]
+  styleUrls: ["./share-location.page.scss"],
 })
 export class ShareLocationPage implements OnInit {
   hasSharedLocation = false;
@@ -23,15 +23,15 @@ export class ShareLocationPage implements OnInit {
     this.loading = true;
     this.geolocation
       .getCurrentPosition()
-      .then(resp => {
+      .then((resp) => {
         this.loading = false;
         this.hasSharedLocation = true;
         this.userService.updateUser({
-          location: { lat: resp.coords.latitude, lng: resp.coords.longitude }
+          location: { lat: resp.coords.latitude, lng: resp.coords.longitude },
         });
         this.router.navigateByUrl("info");
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("Error getting location", error);
       });
   }

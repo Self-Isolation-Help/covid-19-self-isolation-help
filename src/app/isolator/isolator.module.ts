@@ -13,6 +13,6 @@ import { AngularFireAuth } from "@angular/fire/auth";
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, IsolatorPageRoutingModule],
   declarations: [IsolatorPage],
-  providers: [AngularFirestore, AngularFireAuth]
+  providers: [AngularFirestore, AngularFireAuth],
 })
 export class IsolatorPageModule {}

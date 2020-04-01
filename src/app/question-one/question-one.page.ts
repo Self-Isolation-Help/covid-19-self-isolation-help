@@ -4,7 +4,7 @@ import { SubdomainService } from "../subdomain.service";
 @Component({
   selector: "app-question-one",
   templateUrl: "./question-one.page.html",
-  styleUrls: ["./question-one.page.scss"]
+  styleUrls: ["./question-one.page.scss"],
 })
 export class QuestionOnePage implements OnInit {
   locationLabel: string;

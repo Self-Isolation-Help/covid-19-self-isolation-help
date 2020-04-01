@@ -3,13 +3,13 @@ import { UserService } from "../user.service";
 
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Router } from "@angular/router";
-import { isDevMode } from '@angular/core';
+import { isDevMode } from "@angular/core";
 import * as firebase from "firebase";
 
 @Component({
   selector: "app-confirmation",
   templateUrl: "./confirmation.page.html",
-  styleUrls: ["./confirmation.page.scss"]
+  styleUrls: ["./confirmation.page.scss"],
 })
 export class ConfirmationPage implements OnInit {
   user;
@@ -24,13 +24,13 @@ export class ConfirmationPage implements OnInit {
   ngOnInit() {
     this.userService.updateUser({ hasCompletedForm: true });
     this.user = this.userService.getUser();
-      this.isDevMode = isDevMode();
+    this.isDevMode = isDevMode();
   }
 
   onComplete() {
     this.disabled = true;
     this.userService.updateUser({
-      dateSubmitted: firebase.firestore.FieldValue.serverTimestamp()
+      dateSubmitted: firebase.firestore.FieldValue.serverTimestamp(),
     });
     this.afs
       .collection("isolating")
@@ -39,5 +39,4 @@ export class ConfirmationPage implements OnInit {
         this.router.navigateByUrl("/complete");
       });
   }
-
 }

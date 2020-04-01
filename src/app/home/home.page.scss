@@ -1,5 +1,4 @@
 :host {
-
   .max-wrap {
     margin-top: 60px;
   }
@@ -29,7 +28,7 @@
     background: black;
     position: absolute;
     .background-inner {
-      background: url('/assets/background.jpg');
+      background: url("/assets/background.jpg");
       opacity: 0.5;
       background-size: cover;
       background-position: center;
@@ -38,24 +37,24 @@
     }
   }
 
-  .footer{
-    .link{
+  .footer {
+    .link {
       display: block;
-      padding: .5rem;
+      padding: 0.5rem;
     }
   }
-  .cookies-wrap{
-    padding: 0 .5rem 0 .5rem;
+  .cookies-wrap {
+    padding: 0 0.5rem 0 0.5rem;
     text-align: center;
   }
-  @media all and (max-width: 575px){
-    .footer{
-      .text{
+  @media all and (max-width: 575px) {
+    .footer {
+      .text {
         text-align: center;
         display: block;
       }
-      .button{
-        margin: .2rem auto 0 auto;
+      .button {
+        margin: 0.2rem auto 0 auto;
         width: 70%;
       }
     }
@@ -70,9 +69,4 @@
       margin-bottom: 20px;
     }
   }
-
-
-
 }
-
-
