@@ -9,9 +9,7 @@
 
 <ion-content>
   <div class="max-wrap">
-    <ng-container
-      *ngFor="let isolator of (isolators$ | async)"
-    >
+    <ng-container *ngFor="let isolator of (matches)">
       <ion-card [routerLink]="['/isolator']" [queryParams]="{id: isolator.id}">
         <ion-card-header>
           <ion-card-title>
@@ -64,7 +62,7 @@
         </ion-card-content>
       </ion-card>
     </ng-container>
-    <ion-card *ngIf="(isolators$ | async) && !(isolators$ | async)?.length">
+    <ion-card *ngIf="(matches) && !(matches)?.length">
       <ion-card-content>
         <p>Nobody here is requesting assistance</p>
         <p><a [routerLink]="['/people-isolating']">Back to county view</a></p>

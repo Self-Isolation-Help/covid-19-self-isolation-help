@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { ConfirmationPage } from './confirmation.page';
+import { ConfirmationPage } from "./confirmation.page";
 
 const routes: Routes = [
   {
-    path: '',
-    component: ConfirmationPage
-  }
+    path: "",
+    component: ConfirmationPage,
+  },
 ];
 
 @NgModule({
