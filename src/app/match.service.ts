@@ -30,7 +30,7 @@ export class MatchService {
   ) {
     const test = volunteers.filter((volunteer) => {
       if (!isolator.details.selectedLocation) {
-        return volunteer.workingCounties.includes(isolator.details.county);
+        return volunteer.workingCounties && volunteer.workingCounties.includes(isolator.details.county);
       }
       if (
         isolator.details.selectedLocation &&
