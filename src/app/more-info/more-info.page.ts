@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./more-info.page.scss"]
 })
 export class MoreInfoPage implements OnInit {
-  form:any = {};
+  form: any = {};
 
   constructor(private userService: UserService, private router: Router) {}
 

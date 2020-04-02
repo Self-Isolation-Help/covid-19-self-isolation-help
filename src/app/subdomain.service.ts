@@ -24,7 +24,7 @@ export class SubdomainService {
       this.subdomain = "";
     } else {
       this.subdomain = domain.split(".")[0];
-      if(this.subdomain === 'preview') {
+      if (this.subdomain === "preview") {
         return;
       }
       this.locations.forEach(location => {
@@ -49,7 +49,7 @@ export class SubdomainService {
   }
 
   getSubdomain() {
-      return this.subdomain;
+    return this.subdomain;
   }
   getLocationBySubdomain() {
     return this.location;

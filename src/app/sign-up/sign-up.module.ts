@@ -1,24 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { SignUpPageRoutingModule } from './sign-up-routing.module';
+import { SignUpPageRoutingModule } from "./sign-up-routing.module";
 
-import { SignUpPage } from './sign-up.page';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { SignUpPage } from "./sign-up.page";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SignUpPageRoutingModule
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, SignUpPageRoutingModule],
   declarations: [SignUpPage],
-  providers: [AngularFirestore,
-  AngularFireAuth]
+  providers: [AngularFirestore, AngularFireAuth]
 })
 export class SignUpPageModule {}

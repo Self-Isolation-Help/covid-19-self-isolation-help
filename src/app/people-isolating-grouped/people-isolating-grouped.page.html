@@ -9,9 +9,7 @@
 
 <ion-content>
   <div class="max-wrap">
-    <ng-container
-      *ngFor="let isolator of (isolators$ | async)"
-    >
+    <ng-container *ngFor="let isolator of (isolators$ | async)">
       <ion-card [routerLink]="['/isolator']" [queryParams]="{id: isolator.id}">
         <ion-card-header>
           <ion-card-title>

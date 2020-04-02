@@ -3,7 +3,7 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs/internal/Observable";
 import { ActivatedRoute } from "@angular/router";
 import { filter, map } from "rxjs/operators";
-import { Isolator } from '../models/isolator.model';
+import { Isolator } from "../models/isolator.model";
 
 @Component({
   selector: "app-people-isolating-grouped",
@@ -22,14 +22,18 @@ export class PeopleIsolatingGroupedPage implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.type = Object.keys(params)[0];
-      this.location = params[this.type] ;
+      this.location = params[this.type];
       this.getLocation(this.location);
     });
   }
 
   getLocation(location) {
     this.isolators$ = this.afs
-      .collection<Isolator>("isolating", ref => ref.where(`details.${this.type}`, "==", location).orderBy("dateSubmitted", "asc"))
+      .collection<Isolator>("isolating", ref =>
+        ref
+          .where(`details.${this.type}`, "==", location)
+          .orderBy("dateSubmitted", "asc")
+      )
       .valueChanges({ idField: "id" })
       .pipe(
         map((isolators: any) => {
@@ -37,6 +41,4 @@ export class PeopleIsolatingGroupedPage implements OnInit {
         })
       );
   }
-
-
 }

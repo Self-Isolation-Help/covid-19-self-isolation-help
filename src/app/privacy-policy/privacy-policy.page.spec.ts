@@ -1,15 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { PrivacyPolicyPage } from './privacy-policy.page';
+import { PrivacyPolicyPage } from "./privacy-policy.page";
 
-describe('PrivacyPolicyPage', () => {
+describe("PrivacyPolicyPage", () => {
   let component: PrivacyPolicyPage;
   let fixture: ComponentFixture<PrivacyPolicyPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrivacyPolicyPage ],
+      declarations: [PrivacyPolicyPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
@@ -18,7 +18,7 @@ describe('PrivacyPolicyPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

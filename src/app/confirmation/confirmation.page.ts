@@ -81,7 +81,7 @@ export class ConfirmationPage implements OnInit {
       )
     ];
     volunteersTosendEmailTo.forEach((matchingVolunteer: Volunteer) => {
-      emails.push(matchingVolunteer.details.email)
+      emails.push(matchingVolunteer.details.email);
     });
 
     this.fns
@@ -90,6 +90,5 @@ export class ConfirmationPage implements OnInit {
         isolator: { ...isolator, ...{ id: id } }
       })
       .subscribe();
-
   }
 }

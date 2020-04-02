@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { ConfirmationPageRoutingModule } from './confirmation-routing.module';
+import { ConfirmationPageRoutingModule } from "./confirmation-routing.module";
 
-import { ConfirmationPage } from './confirmation.page';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireFunctions } from '@angular/fire/functions';
-
+import { ConfirmationPage } from "./confirmation.page";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFireFunctions } from "@angular/fire/functions";
 
 @NgModule({
   imports: [
@@ -22,5 +21,3 @@ import { AngularFireFunctions } from '@angular/fire/functions';
   providers: [AngularFirestore, AngularFireFunctions]
 })
 export class ConfirmationPageModule {}
-
-

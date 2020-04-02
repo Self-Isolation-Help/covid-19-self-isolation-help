@@ -38,7 +38,6 @@
   --ion-color-primary-tint: #1f98a7;
 }
 
-
 ion-label {
   z-index: 3;
 }
@@ -46,7 +45,7 @@ ion-label {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active  {
+input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
   background-color: transparent !important;
 }
@@ -66,11 +65,11 @@ input:-webkit-autofill:active  {
       font-size: 24px;
       border-bottom: 1px solid #333;
       padding-bottom: 30px;
-
     }
   }
 
-  ol li, ul li {
+  ol li,
+  ul li {
     font-size: 16px;
   }
 

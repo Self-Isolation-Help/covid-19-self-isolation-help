@@ -11,8 +11,9 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
 import {
-    AngularFireAnalyticsModule,
-    ScreenTrackingService, UserTrackingService
+  AngularFireAnalyticsModule,
+  ScreenTrackingService,
+  UserTrackingService
 } from "@angular/fire/analytics";
 
 @NgModule({
@@ -30,7 +31,7 @@ import {
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ScreenTrackingService,
-      UserTrackingService
+    UserTrackingService
   ],
   bootstrap: [AppComponent]
 })
