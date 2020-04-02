@@ -51,7 +51,7 @@ async function sendEmailToVolunteersMatchingIsolator(emails, isolator) {
       <p>=============================</p>
       <p><b>Location:</b></p>
       <p>${
-        isolator.details.selectedLocation.name
+        isolator.details.selectedLocation && isolator.details.selectedLocation.name
           ? isolator.details.selectedLocation.name
           : ""
       }</p>
@@ -59,9 +59,9 @@ async function sendEmailToVolunteersMatchingIsolator(emails, isolator) {
       <p></p>
       
       <p>=============================</p>
-      <p><b>To get in touch with this person</b>, please click the link below (you will need to in logged in first)</p>
+      <p><b>To get in touch with this person</b>, please click the link below (you will need to be logged in first)</p>
       <p>Please remember to mark them as "pending" after you are in touch and "resolved" after they have been helped.</p>
-      <p><a href="http://localhost:8100/isolator?id=${
+      <p><a href="https://selfisolationhelp.co.uk/isolator?id=${
         isolator.id
       }">Click to view self isolator</a></p>
       <p>Although this is an automated email, you may reply to get in touch with our co-ordinating team.</p>
