@@ -14,7 +14,7 @@ import { Volunteer } from "../models/volunteer";
 @Component({
   selector: "app-confirmation",
   templateUrl: "./confirmation.page.html",
-  styleUrls: ["./confirmation.page.scss"],
+  styleUrls: ["./confirmation.page.scss"]
 })
 export class ConfirmationPage implements OnInit {
   user;
@@ -42,7 +42,7 @@ export class ConfirmationPage implements OnInit {
     const id = this.afs.createId();
     this.disabled = true;
     this.userService.updateUser({
-      dateSubmitted: firebase.firestore.FieldValue.serverTimestamp(),
+      dateSubmitted: firebase.firestore.FieldValue.serverTimestamp()
     });
     this.afs
       .collection("isolating")
@@ -66,7 +66,7 @@ export class ConfirmationPage implements OnInit {
   ) {
     let emails = [];
     const adminsOrSuperVolunteers = volunteers.filter(
-      (volunteer) =>
+      volunteer =>
         volunteer.roles &&
         (volunteer.roles.admin || volunteer.roles.superVolunteer)
     );
@@ -77,17 +77,17 @@ export class ConfirmationPage implements OnInit {
     const volunteersTosendEmailTo = [
       ...adminsOrSuperVolunteers,
       ...matchingVolunteers.filter(
-        (volunteer) => volunteer.roles.volunteer === true
-      ),
+        volunteer => volunteer.roles && volunteer.roles.volunteer === true
+      )
     ];
     volunteersTosendEmailTo.forEach((matchingVolunteer: Volunteer) => {
-      emails.push(matchingVolunteer.details.email);
+      emails.push(matchingVolunteer.details && matchingVolunteer.details.email);
     });
 
     this.fns
       .httpsCallable("sendEmailToVolunteersMatchingIsolator")({
         emails: emails,
-        isolator: { ...isolator, ...{ id: id } },
+        isolator: { ...isolator, ...{ id: id } }
       })
       .subscribe();
   }
