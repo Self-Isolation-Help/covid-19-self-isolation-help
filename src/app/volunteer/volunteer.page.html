@@ -117,20 +117,25 @@
         <h2>Notes</h2>
         <ion-list>
           <ion-item *ngFor="let note of (volunteerNotes$ | async);">
-            <ion-label>
+            <ion-label class="ion-text-wrap">
               <ion-note>
-                <strong>{{note.user.details.forename}}</strong> on {{note?.created?.toDate() |
-                date: 'medium'}}<br />
+                <strong>{{note.user.details.forename}}</strong> on
+                {{note?.created?.toDate() | date: 'medium'}}<br />
               </ion-note>
               {{note?.note}}
             </ion-label>
-            <ion-button *ngIf="userUid === note.userUid" (click)="onRemoveNote(note.id)" slot="end" fill="clear" color="danger">
+            <ion-button
+              *ngIf="userUid === note.userUid"
+              (click)="onRemoveNote(note.id)"
+              slot="end"
+              fill="clear"
+              color="danger"
+            >
               <ion-icon name="close-outline"></ion-icon>
             </ion-button>
           </ion-item>
         </ion-list>
         <form (ngSubmit)="onSubmitNotes()">
-
           <ion-item>
             <ion-textarea
               [(ngModel)]="notes"
@@ -154,8 +159,6 @@
     >
       <ion-card-content>
         <h2>Actions</h2>
-
-        <ion-button (click)="onClickTest()">Test</ion-button>
 
         <ion-grid>
           <ion-row>
