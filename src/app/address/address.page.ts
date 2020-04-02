@@ -9,7 +9,7 @@ import { SubdomainService } from "../subdomain.service";
 @Component({
   selector: "app-address",
   templateUrl: "./address.page.html",
-  styleUrls: ["./address.page.scss"]
+  styleUrls: ["./address.page.scss"],
 })
 export class AddressPage implements OnInit {
   submitted = false;
@@ -58,11 +58,11 @@ export class AddressPage implements OnInit {
   }
   onChangeCounty() {
     this.locationsAssociatedWithCounty = this.countiesLocationMap.find(
-      map => map.county === this.form.county
+      (map) => map.county === this.form.county
     );
     if (this.locationsAssociatedWithCounty) {
       this.locationsList = this.locations.find(
-        location =>
+        (location) =>
           location.label === this.locationsAssociatedWithCounty.locations
       ).items;
       this.form.locationType = this.locationsAssociatedWithCounty.locations;
@@ -73,7 +73,7 @@ export class AddressPage implements OnInit {
 
   onChangeLocation() {
     let selectedLocation = this.locationsList.find(
-      location => location.name === this.form.location
+      (location) => location.name === this.form.location
     );
 
     if (selectedLocation) {
