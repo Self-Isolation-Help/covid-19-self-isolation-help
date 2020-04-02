@@ -1,15 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { VolunteerPage } from './volunteer.page';
+import { VolunteerPage } from "./volunteer.page";
 
-describe('VolunteerPage', () => {
+describe("VolunteerPage", () => {
   let component: VolunteerPage;
   let fixture: ComponentFixture<VolunteerPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VolunteerPage ],
+      declarations: [VolunteerPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
@@ -18,7 +18,7 @@ describe('VolunteerPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

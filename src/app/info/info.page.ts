@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./info.page.scss"]
 })
 export class InfoPage {
-  form:any = {};
+  form: any = {};
 
   constructor(private userService: UserService, private router: Router) {}
 

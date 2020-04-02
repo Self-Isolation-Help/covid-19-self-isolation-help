@@ -7,11 +7,9 @@ exports.sendEmailToVolunteersMatchingIsolator = functions.https.onCall(
   }
 );
 
-exports.volunteerConfirmationEmail = functions.https.onCall(
-  (data, context) => {
-    volunteerConfirmationEmail(data.email);
-  }
-);
+exports.volunteerConfirmationEmail = functions.https.onCall((data, context) => {
+  volunteerConfirmationEmail(data.email);
+});
 
 async function sendEmailToVolunteersMatchingIsolator(emails, isolator) {
   let transporter = nodemailer.createTransport({
@@ -43,7 +41,11 @@ async function sendEmailToVolunteersMatchingIsolator(emails, isolator) {
           : ""
       }
       ${isolator.info.needsMedicine ? "<p>Needs medicine</p>" : ""}
-      <p>${isolator.info.needsSomethingElseDescription ? isolator.info.needsSomethingElseDescription : ''}</p>
+      <p>${
+        isolator.info.needsSomethingElseDescription
+          ? isolator.info.needsSomethingElseDescription
+          : ""
+      }</p>
       <p>${isolator.moreInfo ? isolator.moreInfo : ""}</p>
       
       <p>=============================</p>

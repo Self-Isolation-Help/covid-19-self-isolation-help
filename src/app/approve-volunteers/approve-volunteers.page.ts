@@ -16,13 +16,13 @@ export class ApproveVolunteersPage implements OnInit {
   volunteersNeedApproval: Array<Volunteer>;
   volunteersAlreadyApproved: Array<Volunteer>;
 
-  constructor(
-    private afs: AngularFirestore
-  ) {}
+  constructor(private afs: AngularFirestore) {}
 
   ngOnInit() {
     this.volunteers$ = this.afs
-      .collection<Isolator>("volunteers", ref => ref.orderBy("dateCreated", "asc"))
+      .collection<Isolator>("volunteers", ref =>
+        ref.orderBy("dateCreated", "asc")
+      )
       .valueChanges({ idField: "id" })
       .pipe(
         map((volunteers: any) => {

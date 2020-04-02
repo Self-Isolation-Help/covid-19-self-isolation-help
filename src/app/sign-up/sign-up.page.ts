@@ -38,7 +38,7 @@ export class SignUpPage implements OnInit {
       details: {},
       volunteerGroup: {},
       checks: {},
-      roles: {},
+      roles: {}
     } as Volunteer;
   }
 
@@ -93,15 +93,15 @@ export class SignUpPage implements OnInit {
         .then(newFireStoreUser => {
           this.afs
             .doc(`volunteers/${newFireStoreUser.user.uid}`)
-            .set(this.form).then(()=>{
+            .set(this.form)
+            .then(() => {
               this.router.navigate(["/people-isolating"]);
-          });
+            });
         })
         .catch(error => {
           this.submitting = false;
           this.error = error.message;
-        })
-
+        });
     } else {
     }
   }

@@ -8,7 +8,7 @@ import { AlertController } from "@ionic/angular";
 import { AngularFireAuth } from "@angular/fire/auth";
 import * as firebase from "firebase";
 import { combineLatest, flatMap, map, take } from "rxjs/operators";
-import { AngularFireFunctions } from '@angular/fire/functions';
+import { AngularFireFunctions } from "@angular/fire/functions";
 @Component({
   selector: "app-volunteer",
   templateUrl: "./volunteer.page.html",
@@ -35,9 +35,11 @@ export class VolunteerPage implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.id = params.id;
-      this.getVolunteer(params.id).pipe(take(1)).subscribe((volunteer: Volunteer)=>{
-        this.volunteerEmail = volunteer.details.email;
-      });
+      this.getVolunteer(params.id)
+        .pipe(take(1))
+        .subscribe((volunteer: Volunteer) => {
+          this.volunteerEmail = volunteer.details.email;
+        });
       this.subscribeNotes(params.id);
     });
     this.auth.authState.subscribe(user => {
@@ -48,10 +50,10 @@ export class VolunteerPage implements OnInit {
   }
 
   getVolunteer(id) {
-    return this.volunteer$ = this.afs
+    return (this.volunteer$ = this.afs
       .collection<Isolator>("volunteers")
       .doc<Volunteer>(this.id)
-      .valueChanges();
+      .valueChanges());
   }
 
   subscribeNotes(id) {
@@ -64,18 +66,17 @@ export class VolunteerPage implements OnInit {
           .collection<Volunteer>("volunteers")
           .doc<Volunteer>(this.id)
           .collection("notes", ref => ref.orderBy("created", "asc"))
-          .valueChanges({idField: 'id'})
+          .valueChanges({ idField: "id" })
           .pipe(
             map((notes: any) => {
               return notes.map(note => {
-                note.user = volunteers.find((volunteer) => {
+                note.user = volunteers.find(volunteer => {
                   return volunteer.id === note.userUid;
                 });
                 return note;
               });
             })
           );
-
       });
   }
 
@@ -106,11 +107,14 @@ export class VolunteerPage implements OnInit {
         roles: {
           volunteer: true
         }
-      }).then(()=>{
+      })
+      .then(() => {
         this.fns
-            .httpsCallable("volunteerConfirmationEmail")({email: this.volunteerEmail})
-            .subscribe();
-    });
+          .httpsCallable("volunteerConfirmationEmail")({
+            email: this.volunteerEmail
+          })
+          .subscribe();
+      });
   }
 
   onSubmitNotes() {
