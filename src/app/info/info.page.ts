@@ -7,12 +7,12 @@ import { Router } from "@angular/router";
   templateUrl: "./info.page.html",
   styleUrls: ["./info.page.scss"],
 })
-export class InfoPage implements OnInit {
+export class InfoPage {
   form: any = {};
 
   constructor(private userService: UserService, private router: Router) {}
 
-  ngOnInit() {
+  ionViewWillEnter() {
     if (this.userService.user.info) {
       this.form = this.userService.user.info;
     }

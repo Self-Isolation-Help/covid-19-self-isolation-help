@@ -8,6 +8,7 @@ import { AlertController } from "@ionic/angular";
 import { AngularFireAuth } from "@angular/fire/auth";
 import * as firebase from "firebase";
 import { combineLatest, flatMap, map, take } from "rxjs/operators";
+import { AngularFireFunctions } from "@angular/fire/functions";
 @Component({
   selector: "app-volunteer",
   templateUrl: "./volunteer.page.html",
@@ -15,12 +16,11 @@ import { combineLatest, flatMap, map, take } from "rxjs/operators";
 })
 export class VolunteerPage implements OnInit {
   volunteer$: Observable<Volunteer>;
-  volunteers$: Observable<Array<Volunteer>>;
   id: string;
   notes: string;
   userUid: string;
   volunteerNotes$: Observable<any>;
-
+  volunteerEmail: string;
   isolator: any;
 
   constructor(
@@ -28,13 +28,18 @@ export class VolunteerPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private alertController: AlertController,
     private router: Router,
-    private auth: AngularFireAuth
+    private auth: AngularFireAuth,
+    private fns: AngularFireFunctions
   ) {}
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.id = params.id;
-      this.getVolunteer(params.id);
+      this.getVolunteer(params.id)
+        .pipe(take(1))
+        .subscribe((volunteer: Volunteer) => {
+          this.volunteerEmail = volunteer.details.email;
+        });
       this.subscribeNotes(params.id);
     });
     this.auth.authState.subscribe((user) => {
@@ -45,10 +50,10 @@ export class VolunteerPage implements OnInit {
   }
 
   getVolunteer(id) {
-    this.volunteer$ = this.afs
+    return (this.volunteer$ = this.afs
       .collection<Isolator>("volunteers")
       .doc<Volunteer>(this.id)
-      .valueChanges();
+      .valueChanges());
   }
 
   subscribeNotes(id) {
@@ -72,8 +77,6 @@ export class VolunteerPage implements OnInit {
               });
             })
           );
-
-        this.volunteerNotes$.subscribe((resp) => console.log(resp));
       });
   }
 
@@ -101,6 +104,13 @@ export class VolunteerPage implements OnInit {
         roles: {
           volunteer: true,
         },
+      })
+      .then(() => {
+        this.fns
+          .httpsCallable("volunteerConfirmationEmail")({
+            email: this.volunteerEmail,
+          })
+          .subscribe();
       });
   }
 
