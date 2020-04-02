@@ -6,12 +6,12 @@ import { IsolatorPage } from "./isolator.page";
 const routes: Routes = [
   {
     path: "",
-    component: IsolatorPage
-  }
+    component: IsolatorPage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class IsolatorPageRoutingModule {}

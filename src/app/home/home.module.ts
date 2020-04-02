@@ -15,11 +15,11 @@ import { CookieService } from "ngx-cookie-service";
     RouterModule.forChild([
       {
         path: "",
-        component: HomePage
-      }
-    ])
+        component: HomePage,
+      },
+    ]),
   ],
   declarations: [HomePage],
-  providers: [CookieService]
+  providers: [CookieService],
 })
 export class HomePageModule {}

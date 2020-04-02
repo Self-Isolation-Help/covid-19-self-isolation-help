@@ -13,8 +13,8 @@ import { QuestionOnePage } from "./question-one.page";
     CommonModule,
     FormsModule,
     IonicModule,
-    QuestionOnePageRoutingModule
+    QuestionOnePageRoutingModule,
   ],
-  declarations: [QuestionOnePage]
+  declarations: [QuestionOnePage],
 })
 export class QuestionOnePageModule {}

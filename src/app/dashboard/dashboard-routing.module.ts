@@ -6,12 +6,12 @@ import { DashboardPage } from "./dashboard.page";
 const routes: Routes = [
   {
     path: "",
-    component: DashboardPage
-  }
+    component: DashboardPage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class DashboardPageRoutingModule {}

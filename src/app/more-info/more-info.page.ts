@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 @Component({
   selector: "app-more-info",
   templateUrl: "./more-info.page.html",
-  styleUrls: ["./more-info.page.scss"]
+  styleUrls: ["./more-info.page.scss"],
 })
 export class MoreInfoPage implements OnInit {
   form: any = {};
@@ -15,7 +15,7 @@ export class MoreInfoPage implements OnInit {
   ngOnInit() {
     if (this.userService.user.moreInfo) {
       this.form = {
-        moreInfo: this.userService.user.moreInfo
+        moreInfo: this.userService.user.moreInfo,
       };
     }
   }

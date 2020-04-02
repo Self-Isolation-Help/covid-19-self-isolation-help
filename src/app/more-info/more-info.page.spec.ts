@@ -10,7 +10,7 @@ describe("MoreInfoPage", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MoreInfoPage],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(MoreInfoPage);

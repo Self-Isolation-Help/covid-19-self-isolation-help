@@ -10,7 +10,7 @@ describe("ShareLocationPage", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ShareLocationPage],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ShareLocationPage);

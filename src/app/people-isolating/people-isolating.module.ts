@@ -17,9 +17,9 @@ import { AngularFireAuth } from "@angular/fire/auth";
     FormsModule,
     IonicModule,
     PeopleIsolatingPageRoutingModule,
-    NgPipesModule
+    NgPipesModule,
   ],
   declarations: [PeopleIsolatingPage],
-  providers: [AngularFirestore, AngularFireAuth]
+  providers: [AngularFirestore, AngularFireAuth],
 })
 export class PeopleIsolatingPageModule {}

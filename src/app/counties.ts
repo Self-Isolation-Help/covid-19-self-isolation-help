@@ -103,5 +103,5 @@ export const COUNTIES: string[] = [
   "Cumberland",
   "Middlesex",
   "Huntingdonshire",
-  "Westmorland"
+  "Westmorland",
 ];

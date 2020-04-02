@@ -10,6 +10,6 @@ import { AddressPage } from "./address.page";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, AddressPageRoutingModule],
-  declarations: [AddressPage]
+  declarations: [AddressPage],
 })
 export class AddressPageModule {}

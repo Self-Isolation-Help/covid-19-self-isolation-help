@@ -10,6 +10,6 @@ import { RegisterPage } from "./register.page";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, RegisterPageRoutingModule],
-  declarations: [RegisterPage]
+  declarations: [RegisterPage],
 })
 export class RegisterPageModule {}

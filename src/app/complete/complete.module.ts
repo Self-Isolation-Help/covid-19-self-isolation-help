@@ -10,6 +10,6 @@ import { CompletePage } from "./complete.page";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, CompletePageRoutingModule],
-  declarations: [CompletePage]
+  declarations: [CompletePage],
 })
 export class CompletePageModule {}

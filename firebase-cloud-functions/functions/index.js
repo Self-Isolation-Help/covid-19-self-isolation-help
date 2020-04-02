@@ -19,8 +19,8 @@ async function sendEmailToVolunteersMatchingIsolator(emails, isolator) {
     secure: true, // use TLS
     auth: {
       user: "volunteers@selfisolationhelp.co.uk",
-      pass: functions.config().webmail.password
-    }
+      pass: functions.config().webmail.password,
+    },
   });
 
   // send mail with defined transport object
@@ -68,7 +68,7 @@ async function sendEmailToVolunteersMatchingIsolator(emails, isolator) {
       <p></p>
       <p>Thank you,</p>
       <p>Self Isolation Help Uk</p>
-    `
+    `,
     })
     .then(() => {
       console.log("VOLUNTEER MATCH EMAIL SUCCESSFULLY SENT", emails, isolator);
@@ -83,8 +83,8 @@ async function volunteerConfirmationEmail(email) {
     secure: true, // use TLS
     auth: {
       user: "volunteers@selfisolationhelp.co.uk",
-      pass: functions.config().webmail.password
-    }
+      pass: functions.config().webmail.password,
+    },
   });
 
   // send mail with defined transport object
@@ -103,7 +103,7 @@ async function volunteerConfirmationEmail(email) {
       <p>This is an automated email. If you have any questions or queries, please reply to this email to speak to a human.</p>
       <p>Thank you,</p>
       <p>Self Isolation Help Uk</p>
-    `
+    `,
     })
     .then(() => {
       console.log(

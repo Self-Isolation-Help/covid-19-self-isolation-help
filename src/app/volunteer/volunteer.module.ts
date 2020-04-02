@@ -14,6 +14,6 @@ import { AngularFireFunctions } from "@angular/fire/functions";
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, VolunteerPageRoutingModule],
   declarations: [VolunteerPage],
-  providers: [AngularFirestore, AngularFireAuth, AngularFireFunctions]
+  providers: [AngularFirestore, AngularFireAuth, AngularFireFunctions],
 })
 export class VolunteerPageModule {}

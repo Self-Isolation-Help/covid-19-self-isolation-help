@@ -6,12 +6,12 @@ import { PeopleIsolatingGroupedPage } from "./people-isolating-grouped.page";
 const routes: Routes = [
   {
     path: "",
-    component: PeopleIsolatingGroupedPage
-  }
+    component: PeopleIsolatingGroupedPage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class PeopleIsolatingGroupedPageRoutingModule {}

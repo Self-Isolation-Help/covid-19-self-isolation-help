@@ -13,7 +13,7 @@ import * as firebase from "firebase";
 @Component({
   selector: "app-sign-up",
   templateUrl: "./sign-up.page.html",
-  styleUrls: ["./sign-up.page.scss"]
+  styleUrls: ["./sign-up.page.scss"],
 })
 export class SignUpPage implements OnInit {
   form: Volunteer;
@@ -38,7 +38,7 @@ export class SignUpPage implements OnInit {
       details: {},
       volunteerGroup: {},
       checks: {},
-      roles: {}
+      roles: {},
     } as Volunteer;
   }
 
@@ -65,15 +65,15 @@ export class SignUpPage implements OnInit {
 
   onChangeWorkingCounty() {
     this.locationGroups = this.countiesLocationMap
-      .filter(filter => this.form.workingCounties.includes(filter.county))
-      .map(map => {
+      .filter((filter) => this.form.workingCounties.includes(filter.county))
+      .map((map) => {
         return {
           ...map,
           ...{
             items: this.locations.find(
-              location => location.county === map.county
-            ).items
-          }
+              (location) => location.county === map.county
+            ).items,
+          },
         };
       });
   }
@@ -90,7 +90,7 @@ export class SignUpPage implements OnInit {
       this.submitting = true;
       this.auth
         .createUserWithEmailAndPassword(this.form.details.email, this.password)
-        .then(newFireStoreUser => {
+        .then((newFireStoreUser) => {
           this.afs
             .doc(`volunteers/${newFireStoreUser.user.uid}`)
             .set(this.form)
@@ -98,7 +98,7 @@ export class SignUpPage implements OnInit {
               this.router.navigate(["/people-isolating"]);
             });
         })
-        .catch(error => {
+        .catch((error) => {
           this.submitting = false;
           this.error = error.message;
         });
