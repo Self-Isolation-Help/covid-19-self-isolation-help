@@ -6,12 +6,12 @@ import { ApproveVolunteersPage } from "./approve-volunteers.page";
 const routes: Routes = [
   {
     path: "",
-    component: ApproveVolunteersPage
-  }
+    component: ApproveVolunteersPage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ApproveVolunteersPageRoutingModule {}

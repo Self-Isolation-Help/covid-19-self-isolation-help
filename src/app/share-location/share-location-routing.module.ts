@@ -6,12 +6,12 @@ import { ShareLocationPage } from "./share-location.page";
 const routes: Routes = [
   {
     path: "",
-    component: ShareLocationPage
-  }
+    component: ShareLocationPage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ShareLocationPageRoutingModule {}

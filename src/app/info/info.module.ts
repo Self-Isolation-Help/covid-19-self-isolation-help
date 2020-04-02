@@ -11,6 +11,6 @@ import { UserService } from "../user.service";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, InfoPageRoutingModule],
-  declarations: [InfoPage]
+  declarations: [InfoPage],
 })
 export class InfoPageModule {}

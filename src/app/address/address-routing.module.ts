@@ -6,12 +6,12 @@ import { AddressPage } from "./address.page";
 const routes: Routes = [
   {
     path: "",
-    component: AddressPage
-  }
+    component: AddressPage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AddressPageRoutingModule {}

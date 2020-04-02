@@ -4,7 +4,7 @@ import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 @Component({
   selector: "app-volunteers",
   templateUrl: "./volunteers.page.html",
-  styleUrls: ["./volunteers.page.scss"]
+  styleUrls: ["./volunteers.page.scss"],
 })
 export class VolunteersPage implements OnInit {
   isDevMode: boolean;

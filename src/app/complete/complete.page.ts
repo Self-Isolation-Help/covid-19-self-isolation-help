@@ -4,7 +4,7 @@ import { UserService } from "../user.service";
 @Component({
   selector: "app-complete",
   templateUrl: "./complete.page.html",
-  styleUrls: ["./complete.page.scss"]
+  styleUrls: ["./complete.page.scss"],
 })
 export class CompletePage implements OnInit {
   constructor(private userService: UserService) {}

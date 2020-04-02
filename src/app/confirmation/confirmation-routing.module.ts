@@ -6,12 +6,12 @@ import { ConfirmationPage } from "./confirmation.page";
 const routes: Routes = [
   {
     path: "",
-    component: ConfirmationPage
-  }
+    component: ConfirmationPage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ConfirmationPageRoutingModule {}

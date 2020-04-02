@@ -15,9 +15,9 @@ import { AngularFireFunctions } from "@angular/fire/functions";
     CommonModule,
     FormsModule,
     IonicModule,
-    ConfirmationPageRoutingModule
+    ConfirmationPageRoutingModule,
   ],
   declarations: [ConfirmationPage],
-  providers: [AngularFirestore, AngularFireFunctions]
+  providers: [AngularFirestore, AngularFireFunctions],
 })
 export class ConfirmationPageModule {}

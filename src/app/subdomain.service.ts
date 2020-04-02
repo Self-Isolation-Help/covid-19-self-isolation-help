@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { LOCATIONS } from "./locations";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class SubdomainService {
   subdomain: string;
@@ -27,14 +27,14 @@ export class SubdomainService {
       if (this.subdomain === "preview") {
         return;
       }
-      this.locations.forEach(location => {
+      this.locations.forEach((location) => {
         if (location.county.includes(this.subdomain)) {
           label = location.county;
           this.county = location.county;
           return;
         }
 
-        location.items.forEach(item => {
+        location.items.forEach((item) => {
           if (item.name.toLowerCase().includes(this.subdomain)) {
             label = item.name;
             this.location = label;

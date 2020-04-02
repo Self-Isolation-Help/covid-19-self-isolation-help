@@ -8,7 +8,7 @@ import { Isolator } from "../models/isolator.model";
 @Component({
   selector: "app-people-isolating-grouped",
   templateUrl: "./people-isolating-grouped.page.html",
-  styleUrls: ["./people-isolating-grouped.page.scss"]
+  styleUrls: ["./people-isolating-grouped.page.scss"],
 })
 export class PeopleIsolatingGroupedPage implements OnInit {
   isolators$: Observable<Array<Isolator>>;
@@ -20,7 +20,7 @@ export class PeopleIsolatingGroupedPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe((params) => {
       this.type = Object.keys(params)[0];
       this.location = params[this.type];
       this.getLocation(this.location);
@@ -29,7 +29,7 @@ export class PeopleIsolatingGroupedPage implements OnInit {
 
   getLocation(location) {
     this.isolators$ = this.afs
-      .collection<Isolator>("isolating", ref =>
+      .collection<Isolator>("isolating", (ref) =>
         ref
           .where(`details.${this.type}`, "==", location)
           .orderBy("dateSubmitted", "asc")
@@ -37,7 +37,7 @@ export class PeopleIsolatingGroupedPage implements OnInit {
       .valueChanges({ idField: "id" })
       .pipe(
         map((isolators: any) => {
-          return isolators.filter(isolator => !isolator.resolved);
+          return isolators.filter((isolator) => !isolator.resolved);
         })
       );
   }

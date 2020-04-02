@@ -14,9 +14,9 @@ import { AngularFirestore } from "@angular/fire/firestore";
     CommonModule,
     FormsModule,
     IonicModule,
-    ApproveVolunteersPageRoutingModule
+    ApproveVolunteersPageRoutingModule,
   ],
   declarations: [ApproveVolunteersPage],
-  providers: [AngularFirestore]
+  providers: [AngularFirestore],
 })
 export class ApproveVolunteersPageModule {}

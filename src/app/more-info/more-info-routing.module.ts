@@ -6,12 +6,12 @@ import { MoreInfoPage } from "./more-info.page";
 const routes: Routes = [
   {
     path: "",
-    component: MoreInfoPage
-  }
+    component: MoreInfoPage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class MoreInfoPageRoutingModule {}

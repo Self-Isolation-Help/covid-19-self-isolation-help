@@ -12,8 +12,8 @@ export const environment = {
     storageBucket: "covidvolunteers-2cb41.appspot.com",
     messagingSenderId: "877427532044",
     appId: "1:877427532044:web:79bf85ee0be54cbaee2929",
-    measurementId: "G-X93N7VL150"
-  }
+    measurementId: "G-X93N7VL150",
+  },
 };
 
 /*

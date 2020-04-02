@@ -12,7 +12,7 @@ import { AngularFireFunctions } from "@angular/fire/functions";
 @Component({
   selector: "app-volunteer",
   templateUrl: "./volunteer.page.html",
-  styleUrls: ["./volunteer.page.scss"]
+  styleUrls: ["./volunteer.page.scss"],
 })
 export class VolunteerPage implements OnInit {
   volunteer$: Observable<Volunteer>;
@@ -33,7 +33,7 @@ export class VolunteerPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe((params) => {
       this.id = params.id;
       this.getVolunteer(params.id)
         .pipe(take(1))
@@ -42,7 +42,7 @@ export class VolunteerPage implements OnInit {
         });
       this.subscribeNotes(params.id);
     });
-    this.auth.authState.subscribe(user => {
+    this.auth.authState.subscribe((user) => {
       if (user) {
         this.userUid = user.uid;
       }
@@ -61,16 +61,16 @@ export class VolunteerPage implements OnInit {
       .collection<Volunteer>("volunteers")
       .valueChanges({ idField: "id" })
       .pipe(take(1))
-      .subscribe(volunteers => {
+      .subscribe((volunteers) => {
         this.volunteerNotes$ = this.afs
           .collection<Volunteer>("volunteers")
           .doc<Volunteer>(this.id)
-          .collection("notes", ref => ref.orderBy("created", "asc"))
+          .collection("notes", (ref) => ref.orderBy("created", "asc"))
           .valueChanges({ idField: "id" })
           .pipe(
             map((notes: any) => {
-              return notes.map(note => {
-                note.user = volunteers.find(volunteer => {
+              return notes.map((note) => {
+                note.user = volunteers.find((volunteer) => {
                   return volunteer.id === note.userUid;
                 });
                 return note;
@@ -90,12 +90,9 @@ export class VolunteerPage implements OnInit {
   }
 
   onReject() {
-    this.afs
-      .collection<Isolator>("volunteers")
-      .doc(this.id)
-      .update({
-        rejected: true
-      });
+    this.afs.collection<Isolator>("volunteers").doc(this.id).update({
+      rejected: true,
+    });
     this.router.navigate(["/approve-volunteers"]);
   }
 
@@ -105,13 +102,13 @@ export class VolunteerPage implements OnInit {
       .doc(this.id)
       .update({
         roles: {
-          volunteer: true
-        }
+          volunteer: true,
+        },
       })
       .then(() => {
         this.fns
           .httpsCallable("volunteerConfirmationEmail")({
-            email: this.volunteerEmail
+            email: this.volunteerEmail,
           })
           .subscribe();
       });
@@ -125,7 +122,7 @@ export class VolunteerPage implements OnInit {
       .add({
         userUid: this.userUid,
         note: this.notes,
-        created: firebase.firestore.FieldValue.serverTimestamp()
+        created: firebase.firestore.FieldValue.serverTimestamp(),
       });
     this.notes = "";
   }
@@ -137,16 +134,16 @@ export class VolunteerPage implements OnInit {
         {
           text: "Cancel",
           role: "cancel",
-          cssClass: "secondary"
+          cssClass: "secondary",
         },
         {
           text: "Confirm",
           cssClass: "danger",
           handler: () => {
             this.onReject();
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();
@@ -160,16 +157,16 @@ export class VolunteerPage implements OnInit {
         {
           text: "Cancel",
           role: "cancel",
-          cssClass: "secondary"
+          cssClass: "secondary",
         },
         {
           text: "Confirm",
           cssClass: "danger",
           handler: () => {
             this.onApprove();
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();

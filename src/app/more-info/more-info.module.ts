@@ -10,6 +10,6 @@ import { MoreInfoPage } from "./more-info.page";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, MoreInfoPageRoutingModule],
-  declarations: [MoreInfoPage]
+  declarations: [MoreInfoPage],
 })
 export class MoreInfoPageModule {}

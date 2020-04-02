@@ -14,9 +14,9 @@ import { Geolocation } from "@ionic-native/geolocation/ngx";
     CommonModule,
     FormsModule,
     IonicModule,
-    ShareLocationPageRoutingModule
+    ShareLocationPageRoutingModule,
   ],
   providers: [Geolocation],
-  declarations: [ShareLocationPage]
+  declarations: [ShareLocationPage],
 })
 export class ShareLocationPageModule {}

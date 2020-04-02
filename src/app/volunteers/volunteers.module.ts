@@ -13,8 +13,8 @@ import { VolunteersPage } from "./volunteers.page";
     CommonModule,
     FormsModule,
     IonicModule,
-    VolunteersPageRoutingModule
+    VolunteersPageRoutingModule,
   ],
-  declarations: [VolunteersPage]
+  declarations: [VolunteersPage],
 })
 export class VolunteersPageModule {}

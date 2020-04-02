@@ -13,8 +13,8 @@ import { PrivacyPolicyPage } from "./privacy-policy.page";
     CommonModule,
     FormsModule,
     IonicModule,
-    PrivacyPolicyPageRoutingModule
+    PrivacyPolicyPageRoutingModule,
   ],
-  declarations: [PrivacyPolicyPage]
+  declarations: [PrivacyPolicyPage],
 })
 export class PrivacyPolicyPageModule {}

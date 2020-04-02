@@ -6,12 +6,12 @@ import { QuestionOnePage } from "./question-one.page";
 const routes: Routes = [
   {
     path: "",
-    component: QuestionOnePage
-  }
+    component: QuestionOnePage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class QuestionOnePageRoutingModule {}

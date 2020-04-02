@@ -6,12 +6,12 @@ import { PrivacyPolicyPage } from "./privacy-policy.page";
 const routes: Routes = [
   {
     path: "",
-    component: PrivacyPolicyPage
-  }
+    component: PrivacyPolicyPage,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class PrivacyPolicyPageRoutingModule {}

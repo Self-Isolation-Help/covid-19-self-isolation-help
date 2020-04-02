@@ -3,7 +3,7 @@ import { Isolator } from "./models/isolator.model";
 import { Volunteer } from "./models/volunteer";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class MatchService {
   constructor() {}
@@ -13,7 +13,7 @@ export class MatchService {
     isolators: Array<Isolator>
   ) {
     return isolators.filter(
-      isolator =>
+      (isolator) =>
         (!volunteer.workingLocations &&
           volunteer.workingCounties.includes(isolator.details.county)) ||
         (volunteer.workingLocations &&
@@ -28,7 +28,7 @@ export class MatchService {
     isolator: Isolator,
     volunteers: Array<Volunteer>
   ) {
-    const test = volunteers.filter(volunteer => {
+    const test = volunteers.filter((volunteer) => {
       if (!isolator.details.selectedLocation) {
         return volunteer.workingCounties.includes(isolator.details.county);
       }
