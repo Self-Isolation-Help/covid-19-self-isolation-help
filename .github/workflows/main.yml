@@ -9,11 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: mayur-rawte/github-angular-actions@latest
+      - uses: actions/checkout@v2
       - name: Install
         run: |
           npm install
-      - name: Build
-        run: ng build --prod
+      - name: Angular Github Actions
+        uses: mayur-rawte/github-angular-actions@latest
+#       - name: Build
+#         uses: mayur-rawte/github-angular-actions@latest
+#         run: ng build --prod
