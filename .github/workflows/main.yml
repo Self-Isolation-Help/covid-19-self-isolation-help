@@ -7,12 +7,20 @@ on:
   #   branches: [ master ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Install
-        run: |
-          npm install
+        run: npm install
+      - name: Test
+        run: npm test-headless
       - name: Build
         run: npm run build:prod
