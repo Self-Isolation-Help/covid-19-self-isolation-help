@@ -16,6 +16,5 @@ jobs:
           npm install
       - name: Angular Github Actions
         uses: mayur-rawte/github-angular-actions@latest
-#       - name: Build
-#         uses: mayur-rawte/github-angular-actions@latest
-#         run: ng build --prod
+      - name: Build
+        run: ng build --prod
