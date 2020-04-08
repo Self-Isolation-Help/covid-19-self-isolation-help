@@ -21,6 +21,6 @@ jobs:
       - name: Install
         run: npm install
       - name: Test
-        run: npm test-headless
+        run: npm run test-headless
       - name: Build
         run: npm run build:prod
