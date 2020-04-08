@@ -17,6 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install
-        run: npm install
+        run: |
+          npm install @angular/cli
+          npm install
       - name: Build
         run: ng build --prod
