@@ -1,6 +1,7 @@
 import { VolunteerRole } from "./volunteer-role.enum";
 
 export interface Volunteer {
+  id?: string;
   details?: {
     forename?: string;
     middleNames?: string;

@@ -90,5 +90,10 @@ export class ConfirmationPage implements OnInit {
         isolator: { ...isolator, ...{ id: id } }
       })
       .subscribe();
+
+      this.afs
+          .collection("isolating")
+          .doc(id)
+          .update({ manualVolunteerAlertEmailTriggered: true });
   }
 }

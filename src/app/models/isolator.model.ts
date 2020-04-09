@@ -36,4 +36,5 @@ export interface Isolator {
   lastUpdatedTime?: any;
   id?: string;
   inProgress?: boolean;
+  manualVolunteerAlertEmailTriggered?: boolean;
 }
