@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title
-      >{{isolator?.details.forename}} {{isolator?.details.surname}}
+      >{{isolator?.details?.forename}} {{isolator?.details?.surname}}
       <ion-text color="warning" *ngIf="isolator?.inProgress"
         >In progress</ion-text
       ></ion-title
@@ -17,7 +17,24 @@
     <p>Loading...</p>
   </div>
 </ion-content>
-<ion-content *ngIf="isolator">
+<ion-content *ngIf="isolator && isolator.resolved">
+  <div class="max-wrap">
+    <ion-card>
+      <ion-card-content>
+        <p>
+          This self-isolator has already been marked as resolved by another
+          volunteer.
+        </p>
+        <p>
+          <a [routerLink]="['/people-isolating']"
+            >View others who are self isolating</a
+          >
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+<ion-content *ngIf="isolator && !isolator.resolved">
   <div class="max-wrap">
     <ion-card>
       <ion-card-header>
@@ -52,7 +69,7 @@
           <ion-chip class="ion-margin-none" color="warning">
             <ion-label>In progress</ion-label>
           </ion-chip>
-          <p color="">
+          <p>
             This person has been flagged as "In Progress" meaning they are
             already being processed.
           </p>
@@ -96,6 +113,27 @@
         </p>
         <p *ngIf="isolator?.details?.postCode">
           <strong>Post Code: </strong> {{isolator?.details?.postCode}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="isolatorUpdatedBy">
+      <ion-card-header>
+        <ion-card-title>
+          Last updated
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>
+          Last updated by:
+          <strong>{{isolatorUpdatedBy?.details?.forename}}</strong>
+        </p>
+
+        <p>
+          Date:
+          <strong
+            >{{isolator?.lastUpdatedTime?.toDate() | date: 'medium'}}</strong
+          >
         </p>
       </ion-card-content>
     </ion-card>
@@ -144,6 +182,64 @@
             </ion-col>
           </ion-row>
         </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="volunteers?.length">
+      <ion-card-header>
+        <ion-card-title>
+          List of matching volunteers (Admin only)
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item
+          detail
+          *ngFor="let volunteer of volunteers"
+          [routerLink]="['/volunteer']"
+          [queryParams]="{id: volunteer?.id}"
+        >
+          <ion-label
+            ><strong
+              >{{volunteer?.details?.forename}}
+              {{volunteer?.details?.surname}}</strong
+            >
+            <br />
+            <ion-note
+              >{{volunteer?.dateCreated.toDate() | date: 'medium'}}<br />
+              <strong>{{volunteer?.workingLocations}}</strong></ion-note
+            >
+          </ion-label>
+
+          <ion-badge *ngFor="let county of volunteer?.workingCounties" slot="end"
+            >{{county}}</ion-badge
+          >
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="volunteers?.length">
+      <ion-card-header>
+        <ion-card-title>Trigger Notification Email (Admin only)</ion-card-title>
+        <ion-card-subtitle
+          >By clicking this button, you will trigger a notification email to all
+          the above matching volunteers. NOTE: Remember that the email
+          notification would have already gone out when the request was
+          created.</ion-card-subtitle
+        >
+      </ion-card-header>
+      <ion-card-content>
+        <ion-text
+          color="danger"
+          *ngIf="isolator.manualVolunteerAlertEmailTriggered"
+          ><strong>Manual email notification has been sent.</strong></ion-text
+        >
+        <ion-button
+          expand="full"
+          [disabled]="disableEmailButton"
+          (click)="onClickTriggerNotification();"
+          >Click to trigger notification email</ion-button
+        >
       </ion-card-content>
     </ion-card>
   </div>
