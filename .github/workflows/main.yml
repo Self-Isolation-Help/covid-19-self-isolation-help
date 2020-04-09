@@ -7,7 +7,7 @@ on:
   #   branches: [ master ]
 
 jobs:
-  build-and-test:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,7 +20,10 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install
         run: npm install
-      - name: Test
-        run: npm run test-headless
       - name: Build
         run: npm run build
+      - name: Archive artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: dist
+          path: dist
