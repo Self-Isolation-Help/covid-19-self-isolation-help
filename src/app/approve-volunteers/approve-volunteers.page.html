@@ -71,6 +71,33 @@
           </ion-item>
         </ng-container>
       </ion-card-content>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-title>Other tools</ion-title>
+        </ion-card-header>
+        <ion-card-content>
+
+          <h2>Generate list of emails for approved volunteers</h2>
+          <p>Click the button below to do just that</p>
+
+
+          <ion-button (click)="showEmails = !showEmails">
+            Generate Emails
+          </ion-button>
+
+
+          <pre>
+        <ng-container *ngFor="let volunteer of volunteersAlreadyApproved">
+          {{volunteer?.details?.email ? volunteer?.details?.email + ', ' : ''}}
+        </ng-container>
+      </pre>
+
+        </ion-card-content>
+      </ion-card>
+
+
+
     </ion-card>
   </div>
 </ion-content>
