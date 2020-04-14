@@ -15,7 +15,7 @@ export class ApproveVolunteersPage implements OnInit {
   volunteers$: Observable<Volunteer>;
   volunteersNeedApproval: Array<Volunteer>;
   volunteersAlreadyApproved: Array<Volunteer>;
-  showEmails = false;
+  showEmails = false; 
 
   constructor(private afs: AngularFirestore) {}
 
