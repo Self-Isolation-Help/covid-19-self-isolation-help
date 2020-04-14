@@ -34,7 +34,7 @@ export class ApproveVolunteersPage implements OnInit {
       );
 
     this.volunteers$.subscribe((volunteers: any) => {
-      this.volunteersNeedApproval = volunteers.filter(
+      this.volunteersNeedApproval = volunteers.filter( 
         (volunteer) =>
           volunteer.roles &&
           !volunteer.roles.admin &&
