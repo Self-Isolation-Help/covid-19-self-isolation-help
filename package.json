@@ -10,7 +10,9 @@
     "test": "ng test",
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "config": "ts-node -O '{\"module\": \"commonjs\"}' ./config.index.ts",
+    "build:prod": "npm run config && ng build --prod"
   },
   "private": true,
   "dependencies": {
