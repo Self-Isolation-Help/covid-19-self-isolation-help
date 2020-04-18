@@ -1,11 +1,9 @@
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   pull_request:
     branches: [master]
 
 jobs:
-  test-and-build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,10 +18,3 @@ jobs:
         run: npm install
       - name: Test
         run: npm run test-headless
-      - name: Build
-        run: npm run build
-      - name: Archive artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: www
-          path: www
