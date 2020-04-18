@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
       - name: Archive artifact
         uses: actions/upload-artifact@v1
         with:
