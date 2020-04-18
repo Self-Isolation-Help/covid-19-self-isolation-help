@@ -14,6 +14,7 @@ const envConfigFile = `export const environment = {
       appId: "1:1066821517284:web:8d2e73a3c092a9877a91f1",
       measurementId: "G-K3ZBBM27HL",
     },
+}
 `;
 
 writeFile(targetPath, envConfigFile, "utf8", (err) => {
