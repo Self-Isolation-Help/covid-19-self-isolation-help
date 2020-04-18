@@ -22,6 +22,8 @@ jobs:
         run: npm run test-headless
       - name: Build
         run: npm run build
+        env:
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
       - name: Archive artifact
         uses: actions/upload-artifact@v1
         with:
