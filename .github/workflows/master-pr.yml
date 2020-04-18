@@ -24,8 +24,3 @@ jobs:
         run: npm run build:prod
         env:
           FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
-      - name: Archive artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: www
-          path: www
