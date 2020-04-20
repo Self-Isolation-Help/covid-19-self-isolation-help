@@ -31,3 +31,4 @@ npm-debug.log*
 /www
 src/environments/environment.prod.ts
 src/environments/environment.ph.ts
+cypress/output
