@@ -2,5 +2,6 @@
   "$schema": "https://on.cypress.io/cypress.schema.json",
   "screenshotsFolder": "cypress/output/screenshots",
   "videosFolder": "cypress/output/videos",
-  "baseUrl": "https://selfisolationhelp.co.uk"
+  "baseUrl": "https://selfisolationhelp.co.uk",
+  "projectId": "t4euz4"
 }
