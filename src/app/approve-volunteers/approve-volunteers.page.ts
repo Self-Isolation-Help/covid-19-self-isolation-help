@@ -15,6 +15,7 @@ export class ApproveVolunteersPage implements OnInit {
   volunteers$: Observable<Volunteer>;
   volunteersNeedApproval: Array<Volunteer>;
   volunteersAlreadyApproved: Array<Volunteer>;
+  showEmails = false;
 
   constructor(private afs: AngularFirestore) {}
 
@@ -33,7 +34,7 @@ export class ApproveVolunteersPage implements OnInit {
       );
 
     this.volunteers$.subscribe((volunteers: any) => {
-      this.volunteersNeedApproval = volunteers.filter(
+      this.volunteersNeedApproval = volunteers.filter( 
         (volunteer) =>
           volunteer.roles &&
           !volunteer.roles.admin &&

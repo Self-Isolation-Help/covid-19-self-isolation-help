@@ -31,7 +31,7 @@
             <br />
             <ion-note
               >{{volunteer.dateCreated.toDate() | date: 'medium'}}<br />
-              <strong>{{volunteer.workingLocations}}</strong></ion-note
+              <strong>Locations:{{volunteer.workingLocations}}<br>Roles: {{volunteer.roles | json}}</strong></ion-note
             >
           </ion-label>
 
@@ -64,11 +64,28 @@
               <br />
               <ion-note
                 >{{volunteer.dateCreated.toDate() | date: 'medium'}}<br />
-                <strong>{{volunteer.workingLocations}}</strong></ion-note
+                <strong>Locations:{{volunteer.workingLocations}}<br>Roles: {{volunteer.roles | json}}</strong></ion-note
               >
             </ion-label>
             <ion-badge slot="end">{{volunteer.workingCounties}}</ion-badge>
           </ion-item>
+        </ng-container>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Other tools</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h2>Generate list of emails for approved volunteers</h2>
+        <p>Click the button below to do just that</p>
+
+        <ion-button (click)="showEmails = !showEmails">
+          Generate Emails
+        </ion-button>
+
+        <ng-container *ngIf="showEmails">
+          <p *ngFor="let volunteer of volunteersAlreadyApproved">{{volunteer?.details?.email ? volunteer?.details?.email + ', ' : ''}}</p>a
         </ng-container>
       </ion-card-content>
     </ion-card>
