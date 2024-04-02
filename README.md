@@ -4,6 +4,10 @@ This project was originally used to help self isolators in need during the covid
 
 Please feel free to use for your own projects, all we ask is that you credit when you can.
 
+Everything below this line is considered legacy
+
+------
+
 # COVID-19 Self Isolation Help Tool
 
 This tool connects people who believe they are infected with COVID-19 with local volunteer groups.
