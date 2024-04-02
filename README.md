@@ -4,7 +4,9 @@ This project was originally used to help self isolators in need during the covid
 
 Please feel free to use for your own projects, all we ask is that you credit when you can.
 
-Everything below this line is considered legacy
+Please bear in mind that the codebase at the time of writing is 4 years old and can benefit from the dependencies being updated together with the node version.
+
+Everything below this line is considered legacy.
 
 ---
 
