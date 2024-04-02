@@ -1,12 +1,12 @@
 THIS TOOL IS NOW OPEN SOURCE.
 
-This project was originally used to help self isolators in need during the covid pandemic. 
+This project was originally used to help self isolators in need during the covid pandemic.
 
 Please feel free to use for your own projects, all we ask is that you credit when you can.
 
 Everything below this line is considered legacy
 
-------
+---
 
 # COVID-19 Self Isolation Help Tool
 
@@ -34,6 +34,7 @@ Thank you
 
 ## Getting set up
 
+- Ensure you are using node version 14.15.0 (later versions are not supported)
 - Install Ionic CLI using `npm install -g @ionic/cli`
 - Install Angular CLI using `npm install -g @angular/cli`
 - In the project base directory, run `npm install`
